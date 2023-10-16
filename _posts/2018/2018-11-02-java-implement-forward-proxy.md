@@ -5,7 +5,7 @@ author:
   link: https://github.com/happymaya
 date: 2018-11-02 11:34:00 +0800
 categories:  [Blog, Notes]
-tags: [proxy, 正向代理, 反向代理, java, tomcat]
+tags: [正向代理, 反向代理, java, tomcat]
 ---
 
 最近部署的应用服务器无法直接访问互联网, 只好在前置服务器上配置了 squid 做正向代理, 应用采用java语言, 这里回顾总结下 java 以及 tomcat 使用http正向代理的几种方法：

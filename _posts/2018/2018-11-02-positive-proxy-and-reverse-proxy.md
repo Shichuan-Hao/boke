@@ -5,7 +5,7 @@ author:
   link: https://github.com/happymaya
 date: 2018-11-02 11:34:00 +0800
 categories:  [Blog, Notes]
-tags: [proxy, 正向代理, 反向代理]
+tags: [正向代理, 反向代理]
 ---
 
 ## 代理 proxy
