@@ -8,10 +8,11 @@ tags: [Neo4j]
 
 [原文地址](https://neo4j.com/docs/getting-started/appendix/example-data/)
 
-:::info
+
 💡
-您可以在此处找到 Neo4j 的可用示例数据集列表，并了解如何导入和探索它们。
-:::
+> 您可以在此处找到 Neo4j 的可用示例数据集列表，并了解如何导入和探索它们。
+{: .prompt-info }
+
 ### 数据集
 对于 Neo4j 入门，使用与您的领域和用例相关的示例数据集会很有帮助。对于每个我们想要提供描述、图形模型和一些用例查询。
 ### 内置示例
@@ -91,10 +92,10 @@ Neo4j 浏览器附带两个内置数据库，您可以使用交互式幻灯片�
 
  
 要加载 JSON、XML 文件，您需要安装[ APOC Core 库](https://neo4j.com/docs/apoc/current/)，该库附带[了许多用于从其他数据库导入数据的过程](https://neo4j.com/docs/apoc/current/import/)。
-:::danger
- 💥提示
-要加载 XLS 文件，您可以使用 APOC 扩展库。注意 APOC 扩展库不受官方支持。
-:::
+
+ 
+> 💥 提示 要加载 XLS 文件，您可以使用 APOC 扩展库。注意 APOC 扩展库不受官方支持。
+{: .prompt-tips }
 
 ####  使用 Neo4j 数据库的转储（dump）
 
@@ -114,5 +115,5 @@ Neo4j 浏览器附带两个内置数据库，您可以使用交互式幻灯片�
 这是 Stack Overflow 存档的图形导入，包含 1640 万个问题、52k 个标签和 890 万个用户（Stack Overflow Dump (6.2GB)）。该图非常大，对于全局图查询，您需要 6G 的页面缓存和 16G 的堆才能使用它。
 
 这是一篇文章，解释了[数据模型](https://towardsdatascience.com/tagoverflow-correlating-tags-in-stackoverflow-66e2b0e1117b)以及我们对数据进行的一些探索性分析。
-![](https://cdn.nlark.com/yuque/0/2023/svg/35987817/1694224303561-cebe07b4-0c3d-4ec4-89dc-fdcdc40e66fd.svg#clientId=u897a9e49-d074-4&from=paste&id=u8a47467a&originHeight=509&originWidth=760&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=uc2e6d79f-80fa-45e9-aefd-195f53aa4c3&title=)
+a  images(https://cdn.nlark.com/yuque/0/2023/svg/35987817/1694224303561-cebe07b4-0c3d-4ec4-89dc-fdcdc40e66fd.svg#clientId=u897a9e49-d074-4&from=paste&id=u8a47467a&originHeight=509&originWidth=760&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=uc2e6d79f-80fa-45e9-aefd-195f53aa4c3&title=)
 如上所述，该数据库在演示服务器中可用。
