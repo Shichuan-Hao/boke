@@ -31,7 +31,7 @@ tags: [Neo4j, Graph Data Model]
 莎莉（Sally）和约翰（John）两个人是朋友。约翰和莎莉都读过《图数据库》一书。
 :::
 我们可以使用此语句中的信息通过将组件标识为标签、节点和关系来构建我们的模型。让我们将场景分成几个部分，并将它们定义为属性图模型的一部分。然而，首先我们简化模型。
-![](https://cdn.nlark.com/yuque/0/2023/svg/35987817/1694396239038-d89e9341-974a-44a8-9a69-a4ee894523e9.svg#clientId=u000ac390-06b7-4&from=paste&id=u1b937379&originHeight=231&originWidth=1120&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u512b1465-dc90-43fe-99c9-e2ed42d091d&title=)
+![简化模型](https://cdn.nlark.com/yuque/0/2023/svg/35987817/1694396239038-d89e9341-974a-44a8-9a69-a4ee894523e9.svg#clientId=u000ac390-06b7-4&from=paste&id=u1b937379&originHeight=231&originWidth=1120&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u512b1465-dc90-43fe-99c9-e2ed42d091d&title=)
 你可以看到：
 
 - 节点（圆圈）代表对象。
