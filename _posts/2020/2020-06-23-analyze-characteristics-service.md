@@ -2,7 +2,7 @@
 title: 分析服务的特性
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2020-06-23 21:33:35 +0800
 categories: [计算机基础, 操作系统]
 tags: [计算密集型, I/O 密集型]

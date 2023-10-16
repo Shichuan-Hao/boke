@@ -2,7 +2,7 @@
 title: 衡量的指标和注意的点(01)
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2019-03-02 23:33:00 +0800
 categories: [Java, 性能优化]
 tags: [性能优化, Performance Optimization]

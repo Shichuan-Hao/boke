@@ -2,7 +2,7 @@
 title: Win/Mac/Unix/Linux 的区别和联系
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2020-06-06 23:33:35 +0800
 categories: [计算机基础, 操作系统]
 tags: [Win/Mac/Unix/Linux]

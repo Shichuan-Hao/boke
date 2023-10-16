@@ -2,7 +2,7 @@
 title: 正确关闭线程池的方式
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2019-02-17 22:56:55 +0800
 categories: [Java, 并发]
 tags: [thread]

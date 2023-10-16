@@ -2,7 +2,7 @@
 title: 使用 RabbitTemplate 集成 RabbitMQ
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-05-12 17:32:00 +0800
 categories: [常用框架, SpringBoot]
 tags: [SpringBoot, RabbitTemplate, RabbitMQ]

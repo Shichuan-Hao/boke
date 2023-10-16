@@ -2,7 +2,7 @@
 title: 模板方法模式：实现同一模板框架下的算法扩展
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-02-24 21:11:22 +0800
 categories: [设计模式, 行为型]
 tags:  [设计模式, Design Pattern, Template Method, 模板方法, 类行为型模式]

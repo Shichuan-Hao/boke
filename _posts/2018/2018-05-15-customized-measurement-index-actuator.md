@@ -2,7 +2,7 @@
 title: 实现自定义度量指标和 Actuator 端点
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-05-15 17:32:00 +0800
 categories: [常用框架, SpringBoot]
 tags: [SpringBoot, Spring Boot Actuator]

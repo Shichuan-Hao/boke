@@ -2,7 +2,7 @@
 title:  使用支付功能演练 DDD
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2021-01-02 23:33:00 +0800
 categories: [系统设计, 领域驱动设计 DDD]
 tags:  [系统设计, 领域驱动设计 DDD]

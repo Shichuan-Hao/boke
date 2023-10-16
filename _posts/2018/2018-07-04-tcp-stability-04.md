@@ -2,7 +2,7 @@
 title: TCP 的稳定性：滑动窗口和流速控制
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-07-04 22:32:00 +0800
 categories: [计算机基础, 网络]
 tags: [UDP]

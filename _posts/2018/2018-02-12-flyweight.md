@@ -2,7 +2,7 @@
 title: 享元模式：通过共享对象减少内存加载消耗
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-02-12 22:18:32 +0800
 categories: [设计模式, 结构型]
 tags:  [设计模式, Design Pattern, 享元模式, Flyweight, 对象结构型模式]

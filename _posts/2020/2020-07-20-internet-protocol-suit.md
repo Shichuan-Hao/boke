@@ -2,7 +2,7 @@
 title: 互联网协议群（TCP/IP）
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2020-07-20 22:33:35 +0800
 categories: [计算机基础, 操作系统]
 tags: [Linux]

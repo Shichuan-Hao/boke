@@ -2,7 +2,7 @@
 title: 软件的安装
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-01-10 21:33:35 +0800
 categories: [计算机基础, 操作系统]
 tags: [图灵机, 图灵机的构造, 图灵机执行程序, 冯诺依曼模型]

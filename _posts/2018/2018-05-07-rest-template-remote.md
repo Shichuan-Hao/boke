@@ -2,7 +2,7 @@
 title: RestTemplate 远程调用实现原理
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-05-07 17:32:00 +0800
 categories: [常用框架, SpringBoot]
 tags: [SpringBoot, RestTemplate]

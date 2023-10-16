@@ -2,7 +2,7 @@
 title:  Spring Security 中的用户和认证
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2020-05-30 21:33:00 +0800
 categories: [常用框架, Spring]
 tags:  [Spring Security]

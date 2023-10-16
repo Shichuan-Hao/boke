@@ -2,7 +2,7 @@
 title: 乐观锁和无锁（14）
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2019-04-27 20:33:33 +0800
 categories: [Java, 性能优化]
 tags: [性能优化, Performance Optimization]

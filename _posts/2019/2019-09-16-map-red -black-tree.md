@@ -2,7 +2,7 @@
 title: 为什么 Map 桶中超过 8 个才转为红黑树？
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2019-09-16 23:33:00 +0800
 categories: [Java, 并发]
 tags: [thread]

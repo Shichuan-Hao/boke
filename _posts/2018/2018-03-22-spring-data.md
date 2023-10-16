@@ -2,7 +2,7 @@
 title: Spring Data 对数据访问过程的统一抽象
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-03-02 17:32:00 +0800
 categories: [常用框架, Spring]
 tags: [SpringBoot, Spring Data]

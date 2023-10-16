@@ -2,7 +2,7 @@
 title: 每次用完 ThreadLocal 一定要 remove()
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2019-10-02 11:34:22 +0800
 categories: [Java, 并发]
 tags: [thread]

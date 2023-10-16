@@ -2,7 +2,7 @@
 title: 异常处理的基本原则
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-03-02 14:33:00 +0800
 categories: [Java, 异常]
 tags:  [exception rules]

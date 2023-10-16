@@ -2,7 +2,7 @@
 title: 抽象工厂模式：统一不同代码风格下代码级别
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-02-01 20:45:00 +0800
 categories: [设计模式, 创建型]
 tags:  [设计模式, Design Pattern, Abstract factory, 抽象工厂模式, 对象创建型模式]

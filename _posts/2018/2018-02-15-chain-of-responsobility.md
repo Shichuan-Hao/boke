@@ -2,7 +2,7 @@
 title: 责任链模式
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-02-15 21:18:32 +0800
 categories: [设计模式, 行为型]
 tags:  [设计模式, Design Pattern, Chain of Responsibility, 责任链模式, 对象行为型模式]

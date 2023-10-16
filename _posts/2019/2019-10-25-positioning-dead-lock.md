@@ -2,7 +2,7 @@
 title: 使用命令和代码定位死锁
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2019-10-25 22:36:44 +0800
 categories: [Java, 并发]
 tags: [thread]

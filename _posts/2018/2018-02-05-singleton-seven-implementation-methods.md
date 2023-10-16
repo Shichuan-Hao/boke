@@ -2,7 +2,7 @@
 title: 单例设计模式的七种实现方式
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-02-05 10:33:00 +0800
 categories: [设计模式, 创建型]
 tags:  [设计模式, Design Pattern, Serven implementation methods of singleton, 单例设计模式, 对象创建型模式]

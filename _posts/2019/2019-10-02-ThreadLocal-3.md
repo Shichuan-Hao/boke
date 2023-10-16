@@ -2,7 +2,7 @@
 title: Thread、 ThreadLocal 及 ThreadLocalMap 三者之间的关系
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2019-10-02 17:33:00 +0800
 categories: [Java, 并发]
 tags: [thread]

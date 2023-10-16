@@ -2,7 +2,7 @@
 title: 为什么加了 final 却依然无法拥有“不变性”
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2019-10-29 23:33:00 +0800
 categories: [Java, 基础语法]
 tags: [thread]

@@ -2,7 +2,7 @@
 title: Linux 架构
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2020-07-19 23:33:35 +0800
 categories: [计算机基础, 操作系统]
 tags: [Linux]

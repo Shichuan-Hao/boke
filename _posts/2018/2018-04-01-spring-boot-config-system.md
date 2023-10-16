@@ -2,7 +2,7 @@
 title: Spring Boot 中的配置体系
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-04-01 17:32:00 +0800
 categories: [常用框架, SpringBoot]
 tags: [SpringBoot, Config System]

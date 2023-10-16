@@ -2,7 +2,7 @@
 title: 代理模式：控制和管理对象访问
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-02-13 20:45:00 +0800
 categories: [设计模式, 创建型]
 tags:  [设计模式, Design Pattern, Proxy, 代理模式, 对象结构型模式]

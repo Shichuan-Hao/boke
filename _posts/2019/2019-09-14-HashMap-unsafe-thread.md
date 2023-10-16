@@ -2,7 +2,7 @@
 title: HashMap 为什么是线程不安全的
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2019-09-14 23:33:00 +0800
 categories: [Java, 集合]
 tags: [thread]

@@ -2,7 +2,7 @@
 title: Java 线程堆栈
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-06-07 22:33:00 +0800
 categories: [Java, JVM]
 tags:  [thread,heap,stack]

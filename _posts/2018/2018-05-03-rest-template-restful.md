@@ -2,7 +2,7 @@
 title: 使用 RestTemplate 消费 RESTful 服务
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-05-03 17:32:00 +0800
 categories: [常用框架, SpringBoot]
 tags: [SpringBoot, RestTemplate, RESTful]

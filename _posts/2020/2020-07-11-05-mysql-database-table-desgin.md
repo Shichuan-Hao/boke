@@ -2,7 +2,7 @@
 title: 设计高性能的数据库表
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2020-07-11 15:53:22 +0800
 categories: [数据库, MySQL]
 tags:  [MySQL, Table Design]

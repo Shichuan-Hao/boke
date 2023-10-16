@@ -2,7 +2,7 @@
 title: 线程池常用的阻塞队列
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2019-02-13 23:33:00 +0800
 categories: [Java, 并发]
 tags: [thread]

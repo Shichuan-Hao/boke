@@ -2,7 +2,7 @@
 title: 解决 AtomicInteger 在高并发下性能不好的手段
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2019-09-27 23:33:00 +0800
 categories: [Java, 并发]
 tags: [thread]

@@ -2,7 +2,7 @@
 title:  Spring Data JPA - @Query
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2020-09-03 23:33:00 +0800
 categories: [常用框架, Spring]
 tags:  [Spring Security, React]

@@ -2,7 +2,7 @@
 title: 文件系统的底层实现
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-01-14 22:33:35 +0800
 categories: [计算机基础, 操作系统]
 tags: [Linux]

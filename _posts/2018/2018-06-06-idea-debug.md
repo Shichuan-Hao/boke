@@ -2,7 +2,7 @@
 title: IDEA 的 Debug 模式
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-06-06 22:33:00 +0800
 categories: [常用工具, IDEA]
 tags:  [IDEA Debug]

@@ -2,7 +2,7 @@
 title: 双重检查锁模式为什么必须加 volatile
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2019-10-19 23:33:00 +0800
 categories: [Java, 并发]
 tags: [thread]

@@ -2,7 +2,7 @@
 title: 利用 Linux 指令分析 Web 日志
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-01-11 13:33:35 +0800
 categories: [计算机基础, 操作系统]
 tags: [Linux]

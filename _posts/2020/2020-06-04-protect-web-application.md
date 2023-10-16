@@ -2,7 +2,7 @@
 title: 使用 Spring Security 基础功能保护 Web 应用
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2020-06-04 21:13:22 +0800
 categories: [常用框架, Spring]
 tags:  [Spring Security]
@@ -22,7 +22,7 @@ mermaid: true
 - 实现核心功能，自定义的用户认证的代码流程。构建独立的 UserDetailsService、 AuthenticationProvider 以及 User 以及 UserRepository 等组件
 
 以上两条代码流程整合在一起，得到案例的整体设计蓝图，如下图所示：
-​![This is a image]()
+<!-- ​![This is a image]() -->
 
 ## 系统初始化
 

@@ -2,7 +2,7 @@
 title: 获取代码性能数据的工具总结（04）
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2019-03-10 23:33:00 +0800
 categories: [Java, 性能优化]
 tags: [性能优化, Performance Optimization]

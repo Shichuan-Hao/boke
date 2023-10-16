@@ -2,7 +2,7 @@
 title: 类加载机制
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-11-04 11:34:00 +0800
 categories: [Java, 基础语法]
 tags: [reflect, 反射]

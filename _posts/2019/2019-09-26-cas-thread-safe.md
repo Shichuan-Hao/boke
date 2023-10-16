@@ -2,7 +2,7 @@
 title: 原子类是如何使用 CSA 保持线程安全
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2019-09-26 23:33:00 +0800
 categories: [Java, 并发]
 tags: [thread]

@@ -2,7 +2,7 @@
 title: 原型模式：对象拷贝
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-02-04 22:24:55 +0800
 categories: [设计模式, 创建型]
 tags:  [设计模式, Design Pattern, Prototype, 原型模式, 对象创建型模式]

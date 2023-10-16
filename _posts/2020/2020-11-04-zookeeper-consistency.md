@@ -2,7 +2,7 @@
 title: ZooKeeper 的数据一致性
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2020-11-04 22:44:22 +0800
 categories: [分布式]
 tags: [distributed,ZooKeeper,Zab]

@@ -2,7 +2,7 @@
 title: 利用设计模式优化性能（11）
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2019-04-12 23:33:00 +0800
 categories: [Java, 性能优化]
 tags: [性能优化, Performance Optimization]

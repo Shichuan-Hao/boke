@@ -2,7 +2,7 @@
 title: 解释器模式：实现自定义配置规则功能
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-02-17 21:18:32 +0800
 categories: [设计模式, 行为型]
 tags:  [设计模式, Design Pattern, Interpreter, 解释器模式, 类行为型模式]

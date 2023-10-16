@@ -2,7 +2,7 @@
 title: 敏感词过滤方案
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2020-12-01 21:34:00 +0800
 categories:  [Blog, Notes]
 tags: [Trie 树算法, DFA 算法]

@@ -2,7 +2,7 @@
 title: Base 理论
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2020-11-03 22:44:22 +0800
 categories: [分布式]
 tags: [distributed,CAP,Paxos]

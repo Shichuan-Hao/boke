@@ -2,7 +2,7 @@
 title: MySQL 体系结构
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2020-07-04 09:33:22 +0800
 categories: [数据库, MySQL]
 tags:  [MySQL]

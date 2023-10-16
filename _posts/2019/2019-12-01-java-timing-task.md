@@ -2,7 +2,7 @@
 title: Java 定时任务
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2019-12-01 21:33:00 +0800
 categories: [Java, 日志]
 tags:  [Timing task, 定时任务]

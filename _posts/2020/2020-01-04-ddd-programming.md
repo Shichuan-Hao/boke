@@ -2,7 +2,7 @@
 title:  DDD 指导程序设计
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2020-01-04 23:33:00 +0800
 categories: [系统设计, 领域驱动设计 DDD]
 tags:  [DDD]

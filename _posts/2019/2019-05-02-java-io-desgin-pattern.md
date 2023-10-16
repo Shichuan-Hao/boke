@@ -2,7 +2,7 @@
 title: Java IO 中涉及的设计模式
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2019-05-02 10:33:22 +0800
 categories: [Java, IO]
 tags: [IO, BIO, NIO, AIO]

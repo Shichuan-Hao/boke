@@ -2,7 +2,7 @@
 title: Java 异常
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-06-02 22:33:00 +0800
 categories: [Java, 异常]
 tags:  [exception]

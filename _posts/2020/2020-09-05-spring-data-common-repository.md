@@ -2,7 +2,7 @@
 title:  Spring Data Common 之 Repository
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2020-09-05 21:33:00 +0800
 categories: [常用框架, Spring]
 tags:  [Spring Security, React]

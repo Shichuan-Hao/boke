@@ -2,7 +2,7 @@
 title: 线程池的 4 种拒绝策略
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2019-02-11 23:33:00 +0800
 categories: [Java, 并发]
 tags: [thread]

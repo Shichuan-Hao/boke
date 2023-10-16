@@ -2,7 +2,7 @@
 title: 使用 Admin Server 管理 Spring 应用程序
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-05-22 20:32:00 +0800
 categories: [常用框架, SpringBoot]
 tags: [SpringBoot, Spring Security]

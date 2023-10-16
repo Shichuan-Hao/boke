@@ -2,7 +2,7 @@
 title: 索引设计
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2020-07-11 17:53:22 +0800
 categories: [数据库, MySQL]
 tags:  [MySQL, Index Design]

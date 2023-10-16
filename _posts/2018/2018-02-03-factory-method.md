@@ -2,7 +2,7 @@
 title: 工厂方法模式：解决生成对象时的不确定性
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-02-03 22:45:00 +0800
 categories: [设计模式, 创建型]
 tags:  [设计模式, Design Pattern, Factory Method, 工厂方法模式, 对象创建型模式]

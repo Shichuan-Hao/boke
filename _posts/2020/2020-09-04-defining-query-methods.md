@@ -2,7 +2,7 @@
 title:  Spring Data JPA - Defining Query Methods 的命名语法与参数
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2020-09-04 23:33:00 +0800
 categories: [常用框架, Spring]
 tags:  [Spring Data JPA, Defining Query Methods]

@@ -2,7 +2,7 @@
 title: 组合模式：实现抽象协议与不同实现的绑定
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-02-09 22:18:32 +0800
 categories: [设计模式, 结构型]
 tags:  [设计模式, Design Pattern, 组合模式, Composite, 对象结构型模式]

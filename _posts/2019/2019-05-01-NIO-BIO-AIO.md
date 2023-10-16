@@ -2,7 +2,7 @@
 title: NIO, BIO, AIO
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2019-05-01 15:33:22 +0800
 categories: [Java, IO]
 tags: [IO, BIO, NIO, AIO]

@@ -2,7 +2,7 @@
 title: 漫游互联网：什么是蜂窝移动网络
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-07-01 21:12:00 +0800
 categories: [计算机基础, 网络]
 tags: [UDP]

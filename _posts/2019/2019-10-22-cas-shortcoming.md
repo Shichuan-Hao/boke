@@ -2,7 +2,7 @@
 title: CSA 的三个缺点
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2019-10-22 20:33:00 +0800
 categories: [Java, 并发]
 tags: [thread]

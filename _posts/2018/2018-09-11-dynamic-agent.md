@@ -2,7 +2,7 @@
 title: 动态代理
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-09-11 11:34:00 +0800
 categories: [Java, 基础语法]
 tags: [dynamic agent, 动态代理]

@@ -2,7 +2,7 @@
 title: 并行计算（12）
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2019-04-17 20:33:33 +0800
 categories: [Java, 性能优化]
 tags: [性能优化, Performance Optimization]

@@ -2,7 +2,7 @@
 title: String 是不可变的
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2019-10-30 23:33:00 +0800
 categories: [Java, 基础语法]
 tags: [thread]

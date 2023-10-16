@@ -2,7 +2,7 @@
 title: 目录结构和文件管理指令
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-01-02 22:33:35 +0800
 categories: [计算机基础, 操作系统]
 tags: [Linux]

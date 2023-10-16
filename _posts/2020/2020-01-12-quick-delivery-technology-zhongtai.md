@@ -2,7 +2,7 @@
 title:  设计支持快速交付的技术中台
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2020-01-12 23:33:00 +0800
 categories: [系统设计, 领域驱动设计 DDD]
 tags:  [DDD]

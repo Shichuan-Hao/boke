@@ -2,7 +2,7 @@
 title: 装饰器模式：在基础组件上扩展新功能
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-02-10 22:18:32 +0800
 categories: [设计模式, 结构型]
 tags:  [设计模式, Design Pattern, 装饰器模式, Decorator, 对象结构型模式]

@@ -2,7 +2,7 @@
 title: 正向代理与反向代理
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2018-11-02 11:34:00 +0800
 categories:  [Blog, Notes]
 tags: [正向代理, 反向代理]

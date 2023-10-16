@@ -2,7 +2,7 @@
 title:  认证和授权
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2020-04-28 20:33:00 +0800
 categories: [常用框架, Spring]
 tags:  [Authentication, Authorization, 授权, 认证, RBAC]

@@ -2,7 +2,7 @@
 title:  ArrayList
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2020-05-02 23:33:00 +0800
 categories: [Java, 集合]
 tags:  [List, ArrayList]

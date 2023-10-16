@@ -2,7 +2,7 @@
 title:  Spring Security 
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2020-05-26 21:13:11 +0800
 categories: [常用框架, Spring]
 tags:  [Spring Security]

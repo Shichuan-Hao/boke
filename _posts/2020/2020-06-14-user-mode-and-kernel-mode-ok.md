@@ -2,7 +2,7 @@
 title: 用户态和内核态
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2020-06-14 23:33:35 +0800
 categories: [计算机基础, 操作系统]
 tags: [用户态, 内核态]

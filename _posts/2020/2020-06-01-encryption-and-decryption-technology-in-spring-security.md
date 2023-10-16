@@ -2,7 +2,7 @@
 title: Spring Security 中的加解密技术
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2020-06-01 21:33:00 +0800
 categories: [常用框架, Spring]
 tags:  [Spring Security]

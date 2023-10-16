@@ -2,7 +2,7 @@
 title: 存储器分级
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2019-06-04 23:33:35 +0800
 categories: [计算机基础, 操作系统]
 tags: [存储器分级策略，L1/L2/L3-cache, SSD]

@@ -2,7 +2,7 @@
 title: happens-before 原则
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2019-10-17 23:33:00 +0800
 categories: [Java, 并发]
 tags: [thread]

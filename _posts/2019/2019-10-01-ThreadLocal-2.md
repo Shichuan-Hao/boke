@@ -2,7 +2,7 @@
 title: ThreadLocal 是用来解决共享资源的多线程访问的
 author:
   name: superhsc
-  link: https://github.com/happymaya
+  link: https://github.com/maxpixelton
 date: 2019-10-01 14:33:00 +0800
 categories: [Java, 并发]
 tags: [thread]
