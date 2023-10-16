@@ -91,7 +91,7 @@ public class A {
 
 拿上面代码来说，执行 A 代码，在调用 `private B b = new B()` 时，就会触发 B 类的加载：
 
-![](D:\happymaya\images.github.io\assert\java\jvm\jvm-04-01.jpg)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-04-01.jpg)
 
 如上图，A 和 B 会被加载到元空间的方法区，进入到 main 方法后，就会交给执行引擎（Execution engine）执行。
 
@@ -166,17 +166,17 @@ public class A {
 
 1. 首先，看到 Constant Pool（常量池），这些内容，存放于 Metaspace 区域，属于非堆。
 
-   ![](D:\happymaya\images.github.io\assert\java\jvm\jvm-04-02.jpg)
+   ![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-04-02.jpg)
 
    常量池包含：.class 文件常量池、运行时常量池、String 常量池等部分。大多是一些静态内容。
 
 2. 接下来，可以看到两个默认的 `<init>` 和 `<cinit>`  方法。以下截图是 test 方法的 code 区域，比命令行版的更加直观。
 
-   ![](D:\happymaya\images.github.io\assert\java\jvm\jvm-04-03.jpg)
+   ![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-04-03.jpg)
 
 3. 继续往下看，看到了 **LocalVariableTable** 的三个变量。其中，slot 0 指向的是 this 关键字。该属性的作用是**描述帧栈中局部变量与源码中定义的变量之间的关系**。**如果没有这些信息，那么在 IDE 中引用这个方法时，将无法获取到方法名，取而代之的则是 arg0 这样的变量名。**
 
-   ![](D:\happymaya\images.github.io\assert\java\jvm\jvm-04-04.jpg)
+   ![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-04-04.jpg)
 
    **本地变量表的 slot 是可以复用的。注意一个有意思的地方，index 的最大值为 3，证明了本地变量表同时最多能够存放 4 个变量**（示例代码的最大值。如果创建了上千个变量，最大值达到1k都有可能）。
 
@@ -237,7 +237,7 @@ main 线程会拥有两个主要的运行时区域：**Java 虚拟机栈**和**�
 
 字节码指令，就是靠操作这些数据结构运行的！！！
 
-![](D:\happymaya\images.github.io\assert\java\jvm\jvm-04-05.jpg)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-04-05.jpg)
 
 ### 0:aload_0
 
@@ -245,7 +245,7 @@ main 线程会拥有两个主要的运行时区域：**Java 虚拟机栈**和**�
 
 对于 static 方法，aload_0 表示对方法的第一个参数的操作。
 
-![](D:\happymaya\images.github.io\assert\java\jvm\jvm-04-06.jpg)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-04-06.jpg)
 
 ### 1: getfield      #2                  // Field a:I
 
@@ -257,7 +257,7 @@ main 线程会拥有两个主要的运行时区域：**Java 虚拟机栈**和**�
 #9 = NameAndType        #11:#12        // a:I
 ```
 
-![](D:\happymaya\images.github.io\assert\java\jvm\jvm-04-07.jpg)
+![]( https://maxpixelton.github.io/images/assert\java\jvm\jvm-04-07.jpg)
 
 ### i2l
 
@@ -267,25 +267,25 @@ main 线程会拥有两个主要的运行时区域：**Java 虚拟机栈**和**�
 
 将第一个局部变量入栈。也就是我们的参数 num。这里的 l 表示 long，同样用于局部变量装载。你会看到这个位置的局部变量，一开始就已经有值了。
 
-![](D:\happymaya\images.github.io\assert\java\jvm\jvm-04-08.jpg)
+![]( https://maxpixelton.github.io/images/assert\java\jvm\jvm-04-08.jpg)
 
 ### ladd
 
 把栈顶两个 long 型数值出栈后相加，并将结果入栈。
 
-![](D:\happymaya\images.github.io\assert\java\jvm\jvm-04-09.jpg)
+![]( https://maxpixelton.github.io/images/assert\java\jvm\jvm-04-09.jpg)
 
 ### getsatic #3
 
 根据偏移获取静态属性的值，并把这个值 push 到操作数栈上。
 
-![](D:\happymaya\images.github.io\assert\java\jvm\jvm-04-10.jpg)
+![]( https://maxpixelton.github.io/images/assert\java\jvm\jvm-04-10.jpg)
 
 ### ladd
 
 再次执行 ladd。
 
-![](D:\happymaya\images.github.io\assert\java\jvm\jvm-04-11.jpg)
+![]( https://maxpixelton.github.io/images/assert\java\jvm\jvm-04-11.jpg)
 
 
 
@@ -295,13 +295,13 @@ main 线程会拥有两个主要的运行时区域：**Java 虚拟机栈**和**�
 
 上面的图，slot 为 4，索引为 3 的就是 ret 变量。
 
-![](D:\happymaya\images.github.io\assert\java\jvm\jvm-04-12.jpg)
+![]( https://maxpixelton.github.io/images/assert\java\jvm\jvm-04-12.jpg)
 
 ### lload_3
 
 正好与上面相反。上面是变量存入，现在要做的，就是把这个变量 ret，压入虚拟机栈中。
 
-![](D:\happymaya\images.github.io\assert\java\jvm\jvm-04-13.jpg)
+![]( https://maxpixelton.github.io/images/assert\java\jvm\jvm-04-13.jpg)
 
 ### Ireturn
 
