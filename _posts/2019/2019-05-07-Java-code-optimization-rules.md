@@ -167,7 +167,7 @@ mermaid: true
    
 6. HashMap 等集合在初始化的时候，指定初始值大小
 
-   参考 [大对象的使用](https://blog.happymaya.cn/posts/large-object-reuse/)。这样的对象有很多，比如 **ArrayList、StringBuilder** 等，通过指定初始值大小可减少扩容造成的性能损耗。
+   参考 [大对象的使用]()。这样的对象有很多，比如 **ArrayList、StringBuilder** 等，通过指定初始值大小可减少扩容造成的性能损耗。
 
    
 

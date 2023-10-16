@@ -12,7 +12,7 @@ mermaid: true
 
 ## 双重检查锁模式的写法
 
-单例模式有多种写法，具体可见[单例设计模式](https://maya.happymaya.cn/posts/singleton/) 和 [单例模式的七种实现方式](https://maya.happymaya.cn/posts/singleton-seven-implementation-methods/)，本文重点关注使用 volatile 强相关的双重检查锁模式的写法，代码如下所示：
+单例模式有多种写法，具体可见[单例设计模式]() 和 [单例模式的七种实现方式]()，本文重点关注使用 volatile 强相关的双重检查锁模式的写法，代码如下所示：
 
 ```java
 public class SingletonVolatile {
