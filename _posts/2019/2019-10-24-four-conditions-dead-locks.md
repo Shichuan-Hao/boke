@@ -73,15 +73,15 @@ public class MustDeadLock implements Runnable {
 
 第 2 个是请求与保持条件，可以看到，同样是满足的。比如，线程 1 在获得 o1 这把锁之后想去尝试获取 o2 这把锁 ，这时它被阻塞了，但是它并不会自动去释放 o1 这把锁，而是对已获得的资源保持不放。
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-68-1.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-68-1.png)
 
 第 3 个是不剥夺条件，在我们这个代码程序中，JVM 并不会主动把某一个线程所持有的锁剥夺，所以也满足不剥夺条件。
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-68-2.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-68-2.png)
 
 第 4 个是循环等待条件，可以看到在我们的例子中，这两个线程都想获取对方已持有的资源，也就是说线程 1 持有 o1 去等待 o2，而线程 2 则是持有 o2 去等待 o1，这是一个环路，此时就形成了一个循环等待。
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-68-3.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-68-3.png)
 
 可以看出，例子中确实满足这 4 个必要条件，可以从这 4 个发生死锁的必要条件出发，来解决死锁的问题，只要破坏任意一个条件就可以消除死锁，这是解决死锁策略中重点要考虑的内容。
 

@@ -68,7 +68,7 @@ String s1 = "lagou";
 String s2 = "lagou";
 ```
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-final-string.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-final-string.png)
 
 在图中可以看到，左边这两个引用都指向常量池中的同一个“lagou”，正是因为这样的机制，再加上 String 在程序中的应用是如此广泛，我们就可以**节省大量的内存空间**。
 

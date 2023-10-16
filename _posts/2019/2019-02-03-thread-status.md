@@ -47,20 +47,20 @@ mermaid: true
 确定线程当前的状态，可以通过 `getState()` 方法，并且线程在任何时刻只可能处于一种状态。
 
 线程在生命周期中并不是固定处于某一个状态而是随着代码的执行在不同状态之间切换。Java 线程状态变迁如下图所示：
-![线程的生命周期](https://images.happymaya.cn/assert/java/thread/java-thread-life-cycle.png)
+![线程的生命周期](https://maxpixelton.github.io/images/assert/java/thread/java-thread-life-cycle.png)
 
 ## New 新建
 
 New 表示线程被创建但尚未启动的状态
 
-![新建状态](https://images.happymaya.cn/assert/java/thread/java-thread-life-cycle-new-status.png)
+![新建状态](https://maxpixelton.github.io/images/assert/java/thread/java-thread-life-cycle-new-status.png)
 
 当用 `new Thread()` 新建一个线程时，如果线程没有开始运行 `start()` 方法，所以也没有开始执行 `run()` 方法里面的代码，那么此时它的状态就是 New。
 
 而一旦线程调用了 `start()`，它的状态就会从 New 变成 Runnable，也就是状态转换成上图中中间大方框里的内容。
 
 ## Runnable 运行
-![运行状态](https://images.happymaya.cn/assert/java/thread/java-thread-life-cycle-runnable-status.png)
+![运行状态](https://maxpixelton.github.io/images/assert/java/thread/java-thread-life-cycle-runnable-status.png)
 
 Java 中的 Runable 状态对应**操作系统线程状态**中的两种状态，分别是 **Running** 和 **Ready**，也就是说，Java 中处于 Runnable 状态的线程有可能正在执行，也有可能没有正在执行，正在等待被分配 CPU 资源。
 
@@ -72,7 +72,7 @@ Java 中的 Runable 状态对应**操作系统线程状态**中的两种状态�
 
 ## 阻塞状态
 
-![阻塞状态](https://images.happymaya.cn/assert/java/thread/java-thread-life-cycle-block-status.png)
+![阻塞状态](https://maxpixelton.github.io/images/assert/java/thread/java-thread-life-cycle-block-status.png)
 
 在 Java 中阻塞状态通常不仅仅是 Blocked，实际上它包括三种状态（如上图的红框部分），分别是 **Blocked(被阻塞）**、**Waiting(等待）**、**Timed Waiting(计时等待）**，这三种状态统称为**阻塞状态**。
 
@@ -124,7 +124,7 @@ Java 中的 Runable 状态对应**操作系统线程状态**中的两种状态�
 
 ## Terminated 终止
 
-![终止状态](https://images.happymaya.cn/assert/java/thread/java-thread-life-cycle-terminated-status.png)
+![终止状态](https://maxpixelton.github.io/images/assert/java/thread/java-thread-life-cycle-terminated-status.png)
 
 最后一种状态是 Terminated 终止状态，要想进入这个状态有两种可能：
 - `run()` 方法执行完毕，线程正常退出。

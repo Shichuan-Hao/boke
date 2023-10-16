@@ -32,15 +32,15 @@ mermaid: true
 
 用图示来说明公平和非公平的场景，先来看公平的情况。假设我们创建了一个公平锁，此时有 4 个线程按顺序来请求公平锁，线程 1 在拿到这把锁之后，线程 2、3、4 会在等待队列中开始等待，然后等线程 1 释放锁之后，线程 2、3、4 会依次去获取这把锁，线程 2 先获取到的原因是它等待的时间最长。
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-locak-unfair-lock-1.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-locak-unfair-lock-1.png)
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-locak-fairlock-wait-queue-2.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-locak-fairlock-wait-queue-2.png)
 
 ## 不公平的场景
 
 下面我们再来看看非公平的情况，假设线程 1 在解锁的时候，突然有线程 5 尝试获取这把锁，那么根据我们的非公平策略，线程 5 是可以拿到这把锁的，尽管它没有进入等待队列，而且线程 2、3、4 等待的时间都比线程 5 要长，但是从整体效率考虑，这把锁此时还是会交给线程 5 持有。
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-locak-unfair-lock-1.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-locak-unfair-lock-1.png)
 
 
 

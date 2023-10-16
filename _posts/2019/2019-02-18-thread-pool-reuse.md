@@ -19,7 +19,7 @@ mermaid: true
 
 线程池创建新线程的时机和规则：
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-pool-params-2.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-pool-params-2.png)
 
 如流程图所示：
 1. 提交任务后，线程池首先会检查当前线程数，如果此时线程数小于核心线程数，比如最开始线程数量为 0，则新建线程并执行任务；

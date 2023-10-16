@@ -189,7 +189,7 @@ poll(long timeout, TimeUnit unit)
 
 put 方法的作用是插入元素。通常在队列没满的时候是正常的插入，但是如果队列已满就无法继续插入，这时它既不会立刻返回 false 也不会抛出异常，而是让插入的线程陷入阻塞状态，直到队列里有了空闲空间，此时队列就会让之前的线程解除阻塞状态，并把刚才那个元素添加进去。
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-blockingqueue-put.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-blockingqueue-put.png)
 
 
 
@@ -197,8 +197,8 @@ put 方法的作用是插入元素。通常在队列没满的时候是正常的�
 
 take 方法的作用是获取并移除队列的头结点。通常在队列里有数据的时候会正常取出数据并删除；但是如果执行 take 的时候队列里无数据，则阻塞，直到队列里有数据；一旦队列里有数据了，就会立刻解除阻塞状态，并且取到数据。
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-blockingqueue-take.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-blockingqueue-take.png)
 
 ### 总结
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-blockingqueue-table.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-blockingqueue-table.png)

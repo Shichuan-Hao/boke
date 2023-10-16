@@ -17,7 +17,7 @@ mermaid: true
 
 
 **线程池对于阻塞队列的选择**
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-blockingqueue-pool.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-blockingqueue-pool.png)
 
 下面我们来看线程池的选择要诀。上面表格左侧是线程池，右侧为它们对应的阻塞队列，你可以看到 5 种线程池只对应了 3 种阻塞队列，下面我们对它们进行逐一的介绍。
 

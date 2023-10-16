@@ -106,6 +106,6 @@ mermaid: true
 
 # 注意点
 
-![性能优化的注意点](/assets/post-img/optimization/2020030203.jpg)
+![性能优化的注意点](https://maxpixelton.github.io/images/assert/optimization/2020030203.jpg)
 
 

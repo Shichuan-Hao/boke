@@ -169,11 +169,11 @@ jump add
 
 首先在调用方，将参数传递给栈；然后在函数执行过程中，从栈中取出参数。
 
-![这是一张图片](https://images.happymaya.cn/assert/os/0401.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/os/0401.png)
 
 函数执行过程中，先将执行结果写入栈中，然后在返回前把之前压入的参数出栈，调用方再从栈中取出执行结果。
 
-![这是一张图片](https://images.happymaya.cn/assert/os/0402.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/os/0402.png)
 
 **将参数传递给 Stack 的过程，叫作压栈。取出结果的过程，叫作出栈。栈就好像你书桌上的一摞书，压栈就是把参数放到书上面，出栈就是把顶部的书拿下来。**
 
@@ -181,7 +181,7 @@ jump add
 
 接下来看看函数执行的整体过程：假设要计算 11 和 15 的和，首先在内存中开辟一块单独的空间，也就是栈。
 
-![这是一张图片](https://images.happymaya.cn/assert/os/0403.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/os/0403.png)
 
 就如前面所讲，栈的使用方法是不断往上堆数据，所以需要一个**栈指针（Stack Pointer， SP）**指向栈顶（也就是下一个可以写入的位置）。每次将数据写入栈时，就把数据写到栈指针指向的位置，然后将 SP 的值增加。
 
@@ -206,13 +206,13 @@ jump add
 
   压栈完成后，内存变成下图中所示的样子。11 被写入内存，并且栈指针指向了 0x104 位置。
 
-  ![这是一张图片](https://images.happymaya.cn/assert/os/0404.png)
+  ![这是一张图片](https://maxpixelton.github.io/images/assert/os/0404.png)
 
 - 压栈参数 15
 
   用同样的方法将参数 15 压栈。
 
-  ![这是一张图片](https://images.happymaya.cn/assert/os/0405.png)
+  ![这是一张图片](https://maxpixelton.github.io/images/assert/os/0405.png)
 
   压栈后，11 和 15 都被放入了对应的内存位置，并且栈指针指向了 0x108。
 
@@ -253,7 +253,7 @@ jump add
 
   经过函数调用的结果如下图所示，运算结果 26 已经被写入了返回值的位置：
 
-  ![这是一张图片](https://images.happymaya.cn/assert/os/0406.png)
+  ![这是一张图片](https://maxpixelton.github.io/images/assert/os/0406.png)
 
 - 发现-解决问题
 
@@ -264,7 +264,7 @@ jump add
 
   具体顺序你可以看图。首先，将函数参数和返回值换位，这样在清空数据的时候，就会先清空参数，再清空返回值：
 
-  ![这是一张图片](https://images.happymaya.cn/assert/os/0408.png)
+  ![这是一张图片](https://maxpixelton.github.io/images/assert/os/0408.png)
 
 ## 递归函数如何被执行
 
@@ -283,17 +283,17 @@ int sum(int n) {
 
 递归的时候，每次执行函数都形成一个如下所示的栈结构：
 
-![这是一张图片](https://images.happymaya.cn/assert/os/0408.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/os/0408.png)
 
 比如执行 sum(100)，会形成一个复杂的栈，第一次调用 n = 100，第二次递归调用 n = 99：
 
-![这是一张图片](https://images.happymaya.cn/assert/os/0410.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/os/0410.png)
 
 
 
 它们堆在了一起，就形成了一个很大的栈，简化一下就是这样的一个模型，如下所示：
 
-![这是一张图片](https://images.happymaya.cn/assert/os/0411.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/os/0411.png)
 
 
 
@@ -326,7 +326,7 @@ return 2 + sum(1) // sum(1) = 1
 
 最后，类型是如何实现的，也就是很多语言都支持的 class 如何被翻译成指令。其实 class 实现非常简单，首先一个 class 会分成两个部分，一部分是数据（也称作属性），另一部分是函数（也称作方法）。
 
-![这是一张图片](https://images.happymaya.cn/assert/os/0412.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/os/0412.png)
 
 
 

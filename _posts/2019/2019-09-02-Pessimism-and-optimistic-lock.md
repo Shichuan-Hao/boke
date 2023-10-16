@@ -21,17 +21,17 @@ mermaid: true
 
 举个例子，线程 A 和 B 使用的都是悲观锁，所以它们在尝试获取同步资源时，必须要先拿到锁，如下图所示：
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-lock-pessimistic-1.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-lock-pessimistic-1.png)
 
 假设线程 A 拿到了锁，并且正在操作同步资源，那么此时线程 B 就必须进行等待。
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-lock-pessimistic-2.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-lock-pessimistic-2.png)
 
 当线程 A 执行完毕后，CPU 才会唤醒正在等待这把锁的线程 B 再次尝试获取锁。
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-lock-pessimistic-3.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-lock-pessimistic-3.png)
 
 如果线程 B 现在获取到了锁，才可以对同步资源进行自己的操作。这就是悲观锁的操作流程。
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-lock-pessimistic-4.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-lock-pessimistic-4.png)
 
 
 
@@ -47,19 +47,19 @@ mermaid: true
 这和生活中乐天派的人的性格是一样的，乐观的人并不会担忧还没有发生的事情，相反，他会认为未来是美好的，所以他在修改数据之前，并不会把数据给锁住。当然，乐天派也不会盲目行动，如果他发现事情和他预想的不一样，也会有相应的处理办法，他不会坐以待毙，这就是乐观锁的思想。
 
 乐观锁的实现一般都是利用 CAS 算法实现的。举个例子，假设线程 A 此时运用的是乐观锁。那么它去操作同步资源的时候，不需要提前获取到锁，而是可以直接去读取同步资源，并且在自己的线程内进行计算。
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-lock-optimism-1.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-lock-optimism-1.png)
 
 当它计算完毕之后、准备更新同步资源之前，会先判断这个资源是否已经被其他线程所修改过。
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-lock-optimism-2.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-lock-optimism-2.png)
 
 如果这个时候同步资源没有被其他线程修改更新，也就是说此时的数据和线程 A 最开始拿到的数据是一致的话，那么此时线程 A 就会去更新同步资源，完成修改的过程。
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-lock-optimism-3.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-lock-optimism-3.png)
 
 而假设此时的同步资源已经被其他线程修改更新了，线程 A 会发现此时的数据已经和最开始拿到的数据不一致了，那么线程 A 不会继续修改该数据，而是会根据不同的业务逻辑去选择报错或者重试。
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-lock-optimism-4.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-lock-optimism-4.png)
 
 
 

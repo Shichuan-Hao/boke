@@ -150,7 +150,7 @@ Kafka、Dubbo、ZooKeeper、Netty 、Caffeine 、Akka 中都有对时间轮的�
 
 下图是一个有 12 个时间格的时间轮，转完一圈需要 12 s。当我们需要新建一个 3s 后执行的定时任务，只需要将定时任务放在下标为 3 的时间格中即可。当我们需要新建一个 9s 后执行的定时任务，只需要将定时任务放在下标为 9 的时间格中即可。
 
-![这是一张图片](https://images.happymaya.cn/assert/design/time-wheel-1.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/design/time-wheel-1.png)
 
 当需要创建一个 13s 后执行的定时任务怎么办呢？这个时候可以引入一叫做 **圈数/轮数** 的概念，也就是说这个任务还是放在下标为 3 的时间格中， 不过它的圈数为 2 。
 
@@ -158,7 +158,7 @@ Kafka、Dubbo、ZooKeeper、Netty 、Caffeine 、Akka 中都有对时间轮的�
 
 针对下图的时间轮，比如：
 
-![这是一张图片](https://images.happymaya.cn/assert/design/time-wheel-2.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/design/time-wheel-2.png)
 
 
 
@@ -205,11 +205,11 @@ Kafka、Dubbo、ZooKeeper、Netty 、Caffeine 、Akka 中都有对时间轮的�
 
 `ElasticJob` 支持任务在分布式场景下的分片和高可用、任务可视化管理等功能。
 
-![这是一张图片](https://images.happymaya.cn/assert/design/ElasticJob-1.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/design/ElasticJob-1.png)
 
 ElasticJob-Lite 的架构设计如下图所示：
 
-![这是一张图片](https://images.happymaya.cn/assert/design/ElasticJob-Lite-2.webp)
+![这是一张图片](https://maxpixelton.github.io/images/assert/design/ElasticJob-Lite-2.webp)
 
 从上图可以看出，`Elastic-Job` 没有调度中心这一概念，而是使用 `ZooKeeper` 作为注册中心，注册中心负责协调分配任务到不同的节点上。
 
@@ -240,15 +240,15 @@ public class TestJob implements SimpleJob {
 
 ### XXL-JOB
 
-![这是一张图片](https://images.happymaya.cn/assert/design/xxl-job-1.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/design/xxl-job-1.png)
 
 根据 `XXL-JOB` 官网介绍，其解决了很多 `Quartz` 的不足。
 
-![这是一张图片](https://images.happymaya.cn/assert/design/xxl-job-2.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/design/xxl-job-2.png)
 
 `XXL-JOB` 的架构设计如下图所示：
 
-![这是一张图片](https://images.happymaya.cn/assert/design/xxl-job-3.webp)
+![这是一张图片](https://maxpixelton.github.io/images/assert/design/xxl-job-3.webp)
 
 从上图可以看出，`XXL-JOB` 由 **调度中心** 和 **执行器** 两大部分组成。调度中心主要负责任务管理、执行器管理以及日志管理。执行器主要是接收调度信号并处理。另外，调度中心进行任务调度时，是通过自研 RPC 来实现的。
 

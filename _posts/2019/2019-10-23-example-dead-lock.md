@@ -30,7 +30,7 @@ mermaid: trues
 
 一种生活中发生死锁的情况，如下图所示：
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-67-1.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-67-1.png)
 
 这张漫画展示了两个绅士分别向对方鞠躬的场景，为了表示礼貌，他们弯下腰之后谁也不愿意先起身，都希望对方起身之后我再起身。可是这样一来，就**没有任何人可以先起身**，起身这个动作就一直无法继续执行，两人形成了相互等待的状态，所以这就是一种典型的死锁！
 
@@ -38,7 +38,7 @@ mermaid: trues
 
 **两个线程**发生死锁的情况，如下图所示：
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-67-2.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-67-2.png)
 
 假设有两个线程，分别是线程 A 和线程 B：
 
@@ -50,7 +50,7 @@ mermaid: trues
 
 死锁不仅仅存在于两个线程的场景，在多个线程中也同样存在。如果多个线程之间的依赖关系是环形，存在环路的依赖关系，那么也可能会发生死锁，如下图所示：
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-67-3.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-67-3.png)
 
 在这个例子中：
 
@@ -153,21 +153,21 @@ public class MustDeadLock implements Runnable {
 
 - 当第 1 个线程运行的时候，它会发现自己的 flag 是 1 ，所以它会尝试先获得 o1 这把锁，然后休眠 500 毫秒。
 
-  ![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-67-4.png)
+  ![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-67-4.png)
 
 - 在线程 1 启动并休眠的期间，线程 2 同样会启动起来。由于线程 2 的 flag 是 2，所以它会进入到下面 的 if (flag == 2) 对应的代码块中，然后线程 2 首先会去获取 o2 这把锁。也就是说在线程 1 启动并获取到 o1 这把锁之后进行休眠的期间，线程 2 获取到了 o2 这把锁，然后线程 2 也开始 500 毫秒的休眠。
 
-  ![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-67-5.png)
+  ![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-67-5.png)
 
 - 当线程 1 的 500 毫秒休眠时间结束后，它将尝试去获取 o2 这把锁，此时 o2 这个锁正被线程 2 持有，所以线程 1 无法获取到的 o2
 
-  ![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-67-6.png)
+  ![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-67-6.png)
 
 - 紧接着线程 2 也会苏醒过来，它将尝试获取 o1 这把锁，此时 o1 已被线
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-67-7.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-67-7.png)
 
 所以现在的状态是，**线程 1 卡在获取 o2 这把锁的位置，而线程 2 卡在获取 o1 这把锁的位置**，这样一来线程 1 和线程 2 就形成了相互等待，需要对方持有的资源才能继续执行，从而形成了死锁。在这个例子里，如果线程 2 比线程 1 先启动，情况也是类似的，最终也会形成死锁。这就是一个“必然发生死锁的例子”。
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-67-8.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-67-8.png)
 

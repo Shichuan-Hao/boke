@@ -21,7 +21,7 @@ BlockingQueue 继承了 Queue 接口，是队列的一种。Queue 和 BlockingQu
 
 BlockingQueue 是线程安全的，我们在很多场景下都可以利用线程安全的队列来优雅地解决我们业务自身的线程安全问题。比如说，使用生产者/消费者模式的时候，我们生产者只需要往队列里添加元素，而消费者只需要从队列里取出它们就可以了，如图所示：
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-blockingqueue-1.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-blockingqueue-1.png)
 
 在图中，左侧有三个生产者线程，它会把生产出来的结果放到中间的阻塞队列中，而右侧的三个消费者也会从阻塞队列中取出它所需要的内容并进行处理。因为阻塞队列是线程安全的，所以生产者和消费者都可以是多线程的，不会发生线程安全问题。
 
@@ -35,7 +35,7 @@ BlockingQueue 是线程安全的，我们在很多场景下都可以利用线程
 
 # 主要并发队列关系图
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-blockingqueue-class.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-blockingqueue-class.png)
 
 上图展示了 Queue 最主要的实现类，可以看出 Java 提供的线程安全的队列（也称为并发队列）分为**阻塞队列**和**非阻塞队列**两大类。
 
@@ -65,11 +65,11 @@ Deque 的意思是双端队列，音标是 [dek]，是 double-ended-queue 的缩
 
 take 方法的功能是获取并移除队列的头结点，通常在队列里有数据的时候是可以正常移除的。可是一旦执行 take 方法的时候，队列里无数据，则阻塞，直到队列里有数据。一旦队列里有数据了，就会立刻解除阻塞状态，并且取到数据。过程如图所示：
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-blockingqueue-take.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-blockingqueue-take.png)
 
 ## put 方法
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-blockingqueue-put.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-blockingqueue-put.png)
 
 以上过程中的阻塞和解除阻塞，都是 BlockingQueue 完成的，不需要我们自己处理。
 

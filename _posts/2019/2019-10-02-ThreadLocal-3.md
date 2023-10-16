@@ -11,7 +11,7 @@ mermaid: true
 ---
 最直观、最容易理解的图画的方式来看看它们三者的关系：
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-threadlocal-thread_threadLocal_threadLocalMap.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-threadlocal-thread_threadLocal_threadLocalMap.png)
 
 我们看到最左下角的 Thread 1，这是一个线程，它的箭头指向了  ThreadLocalMap 1，其要表达的意思是，每个 Thread 对象中都持有一个 ThreadLocalMap 类型的成员变量，在这里 Thread 1 所拥有的成员变量就是 ThreadLocalMap 1。
 
@@ -168,7 +168,7 @@ ThreadLocalMap 既然类似于 Map，所以就和 HashMap 一样，也会有包�
 
 比如其中一个不同点就是，我们知道 HashMap 在面对 hash 冲突的时候，采用的是拉链法。它会先把对象 hash 到一个对应的格子中，如果有冲突就用链表的形式往下链，如下图所示：
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-threadlocal-thread_threadLocal_threadLocalMap_1.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-threadlocal-thread_threadLocal_threadLocalMap_1.png)
 
 但是 ThreadLocalMap 解决 hash 冲突的方式是不一样的，它采用的是线性探测法。如果发生冲突，并不会用链表的形式往下链，而是会继续寻找下一个空的格子。这是 ThreadLocalMap 和 HashMap 在处理冲突时不一样的点。
 # 总结

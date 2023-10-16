@@ -48,7 +48,7 @@ public V put(K key, V value) {
 
 接下来具体看一下如何发生的线程不安全问题。
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-hashmap-safe.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-hashmap-safe.png)
 
 我们根据箭头指向依次看，假设线程 1 首先拿到 i=1 的结果，然后进行 i+1 操作，但此时 i+1 的结果并没有保存下来，线程 1 就被切换走了，于是 CPU 开始执行线程 2，它所做的事情和线程 1 是一样的 i++ 操作，但此时我们想一下，它拿到的 i 是多少？实际上和线程 1 拿到的 i 的结果一样都是 1，为什么呢？因为线程 1 虽然对 i 进行了 +1 操作，但结果没有保存，所以线程 2 看不到修改后的结果。
 

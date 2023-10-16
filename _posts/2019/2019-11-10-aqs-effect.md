@@ -11,7 +11,7 @@ mermaid: true
 ---
 # AQS 的重要性
 
-![Subclass of AbstractQueuedSynchronizer](https://images.happymaya.cn/assert/java/thread/java-thread-aqs-class.png)
+![Subclass of AbstractQueuedSynchronizer](https://maxpixelton.github.io/images/assert/java/thread/java-thread-aqs-class.png)
 
 如上图所示，AQS 在 **ReentrantLock、ReentrantReadWriteLock、Semaphore、CountDownLatch、ThreadPoolExcutor 的 Worker** 中都有运用（JDK 1.8），AQS 是这些类的底层原理。
 

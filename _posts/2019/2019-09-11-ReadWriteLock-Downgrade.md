@@ -60,7 +60,7 @@ final boolean readerShouldBlock() {
 
 假设线程 2 和线程 4 正在同时读取，线程 3 想要写入，但是由于线程 2 和线程 4 已经持有读锁了，所以线程 3 就进入等待队列进行等待。此时，线程 5 突然跑过来想要插队获取读锁：
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-wirter-block-wait-queue.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-wirter-block-wait-queue.png)
 
 
 
@@ -70,7 +70,7 @@ final boolean readerShouldBlock() {
 
 这种策略看上去增加了效率，但是有一个严重的问题，那就是如果想要读取的线程不停地增加，比如线程 6，那么线程  6 也可以插队，这就会导致读锁长时间内不会被释放，导致线程 3 长时间内拿不到写锁，也就是那个需要拿到写锁的线程会陷入“饥饿”状态，它将在长时间内得不到执行。
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-wirter-block-wait-queue-1.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-wirter-block-wait-queue-1.png)
 
 
 
@@ -78,11 +78,11 @@ final boolean readerShouldBlock() {
 
 这种策略认为由于线程 3 已经提前等待了，所以虽然线程 5 如果直接插队成功，可以提高效率，但是我们依然让线程 5 去排队等待：
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-wirter-block-wait-queue-2.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-wirter-block-wait-queue-2.png)
 
 按照这种策略线程 5 会被放入等待队列中，并且排在线程 3 的后面，让线程 3 优先于线程 5 执行，这样可以避免“饥饿”状态，这对于程序的健壮性是很有好处的，直到线程 3 运行完毕，线程 5 才有机会运行，这样谁都不会等待太久的时间。
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-wirter-block-wait-queue-3.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-wirter-block-wait-queue-3.png)
 
 
 

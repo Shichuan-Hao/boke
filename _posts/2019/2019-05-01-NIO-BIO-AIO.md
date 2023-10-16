@@ -199,7 +199,7 @@ ssc.register(selector, ssc.validOps());
 
 任何网络和文件操作，都可以抽象成这四个事件。
 
-![image-20220417233626052](https://images.happymaya.cn/assert/java/io/nio-event-type.png)
+![image-20220417233626052](https://maxpixelton.github.io/images/assert/java/io/nio-event-type.png)
 
 接下来，在 while 循环里，使用 select 函数，阻塞在主线程里。所谓**阻塞**，就是操作系统不再分配 CPU 时间片到当前线程中，所以 select 函数是几乎不占用任何系统资源的。
 

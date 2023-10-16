@@ -41,7 +41,7 @@ ArrayBlockingQueue(int capacity, boolean fair)
 
 ## SynchronousQueue
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-blockingqueue-syncronousqueue.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-blockingqueue-syncronousqueue.png)
 
 如图所示，SynchronousQueue 最大的不同之处在于，它的容量为 0，所以没有一个地方来暂存元素，导致每次取数据都要先阻塞，直到有数据被放入；同理，每次放数据的时候也会阻塞，直到有消费者来取。
 

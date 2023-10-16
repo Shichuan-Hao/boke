@@ -13,13 +13,13 @@ mermaid: true
 
 ## 重排序的好处：提高处理速度
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-before-reorderingl.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-before-reorderingl.png)
 
 图中左侧是 3 行 Java 代码，右侧是这 3 行代码可能被转化成的指令。可以看出 a = 100 对应的是 Load a、Set to 100、Store a，意味着从主存中读取 a 的值，然后把值设置为 100，并存储回去，同理， b = 5 对应的是下面三行  Load b、Set to 5、Store b，最后的 a = a + 10，对应的是 Load a、Set to 110、Store a。如果你仔细观察，会发现这里有两次“Load a”和两次“Store a”，说明存在一定的重排序的优化空间。
 
 经过重排序之后，情况如下图所示：
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-after-reorderingl.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-after-reorderingl.png)
 
 重排序后， a 的两次操作被放到一起，指令执行情况变为 Load a、Set to 100、Set to 110、 Store a。下面和 b 相关的指令不变，仍对应 Load b、 Set to 5、Store b。
 

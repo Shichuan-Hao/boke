@@ -13,12 +13,12 @@ mermaid: true
 如果想要搭建一个旅游平台，经常会有这样的需求：用户想同时获取多家航空公司的航班信息。
 
 比如，从北京到上海的机票钱是多少？有很多家航空公司都有这样的航班信息，所以应该把所有航空公司的航班、票价等信息都获取到，然后再聚合。由于每个航空公司都有自己的服务器，所以分别去请求它们的服务器就可以了，比如请求国航、海航、东航等，如下图所示：
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-future-CompletableFuture.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-future-CompletableFuture.png)
 
 ## 串行
 一种比较简单原始的方式是：**用串行的方式来解决这个问题。**
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-future-CompletableFuture-1.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-future-CompletableFuture-1.png)
 
 - 假设想获取价格，要先去访问国航，在这里叫作 website 1；
 - 然后再去访问海航 website 2，以此类推。
@@ -30,7 +30,7 @@ mermaid: true
 
 对刚才的思路进行改进，最主要的思路就是把串行改成并行，如下图所示：
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-future-CompletableFuture-2.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-future-CompletableFuture-2.png)
 
 - 并行获取这些机票信息；
 - 然后再把机票信息给聚合起来，这样的话，效率会成倍的提高。
@@ -41,7 +41,7 @@ mermaid: true
 
 ## 有超时的并行获取
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-future-CompletableFuture-3.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-future-CompletableFuture-3.png)
 
 如上图所示，就属于有超时的并行获取，同样也在并行的去请求各个网站信息。
 

@@ -36,11 +36,11 @@ public class Visibility {
 
 
 有两个线程来执行上述代码，第 1 个线程执行的是 write 方法，第 2 个线程执行的是 read 方法。下面我们来分析一下，代码在实际运行过程中的情景是怎么样的，如下图所示：
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-59-1.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-59-1.png)
 
 那么，假设线程 1 的工作内存还未同步给主内存，此时假设线程 2 开始读取，那么它读到的 x 值不是 1，而是 0，也就是说虽然此时线程 1 已经把 x 的值改动了，但是对于第 2 个线程而言，根本感知不到 x 的这个变化，这就产生了可见性问题。
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-59-2.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-59-2.png)
 
 
 # 案例二
@@ -118,7 +118,7 @@ public class VisibilityProblem {
 
 可是在这种情况下再打印 a，结果应该是 a = 30，而不应该打印出 a = 10。因为在刚才 change 执行的过程中，a 的值已经被改成 30 了，不再是初始值的 10。所以，如果出现了打印结果为 b = 30;a = 10 这种情况，就意味着发生了**可见性问题：a 的值已经被第 1 个线程修改了，但是其他线程却看不到**，由于 a 的最新值却没能及时同步过来，所以才会打印出 a 的旧值。发生上述情况的几率不高。我把发生时的截屏用图片的形式展示给你看看，如下所示：
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-59-3.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-59-3.png)
 
 ### 解决问题
 

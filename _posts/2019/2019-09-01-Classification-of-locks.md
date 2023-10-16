@@ -52,7 +52,7 @@ mermaid: true
 
 重量级锁会让其他申请却拿不到锁的线程进入阻塞状态。
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-lock-type.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-lock-type.png)
 
 锁升级的路径：无锁 → 偏向锁 → 轻量级锁 → 重量级锁。
 

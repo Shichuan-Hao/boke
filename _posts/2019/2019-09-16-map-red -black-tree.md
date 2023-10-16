@@ -12,7 +12,7 @@ mermaid: true
 
 JDK 1.8 的 HashMap 和 ConcurrentHashMap 都有这样一个特点：最开始的 Map 是空的，因为里面没有任何元素，往里放元素时会计算 hash 值，计算之后，第 1 个 value 会首先占用一个桶（也称为槽点）位置，后续如果经过计算发现需要落到同一个桶中，那么便会使用链表的形式往后延长，俗称“拉链法”，如图所示：
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-map-1.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-map-1.png)
 
 图中，有的桶是空的， 比如第 4 个；有的只有一个元素，比如 1、3、6；有的就是刚才说的拉链法，比如第 2 和第 5 个桶。
 
@@ -20,7 +20,7 @@ JDK 1.8 的 HashMap 和 ConcurrentHashMap 都有这样一个特点：最开始�
 
 让我们回顾一下 HashMap 的结构示意图：
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-map-2.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-map-2.png)
 
 在图中我们可以看到，有一些槽点是空的，有一些是拉链，有一些是红黑树。
 
@@ -89,7 +89,7 @@ public class HashMapDemo {
 
 
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-map-3.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-map-3.png)
 
 
 

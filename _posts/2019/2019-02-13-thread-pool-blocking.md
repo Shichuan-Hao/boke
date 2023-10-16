@@ -12,7 +12,7 @@ mermaid: true
 
 ## 线程池内部结构
 
-![线程池内部结构](https://images.happymaya.cn/assert/java/thread/java-thread-blocking-queue.png)
+![线程池内部结构](https://maxpixelton.github.io/images/assert/java/thread/java-thread-blocking-queue.png)
 
 如上图所示，线程池的内部结构主要由四部分组成，:
 1. **线程池管理器**。主要负责管理线程池的创建、销毁、添加任务等管理操作，是整个线程池的管家;

@@ -21,11 +21,11 @@ synchronized 和 Lock 的相同点非常多，这里重点总结三个比较大�
    
    对于 synchronized 而言，线程 A 在进入 synchronized 块之前或在 synchronized 块内进行操作，对于后续的获得同一个 monitor 锁的线程 B 是可见的，也就是线程 B 是可以看到线程 A 之前的操作的，这也体现了 happens-before 针对 synchronized 的一个原则。
 
-   ![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-synchronized-vs-lock-1.png)
+   ![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-synchronized-vs-lock-1.png)
 
    对于 Lock 而言，它和 synchronized 是一样，都可以保证可见性，如图所示，在解锁之前的所有操作对加锁之后的所有操作都是可见的。
 
-   ![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-synchronized-vs-lock-2.png)
+   ![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-synchronized-vs-lock-2.png)
 
 3. **都拥有可重入的特点**
    

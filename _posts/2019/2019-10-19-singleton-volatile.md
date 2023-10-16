@@ -51,7 +51,7 @@ public class SingletonVolatile {
 ## 为什么用 volatile 关键字
 
 在双重检查锁模式中，给 singleton 这个对象加了 volatile 关键字，那**为什么要用 volatile 呢？**主要就在于 `singleton = new Singleton()` ，它并非是一个原子操作，事实上，在 JVM 中上述语句至少做了以下这 3 件事：
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-63-2.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-63-2.png)
 
 1. singleton 分配内存空间；
 2. 调用 Singleton 的构造函数等，来初始化 singleton；
@@ -61,7 +61,7 @@ public class SingletonVolatile {
 
 如果是 1-3-2，那么在第 3 步执行完以后，singleton 就不是 null 了，可是这时第 2 步并没有执行，singleton 对象未完成初始化，它的属性的值可能不是我们所预期的值。假设此时线程 2 进入 getInstance 方法，由于 singleton 已经不是 null 了，所以会通过第一重检查并直接返回，但其实这时的 singleton 并没有完成初始化，所以使用这个实例的时候会报错，详细流程如下图所示：
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-63-3.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-63-3.png)
 
 线程 1 首先执行新建实例的第一步，也就是分配单例对象的内存空间，由于线程 1 被重排序，所以执行了新建实例的第三步，也就是把 singleton 指向之前分配出来的内存地址，在这第三步执行之后，singleton 对象便不再是 null。
 

@@ -17,7 +17,7 @@ mermaid: true
 
 激流勇进的用流程图的方式来表示：
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-countdownlatch.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-countdownlatch.png)
 
 可以看到，最开始 CountDownLatch 设置的初始值为 3，然后 T0 线程上来就调用 await 方法，它的作用是让这个线程开始等待，等待后面的 T1、T2、T3，它们每一次调用 countDown 方法，3 这个数值就会减 1，也就是从 3 减到 2，从 2 减到 1，从 1 减到 0，一旦减到 0 之后，这个 T0 就相当于达到了自己触发继续运行的条件，于是它就恢复运行了。
 

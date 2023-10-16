@@ -88,7 +88,7 @@ public class AtomicLongDemo {
 
 不过如果我们深入一步去看内部情景的话，你可能会感到意外。我们把模型简化成只有两个线程在同时工作的并发场景，因为两个线程和更多个线程本质上是一样的。如图所示：
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-atomicInteger.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-atomicInteger.png)
 
 
 

@@ -34,7 +34,7 @@ Redis 的常用客户端 Jedis，就是使用 Commons Pool 管理连接池的，
 
 下图是 Jedis 使用工厂创建代码的主要代码。对象工厂类最主要的方法是 makeObject ，它的返回值是 PooledObject 类型，可以将对象使用 new DefaultPooledObject<>(obj) 进行简单包装返回。
 
-![这是一张图片](https://images.happymaya.cn/assert/java/collection/java-redis-jedis-common-pool.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/collection/java-redis-jedis-common-pool.png)
 
 
 对象的生成过程，如下图，对象在进行获取时，将首先尝试从对象池里拿出一个，如果对象池中没有空闲的对象，就使用工厂类提供的方法，生成一个新的。而后交给一个叫做 LinkdedBlockingDeque 的结构来承担，它是一个双向的队列。
@@ -120,7 +120,7 @@ public class JedisPoolVSJedisBenchmark {
 
 将测试结果使用 meta-chart 作图，展示结果如下图所示，可以看到使用了连接池的方式，它的吞吐量是未使用连接池方式的 5 倍！
 
-![这是一张图片](https://images.happymaya.cn/assert/java/collection/jedis-unpool-pool.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/collection/jedis-unpool-pool.png)
 
 ## 数据库连接池 HikariCP
 

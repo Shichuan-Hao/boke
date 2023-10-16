@@ -13,7 +13,7 @@ mermaid: true
 
 哲学家就餐问题（Dining philosophers problem），又称为刀叉问题或吃面问题【是关于死锁的经典问题】，如下图所示：
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-71-1.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-71-1.png)
 
 有 5 个哲学家，他们面前都有一双筷子，即左手有一根筷子，右手有一根筷子（这个问题有多个版本的描述，可以说是筷子，也可以说是一刀一叉，这并不重要），重要的是**必须要同时持有左右两边的两个才行**，也就是说，哲学家左手要拿到一根筷子，右手也要拿到一根筷子，在这种情况下哲学家才能吃饭。
 
@@ -59,7 +59,7 @@ while(true) {
 
 这里存在的风险呢？就是发生死锁的风险。如下图所示：
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-71-2.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-71-2.png)
 
 根据我们的逻辑规定，在拿起左手边的筷子之后，下一步是去拿右手的筷子。
 

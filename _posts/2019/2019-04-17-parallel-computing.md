@@ -425,14 +425,14 @@ public ThreadPoolTaskExecutor getThreadPoolTaskExecutor() {
 
    问题就出在 ThreadLocalMap 类上，它虽然叫 Map，但却没有实现 Map 的接口。如下图，ThreadLocalMap 在 rehash 的时候，并没有采用类似 HashMap 的数组+链表+红黑树的做法，它只使用了一个数组，使用**开放寻址**（遇到冲突，依次查找，直到空闲位置）的方法，这种方式是非常低效的。
 
-   ![image-20220418022103708](https://images.happymaya.cn/assert/java/thread/java-ThreadLocalMap-rehash.png)
+   ![image-20220418022103708](https://maxpixelton.github.io/images/assert/java/thread/java-ThreadLocalMap-rehash.png)
 
    由于 Netty 对 ThreadLocal 的使用非常频繁，Netty 对它进行了专项的优化。它之所以快，是因为在底层数据结构上做了文章，使用常量下标对元素进行定位，而不是使用JDK 默认的探测性算法。
 
    > 伪共享问题吗？底层的 InternalThreadLocalMap对cacheline 也做了相应的优化。
    {: .prompt-warning }
 
-   ![image-20220418022206109](https://images.happymaya.cn/assert/java/thread/java-netty-threadLocal-constant-subscript.png)
+   ![image-20220418022206109](https://maxpixelton.github.io/images/assert/java/thread/java-netty-threadLocal-constant-subscript.png)
 
 4. 使用多线程中遇到过的问题
 
@@ -468,7 +468,7 @@ public ThreadPoolTaskExecutor getThreadPoolTaskExecutor() {
 
    我们跟踪任务的执行，在 ThreadPoolExecutor 类中可以找到任务发生异常时的方法，它是抛给了 afterExecute 方法进行处理。
 
-   ![image-20220418022405766](https://images.happymaya.cn/assert/java/thread/java-threadpoolexecutor-afterexecute.png)
+   ![image-20220418022405766](https://maxpixelton.github.io/images/assert/java/thread/java-threadpoolexecutor-afterexecute.png)
 
    可惜的是，ThreadPoolExecutor 中的 afterExecute 方法是没有任何实现的，它是个空方法。
 

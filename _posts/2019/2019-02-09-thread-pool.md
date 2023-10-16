@@ -35,7 +35,7 @@ public class OneTask {
 ```
 
 在这段代码中，发布了一个新的任务并放入子线程中，然后启动子线程执行任务，这时的任务也非常简单，只是打印出当前线程的名字，这种情况下，打印结果显示 `Thread Name: Thread-0`，即当前子线程的默认名字。任务执行流程如下图所示，
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-pool-1.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-pool-1.png)
 
 主线程调用 start() 方法，启动了一个 t0 的子线程。这是在一个任务的场景下，随着任务增多，比如现在有 10 个任务了，那么就可以使用 for 循环新建 10 个子线程，如代码所示：
 
@@ -76,7 +76,7 @@ Thread Name: Thread-9
 
 可以发现，打印出来的顺序是错乱的，比如 Thread-5 打印在了 Thread-6 和 Thread-7 之前，这是因为，虽然  Thread-5 比  Thread-6/7 先执行 start 方法，但是这并不代表 Thread-5 就会先运行，运行的顺序取决于**线程调度器**，有很大的随机性，这是需要我们注意的地方。
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-pool-2.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-pool-2.png)
 
 
 再看来下线程的执行流程，如图所示，主线程通过 for 循环创建了 t0~t9 这 10 个子线程，它们都可以正常的执行任务，但如果此时任务量突然飙升到 10000 会怎么样？ 先来看看依然用 for 循环的实现方式：
@@ -90,7 +90,7 @@ Thread Name: Thread-9
 
 如图所示，创建了 10000 个子线程，而 Java 程序中的线程与操作系统中的线程是一一对应的，此时假设线程中的任务需要一定的耗时才能够完成，便会产生很大的系统开销与资源浪费。
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-pool-3.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-pool-3.png)
 
 
 创建线程时会产生系统开销，并且每个线程还会占用一定的内存等资源，更重要的是我们创建如此多的线程也会给稳定性带来危害，因为每个系统中，可创建线程的数量是有一个上限的，不可能无限的创建。线程执行完需要被回收，大量的线程又会给垃圾回收带来压力。但我们的任务确实非常多，如果都在主线程串行执行，那效率也太低了，那应该怎么办呢？于是便诞生了线程池来平衡线程与系统资源之间的关系。
@@ -136,7 +136,7 @@ public class ThreadPoolDemo {
 
 可以从打印结果看出，线程名始终在 `Thread Name: pool-1-thread-1~5` 之间变化，并没有超过这个范围，也就证明了线程池不会无限制地扩张线程的数量，始终是这5个线程在工作。
 
-![这是一张图片](https://images.happymaya.cn/assert/java/thread/java-thread-pool-4.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/thread/java-thread-pool-4.png)
 
 执行流程如图所示，首先创建了一个线程池，线程池中有 5 个线程，然后线程池将 10000 个任务分配给这 5 个线程，这 5 个线程反复领取任务并执行，直到所有任务执行完毕，这就是线程池的思想。
 
