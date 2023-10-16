@@ -420,7 +420,7 @@ java -javaagent:/opt/skywalking-agent/skywalking-agent.jar -Dskywalking.agent.se
 
 访问一些服务的链接，打开 Skywalking 的 UI，即可看到下图的界面。这些指标可以类比衡量指标，然后就可以从图中找到响应比较慢 QPS 又比较高的接口，进行专项优化。
 
-![这是一张图片](D:\coding\image\assert\blog\springboot\springboot-skywalking.png)
+<!-- ![这是一张图片](D:\coding\image\assert\blog\springboot\springboot-skywalking.png) -->
 
 
 
