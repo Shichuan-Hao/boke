@@ -63,7 +63,7 @@ mermaid: true
 
 单机房部署单容器故障时导致的跨机房调用如下图 3 所示，可以看到故障后，调用方的所有流量全部都路由至被调用方的单个机房里。
 
-![](https://maxpixelton.github.io/images/assert/backen-system/jiagou-18-03.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/backen-system/jiagou-18-03.png)
 
 **再者，不同类型的接口需要单独部署。**
 

@@ -52,7 +52,7 @@ mermaid: true
 
 垂直拆分是根据数据的业务相关性进行拆分。比如一个数据库里面既存在商品数据，又存在订单数据，那么垂直拆分可以把商品数据放到商品库，把订单数据放到订单库。一般情况，垂直拆库常伴随着系统架构上的调整。
 
-![](https://maxpixelton.github.io/images/assert/architecute/1201.png)
+![1201](https://maxpixelton.github.io/images/assert/architecute/1201.png)
 
 比如在对做系统“微服务”改造时，将原本一个单体系统拆分成多个子系统，每个系统提供单独的服务，那么随着应用层面的拆分带来的也有数据层面的拆分，将一个主库的数据表，拆分到多个独立的子库中去。
 
@@ -64,7 +64,7 @@ mermaid: true
 
 垂直拆分随架构改造而拆分，关注点在于业务领域，而水平拆分指的是把单一库表数据按照规则拆分到多个数据库和多个数据表中，比如把单表 1 亿的数据按 Hash 取模拆分到 10 个相同结构的表中，每个表 1 千万的数据。并且拆分出来的表，可以分别存放到不同的物理数据库中，关注点在于数据扩展。
 
-![](https://maxpixelton.github.io/images/assert/architecute/1202.png)
+![1202](https://maxpixelton.github.io/images/assert/architecute/1202.png)
 
 拆分的规则就是哈希分片和范围分片。
 
@@ -74,7 +74,7 @@ mermaid: true
 
 但是按时间字段进行范围分片的场景并不多，因为会导致数据分布不均，毕竟不是每个月的销量都是平均的。所以常见的 Range 分片是按照字段类型，比如按照商品的所属品类进行分片。这样与 Hash 分片不同的是，Range 分片就可以加入对于业务的预估。
 
-![](https://maxpixelton.github.io/images/assert/architecute/1203.png)
+![1203](https://maxpixelton.github.io/images/assert/architecute/1203.png)
 
 同样的，由于不同“商品品类”的业务热点不同，对于商品数据存储也会存在热点数据问题，这个时候处理的手段有两个。
 
@@ -88,7 +88,7 @@ mermaid: true
 
 这种方式的优点是灵活性高，并且分片规则可以随着业务发展随意改动。比如当某个分片已经是热点了，那就可以把这个分片再拆成几个分片，或者把这个分片的数据移到其他分片中去，然后修改一下分片元数据表，就可以在线完成数据的再分片了。
 
-![](https://maxpixelton.github.io/images/assert/architecute/1204.png)
+![1204](https://maxpixelton.github.io/images/assert/architecute/1204.png)
 
 要注意，分片元数据本身需要做高可用。方案缺点是实现起来复杂，需要二次查询，需要保证分片元数据服务的高可用。不过分片元数据表可以通过缓存进行提速。
 
@@ -96,7 +96,7 @@ mermaid: true
 
 垂直水平拆分，是综合垂直和水平拆分方式的一种混合方式，垂直拆分把不同类型的数据存储到不同库中，再结合水平拆分，使单表数据量保持在合理范围内，提升性能。
 
-![](https://maxpixelton.github.io/images/assert/architecute/1205.png)
+![1205](https://maxpixelton.github.io/images/assert/architecute/1205.png)
 
 ## 解决数据查询问题
 

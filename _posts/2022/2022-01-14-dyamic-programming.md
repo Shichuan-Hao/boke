@@ -31,7 +31,7 @@ mermaid: true
 
 接下来。**来看一个非常典型的例子，最短路径问题**。如下图所示：
 
-![](https://maxpixelton.github.io/images/assert/structures/1401.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/structures/1401.png)
 
 每个结点是一个位置，每条边是两个位置之间的距离。现在需要求解出一条由 A 到 G 的最短距离是多少。
 
@@ -112,7 +112,7 @@ mermaid: true
 
 好了，为了让大家清晰地看到结果，我们给出详细的计算过程。为了书写简单，**我们把函数 Vk,7(s1=A, s7=G) 精简为 V7(G)，含义为经过了 6 轮决策后，状态到达 G 后所使用的距离**。我们把图片复制到这里一份，方便大家不用上下切换。
 
-![](https://maxpixelton.github.io/images/assert/structures/1402.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/structures/1402.png)
 
 **我们的优化目标为 min Vk,7(s1=A, s7=G)，因此精简后原问题为，min V7(G)**。
 
@@ -122,7 +122,7 @@ mermaid: true
 
 ![image (15).png](https://maxpixelton.github.io/images/assert/structures/1407.png)
 
-![](https://maxpixelton.github.io/images/assert/structures/1408.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/structures/1408.png)
 
 ![2.png](https://maxpixelton.github.io/images/assert/structures/1409.png)
 
@@ -132,11 +132,11 @@ mermaid: true
 
 接下来，用代码来实现上面的计算过程。对于输入的图，可以采用一个 m x m 的二维数组来保存。在这个二维数组里，m 等于全部的结点数，也就是结点与结点的关系图。而数组每个元素的数值，定义为结点到结点需要的距离。
 
-![](https://maxpixelton.github.io/images/assert/structures/1403.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/structures/1403.png)
 
 在本例中，可以定义输入矩阵 m（空白处为0），如下图所示：
 
-![](https://maxpixelton.github.io/images/assert/structures/1404.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/structures/1404.png)
 
 代码如下：
 

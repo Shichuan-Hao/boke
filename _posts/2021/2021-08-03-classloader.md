@@ -240,7 +240,7 @@ static 字段和 static 代码块，是属于类的，在类加载的初始化�
 
 用一张图来理解：可以看到，**除了启动类加载器，每一个加载器都有一个 parent，并没有所谓的双亲。但是由于翻译的问题，这个叫法已经非常普遍了，一定要注意背后的差别**。
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-03-03.jpeg)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/jvm/jvm-03-03.jpeg)
 
 
 
@@ -309,7 +309,7 @@ protected Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundE
 
 tomcat 类加载器的层次结构：
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-03-05.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/jvm/jvm-03-05.png)
 
 对于一些**需要加载的非基础类**，由一个叫作 **WebApp ClassLoader 的类加载器优先加载**。等它加载不到的时候，再交给上层的 ClassLoader 进行加载。这个加载器**用来隔绝不同应用的 .class 文件**，比如两个应用，可能会依赖同一个第三方的不同版本，它们是相互没有影响的。
 
@@ -343,7 +343,7 @@ Class.forName("com.mysql.cj.jdbc.Driver")
 
 SPI 实际上是“**基于接口的编程＋策略模式＋配置文件**”组合实现的动态加载机制，主要使用 **java.util.ServiceLoader** 类进行动态装载。
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-03-06.jpg)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/jvm/jvm-03-06.jpg)
 
 这种方式，同样打破了双亲委派的机制。
 

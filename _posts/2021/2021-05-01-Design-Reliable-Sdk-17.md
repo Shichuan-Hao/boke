@@ -23,7 +23,7 @@ mermaid: true
 
 基于上述介绍的微服务中涉及的几大组件，可以将它们进行归类，梳理出如下图 1 所示的架构：
 
-![](https://maxpixelton.github.io/images/assert/backen-system/jiagou-17-01.png)
+![防备上游 - 设计可靠的 SDK](https://maxpixelton.github.io/images/assert/backen-system/jiagou-17-01.png)
 
 上述微服务里提到的 6 个组件分为三大类：
 
@@ -43,7 +43,7 @@ mermaid: true
 
 微服务对外是以接口形式提供服务的，当接口开发完成上线，运行一段时间之后，形成的全局架构如下图 2 所示：
 
-![](https://maxpixelton.github.io/images/assert/backen-system/jiagou-17-02.png)
+![防备上游 - 设计可靠的 SDK](https://maxpixelton.github.io/images/assert/backen-system/jiagou-17-02.png)
 
 从上述的架构图里可以看到，接口上线后外部使用方会不断增多。
 
@@ -147,7 +147,7 @@ Map<String,String> func_new(Map<String,String> args);
 
 上述的反查和重试，技术上称为**幂等性**。写接口的幂等可以在入参增加一个当次调用的全局唯一标识来实现，同时该唯一标识需要写入数据库中，并在数据库里将该字段设置为唯一索引即可。架构如下图 3 所示：
 
-![](https://maxpixelton.github.io/images/assert/backen-system/jiagou-17-03.png)
+![防备上游 - 设计可靠的 SDK](https://maxpixelton.github.io/images/assert/backen-system/jiagou-17-03.png)
 
 **第六个原则：接口返回的结果需要统一，可以直接抛出异常或者使用结果包装类（如 RPCResult）**
 

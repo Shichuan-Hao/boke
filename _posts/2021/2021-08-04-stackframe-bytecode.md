@@ -91,7 +91,7 @@ public class A {
 
 拿上面代码来说，执行 A 代码，在调用 `private B b = new B()` 时，就会触发 B 类的加载：
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-04-01.jpg)
+![jvm-04-01](https://maxpixelton.github.io/images/assert/java/jvm/jvm-04-01.jpg)
 
 如上图，A 和 B 会被加载到元空间的方法区，进入到 main 方法后，就会交给执行引擎（Execution engine）执行。
 

@@ -13,7 +13,7 @@ mermaid: true
 
 ### 存储结构
 
-![](https://maxpixelton.github.io/images/assert/java/collection/concurrentHashMap-jdk7.png)
+![ConcurrentHashMap 的存储结构](https://maxpixelton.github.io/images/assert/java/collection/concurrentHashMap-jdk7.png)
 
 Java 7 中 `ConcurrentHashMap` 的存储结构如上图，`ConcurrnetHashMap` 由很多个 `Segment` 组合，而每一个 `Segment` 是一个类似于 HashMap 的结构，所以每一个 `HashMap` 的内部可以进行扩容。但是 `Segment` 的个数一旦**初始化就不能改变**，默认 `Segment` 的个数是 16 个，你也可以认为 `ConcurrentHashMap` 默认支持最多 16 个线程并发。
 
@@ -22,32 +22,32 @@ Java 7 中 `ConcurrentHashMap` 的存储结构如上图，`ConcurrnetHashMap` �
 通过 ConcurrentHashMap 的无参构造探寻 ConcurrentHashMap 的初始化流程。
 
 ```java
-    /**
-     * Creates a new, empty map with a default initial capacity (16),
-     * load factor (0.75) and concurrencyLevel (16).
-     */
-    public ConcurrentHashMap() {
-        this(DEFAULT_INITIAL_CAPACITY, DEFAULT_LOAD_FACTOR, DEFAULT_CONCURRENCY_LEVEL);
-    }
+/**
+ * Creates a new, empty map with a default initial capacity (16),
+ * load factor (0.75) and concurrencyLevel (16).
+ */
+public ConcurrentHashMap() {
+    this(DEFAULT_INITIAL_CAPACITY, DEFAULT_LOAD_FACTOR, DEFAULT_CONCURRENCY_LEVEL);
+}
 ```
 
 无参构造中调用了有参构造，传入了三个参数的默认值，他们的值是：
 
 ```java
-    /**
-     * 默认初始化容量
-     */
-    static final int DEFAULT_INITIAL_CAPACITY = 16;
+/**
+ * 默认初始化容量
+ */
+static final int DEFAULT_INITIAL_CAPACITY = 16;
 
-    /**
-     * 默认负载因子
-     */
-    static final float DEFAULT_LOAD_FACTOR = 0.75f;
+/**
+ * 默认负载因子
+ */
+static final float DEFAULT_LOAD_FACTOR = 0.75f;
 
-    /**
-     * 默认并发级别
-     */
-    static final int DEFAULT_CONCURRENCY_LEVEL = 16;
+/**
+ * 默认并发级别
+ */
+static final int DEFAULT_CONCURRENCY_LEVEL = 16;
 ```
 
 这个有参构造函数的内部实现逻辑：
@@ -407,7 +407,7 @@ public V get(Object key) {
 
 ### 存储结构
 
-![](https://maxpixelton.github.io/images/assert/java/collection/concurrentHashMap-jdk8.png)
+![ConcurrentHashMap 1.8 的存储结构](https://maxpixelton.github.io/images/assert/java/collection/concurrentHashMap-jdk8.png)
 
 可以发现 Java8 的 ConcurrentHashMap 相对于 Java7 来说变化比较大，不再是之前的 **Segment 数组 + HashEntry 数组 + 链表**，而是 **Node 数组 + 链表 / 红黑树**。当冲突链表达到一定长度时，链表会转换成红黑树。
 

@@ -42,11 +42,11 @@ static void memPrint() {
 
 如下图所示，可以看到一个 Java 进程的资源概览，包括内存、CPU、线程等。
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-14-01.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/jvm/jvm-14-01.png)
 
 下图是切换到 MBean 选项卡之后的截图，可以看到图中展示的 Metaspace 详细信息。
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-14-02.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/jvm/jvm-14-02.png)
 
 jmc 还是一个性能分析平台，可以录制、收集正在运行的 Java 程序的诊断数据和概要分析数据，但还是那句话，线上环境可能没有条件让我们使用一些图形化分析工具，相对比 **Arthas** 这样的命令行工具就比较吃香。
 
@@ -54,7 +54,7 @@ jmc 还是一个性能分析平台，可以录制、收集正在运行的 Java �
 
 所以面试的时候如果你一直在提一些图形化工具，面试官只能无奈的笑笑，这个话题也无法进行下去了。
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-14-05.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/jvm/jvm-14-05.png)
 
  在必要的情况下，JMX 还可以通过加上一些参数，进行远程访问。
 
@@ -68,7 +68,7 @@ jmc 还是一个性能分析平台，可以录制、收集正在运行的 Java �
 
 无论是哪种方式，每个内存区域，都有四个值：init、used、committed 和 max，下图展示了它们之间的大小关系。
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-14-06.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/jvm/jvm-14-06.png)
 
 以堆内存大小来说：
 
@@ -85,13 +85,13 @@ jmc 还是一个性能分析平台，可以录制、收集正在运行的 Java �
 
 但是 JMX 的客户端 API 使用起来非常的不方便，Jolokia 就是一个将 JMX 转换成 HTTP 的适配器，方便了 JMX 的使用。 
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-14-07.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/jvm/jvm-14-07.png)
 
 Jokokia 可以通过 jar 包和 agent 的方式启动，在一些框架中，比如 Spring Boot 中，很容易进行集成。
 
 访问 [**http://start.spring.io**](http://start.spring.io/)，生成一个普通的 Spring Boot 项目。
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-14-08.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/jvm/jvm-14-08.png)
 
 直接在 pom 文件里加入 jolokia 的依赖。
 
@@ -120,7 +120,7 @@ management:
 
 接下来，收集这个项目的 JMX 数据。
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-14-09.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/jvm/jvm-14-09.png)
 
 url:http://localhost:8084/actuator/jolokia/list
 
@@ -128,7 +128,7 @@ url:http://localhost:8084/actuator/jolokia/list
 
 JVM 监控的整体架构图：
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-14-10.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/jvm/jvm-14-10.png)
 
 JVM 的各种内存信息，会通过 JMX 接口进行暴露；Jolokia 组件负责把 JMX 信息翻译成容易读取的 HTTP 请求。
 
@@ -188,11 +188,11 @@ tar -zxvf grafana-6.5.3.linux-amd64.tar.gz
 
 下面是我已经做好的一张针对于 CMS 垃圾回收器的监控图，可以导入 grafana-jvm-influxdb.json 文件进行测试。 
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-14-11.jpg)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/jvm/jvm-14-11.jpg)
 
 在导入之前，还需要创建一个数据源，选择 influxdb，填入 db 的地址即可。 
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-14-12.jpg)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/jvm/jvm-14-12.jpg)
 
 ### 集成
 

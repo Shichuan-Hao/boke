@@ -202,7 +202,7 @@ ACK 后数据直接发送到 MQ 的某一个 Topic 里即可。因为只做 ACK 
 
   很多开源的 MQ 实现都具备此小节介绍的功能，如 Kafka 提供的 Partition 功能。改造后的架构如图 4 所示：
 
-  ![](https://maxpixelton.github.io/images/assert/backen-system/jiagou-05-04.png)
+  ![这是一张图片](https://maxpixelton.github.io/images/assert/backen-system/jiagou-05-04.png)
 
   最后，在采用了 MQ 进行纯串行转并行时，将 Binlog 发送到 MQ  可以根据情况进行调整，当数据量很大或者未来很大时，可以将 Binlog 的数据按表维度发送到不同的  Topic。
 
@@ -251,7 +251,7 @@ ACK 后数据直接发送到 MQ 的某一个 Topic 里即可。因为只做 ACK 
 
 在 Redis 中，可以采用 Hash 结构。对于一个订单下的不同表的数据，在 Redis 中存储至各个 field 下即可，同时 Redis 支持对单个 field 的局部更新。结构如下图所示：
 
-![](https://maxpixelton.github.io/images/assert/backen-system/jiagou-05-05.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/backen-system/jiagou-05-05.png)
 
 在上述订单案例的多张表变更时，同步程序无须对多张表间进行分布式加锁协调，哪张表变更就去更新缓存中对应的局部信息即可。不管是同步性能还是实现难度均较好。
 
@@ -271,7 +271,7 @@ ACK 后数据直接发送到 MQ 的某一个 Topic 里即可。因为只做 ACK 
 
 在这个不断迭代的过程中，难免会出现一些 Bug，导致缓存和数据库不一致的情况。为了保障数据的一致性，可以采用**数据对比进行应对**，架构如下图所示：
 
-![](https://maxpixelton.github.io/images/assert/backen-system/jiagou-05-06.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/backen-system/jiagou-05-06.png)
 
 数据对比以数据库中的数据为基准，定期轮询对比缓存和数据库的数据。
 
@@ -299,7 +299,7 @@ ACK 后数据直接发送到 MQ 的某一个 Topic 里即可。因为只做 ACK 
 
 绝大部分的业务和场景，对于毫秒或秒级延迟无感知。但为了方案的完整性和极端场景的应对，可以在异步同步的基础上，增加主动同步。方案如下图所示：
 
-![](https://maxpixelton.github.io/images/assert/backen-system/jiagou-05-07.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/backen-system/jiagou-05-07.png)
 
 
 

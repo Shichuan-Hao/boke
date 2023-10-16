@@ -140,7 +140,7 @@ Hash 分片的缺点也很明显：
 
 假设用 “Category（商品类目）” 作为关键字进行分片时，不是以统一的商品一级类目为标准，而是可以按照一、二、三级类目进行灵活分片。 比如，3C 品类，可以按照 3C 的三级品类设置分片；对于弱势品类，可以先按照一级品类进行分片，这样会让分片间数据更加平衡。
 
-![](https://maxpixelton.github.io/images/assert/architecute/0405.png)
+![0405](https://maxpixelton.github.io/images/assert/architecute/0405.png)
 
 要达到这种灵活性，前提是要**有能力控制数据流向哪个分区**，一个简单的实现方式是：预先设定主键生成规则，根据规则进行数据分片路由，但这种方式会侵入商品各条线主数据的业务规则。
 
@@ -169,7 +169,7 @@ Hash 分片的缺点也很明显：
 
 3. 当调用端请求过来，元数据服务节点只需要做好高可用和缓存即可。
 
-![](https://maxpixelton.github.io/images/assert/architecute/0406.png)
+![0406](https://maxpixelton.github.io/images/assert/architecute/0406.png)
 
 ### 协议算法
 
@@ -204,13 +204,13 @@ Raft 是 Multi Paxos 的一种实现，是通过一切以领导者为准的方�
 
 Gossip 的协议原理有一种传播机制叫谣言传播，指的是当一个节点有了新数据后，这个节点就变成了活跃状态，并周期性地向其他节点发送新数据，直到所有的节点都存储了该条数据。这种方式达成的数据一致性是 “最终一致性”，即执行数据更新操作后，经过一定的时间，集群内各个节点所存储的数据最终会达成一致，很适合动态变化的分布式系统。
 
-![](https://maxpixelton.github.io/images/assert/architecute/0407.png)
+![0407](https://maxpixelton.github.io/images/assert/architecute/0407.png)
 
 从图中你可以看到，节点 A 向节点 B、C 发送新数据，节点 B 收到新数据后，变成了活跃节点，然后节点 B 向节点 C、D 发送新数据。
 
 到此，我们对一致性共识算法做个总结，共识算法的选择和数据副本数量的多少息息相关，如果副本少、参与共识的节点少，推荐采用广播方式，如 Paxos、Raft 等协议。如果副本多、参与共识的节点多，那就更适合采用 Gossip 这种最终一致性协议。
 
-![](https://maxpixelton.github.io/images/assert/architecute/0408.png)
+![0408](https://maxpixelton.github.io/images/assert/architecute/0408.png)
 
 ## 总结
 

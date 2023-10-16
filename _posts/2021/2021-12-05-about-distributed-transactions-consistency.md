@@ -97,7 +97,7 @@ Java 平台上事务规范 JTA（Java Transaction API）是对 XA 分布式事�
 
 还是拿下单场景举例，当订单系统调用优惠券系统时，将扣减优惠券的事件放入消息队列中，最终给优惠券系统来执行，然后只要保证事件消息能够在优惠券系统内被执行就可以了，因为消息已经持久化在消息中间件中，即使消息中间件发生了宕机，我们将它重启后也不会出现消息丢失的问题。
 
-![](https://maxpixelton.github.io/images/assert/architecute/0505.png)
+![0505](https://maxpixelton.github.io/images/assert/architecute/0505.png)
 
 基于 MQ 的可靠消息投递的方案**不仅可以解决由于业务流程的同步执行而造成的阻塞问题，还可以实现业务解耦合流量削峰。**
 
@@ -121,7 +121,7 @@ Java 平台上事务规范 JTA（Java Transaction API）是对 XA 分布式事�
 
 那么如何落地实现呢？可以先让订单系统把要发送的消息持久化到本地数据库里，然后将这条消息记录的状态设置为代发送，紧接着订单系统再投递消息到消息队列，优惠券系统消费成功后，也会向消息队列发送一个通知消息。当订单系统接收到这条通知消息后，再把本地持久化的这条消息的状态设置为完成。
 
-![](https://maxpixelton.github.io/images/assert/architecute/0506.png)
+![0506](https://maxpixelton.github.io/images/assert/architecute/0506.png)
 
 这样做后，即使最终 MQ 出现了消息丢失，也可以通过定时任务从订单系统的本地数据库中扫描出一段时间内未完成的消息，进行重新投递，最终保证订单系统和优惠券系统的最终事务一致性。
 

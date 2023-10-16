@@ -55,7 +55,7 @@ mermaid: true
 
 后端环节的性能问题，可以从**基础设施层面、网络层面、架构层面**三个角度进行考量，如下图：
 
-![](https://maxpixelton.github.io/images/assert/architecute/1801.png)
+![1801](https://maxpixelton.github.io/images/assert/architecute/1801.png)
 
 比如，网络层面可以考虑网络专线、CDN 优化；架构层面可以考虑动静分离、集群优化、数据隔离、服务拆分、异步驱动、负载均衡等方案。
 

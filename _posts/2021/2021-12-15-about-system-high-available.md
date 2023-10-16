@@ -140,7 +140,7 @@ $$
 
 监控工具有 CAT、SkyWalking、Pinpoint、Zipkin 等。
 
-![](https://maxpixelton.github.io/images/assert/architecute/1504.png)
+![1504](https://maxpixelton.github.io/images/assert/architecute/1504.png)
 
 ### 存储服务监控
 
@@ -189,4 +189,4 @@ $$
 
 ## 总结
 
-![](https://maxpixelton.github.io/images/assert/architecute/1506.png)
+![1506](https://maxpixelton.github.io/images/assert/architecute/1506.png)

@@ -16,7 +16,7 @@ mermaid: true
 
 详细来说：在分布式环境下，多个系统在同时操作共享资源（如写数据）时，发起操作的系统通常会通过一种方式去协调其他系统，然后获取访问权限，得到访问权限后才可以写入数据，其他系统必须等待权限释放。
 
-![](https://maxpixelton.github.io/images/assert/architecute/0601.png)
+![0601](https://maxpixelton.github.io/images/assert/architecute/0601.png)
 
 比如在分布式系统中涉及共享资源的访问，要深挖如何控制并发访问共享资源；如何解决资源争抢等技术细节，这些问题在下单场景、优惠券场景都会被考察到，足以证明“分布式锁”考点的重要性。
 
@@ -66,7 +66,7 @@ select id from order where order_id = xxx for update
 
 基于关系型数据库实现分布式锁比较简单，不过要注意，基于 MySQL 行锁的方式会出现交叉死锁，比如事务 1 和事务 2 分别取得了记录 1 和记录 2 的排它锁，然后事务 1 又要取得记录 2 的排它锁，事务 2 也要获取记录 1 的排它锁，那这两个事务就会因为相互锁等待，产生死锁。
 
-![](https://maxpixelton.github.io/images/assert/architecute/0602.png)
+![0602](https://maxpixelton.github.io/images/assert/architecute/0602.png)
 
 当然，可以通过“超时控制”解决交叉死锁的问题，但在高并发情况下，出现的大部分请求都会排队等待，所以“基于关系型数据库实现分布式锁”的方式在性能上存在缺陷，通常会延伸出下面两个问题。
 
@@ -149,7 +149,7 @@ end
 
 通过超时时间来控制锁的失效时间，不太靠谱，比如在有些场景中，一个线程 A 获取到了锁之后，由于业务代码执行时间可能比较长，导致超过了锁的超时时间，自动失效，后续线程 B 又意外的持有了锁，当线程 A 再次恢复后，通过 del 命令释放锁，就错误的将线程 B 中同样 key 的锁误删除了。
 
-![](https://maxpixelton.github.io/images/assert/architecute/0603.png)
+![0603]https://maxpixelton.github.io/images/assert/architecute/0603.png)
 
 所以，如果锁的超时时间设置过长，会影响性能，如果设置的超时时间过短，有可能业务阻塞没有处理完成，**能否合理设置超时时间，是基于缓存实现分布式锁很难解决的一个问题。**
 

@@ -18,11 +18,11 @@ mermaid: true
 
 但随着业务快速发展，通过 RPC 同步调用的问题逐渐暴露出来。由于过多地依赖其他系统，导致评论发布的接口性能很低，可用性也容易受到其他系统影响。而且每当点评系统需求上线时，其他系统都需要跟着进行联调测试，导致需求迭代速度缓慢。
 
-![](https://maxpixelton.github.io/images/assert/architecute/0201.png)
+![0201](https://maxpixelton.github.io/images/assert/architecute/0201.png)
 
 在做系统架构升级改造时，基于上述背景，很容易想到问题在于系统间的耦合度太高。解决办法就是**采用异步化解耦**，从而通过引入 MQ 消息管道，在架构上进行系统业务逻辑拆分，**将原本强依赖的系统间的同步 RPC 调用变成异步消息触发**，如下面图片中的架构所示：
 
-![](https://maxpixelton.github.io/images/assert/architecute/0202.png)
+![0202](https://maxpixelton.github.io/images/assert/architecute/0202.png)
 
 
 
@@ -56,7 +56,7 @@ mermaid: true
 
 那么如何正确评估系统的复杂度呢？ 互联网软件通常分为功能性的复杂度和非功能性的复杂度两种。我将分析过程制作成了一张图片。
 
-![](https://maxpixelton.github.io/images/assert/architecute/0203.png)
+![0203](https://maxpixelton.github.io/images/assert/architecute/0203.png)
 
 从功能性复杂度方面来看，可以从案例中得知，产品业务发展快速、系统越来越多、协作效率越来越低。作为系统负责人，敏锐地发现问题根源在架构上各业务子系统强耦合。于是引入消息队列解耦各系统，这是系统业务领域带来的本质上的复杂度，也就是功能性的复杂度，解决的是系统效率的问题。
 

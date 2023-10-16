@@ -52,15 +52,15 @@ mermaid: true
 
 对树中的任意结点来说，先中序遍历它的左子树，然后打印这个结点，最后中序遍历它的右子树。可见，中序遍历是这样的一个问题，如下图所示：
 
-![](https://maxpixelton.github.io/images/assert/structures/1101.png)
+![1101](https://maxpixelton.github.io/images/assert/structures/1101.png)
 
 当某个结点没有左子树和右子树时，则直接打印结点，完成终止。由此可见，树的中序遍历完全满足递归的两个条件，因此可以通过递归实现。例如下面这棵树：
 
-![](https://maxpixelton.github.io/images/assert/structures/0909.png)
+![1101](https://maxpixelton.github.io/images/assert/structures/0909.png)
 
 当采用递归实现中序遍历时，程序执行的逻辑架构如下图所示：
 
-![](https://maxpixelton.github.io/images/assert/structures/1103.gif)
+![1101](https://maxpixelton.github.io/images/assert/structures/1103.gif)
 
 其中，每个蓝色的括号都是一次递归调用。代码如下所示：
 
@@ -87,7 +87,7 @@ public static void inOrderTraverse(Node node) {
 
 可以把这个问题抽象为一个数学问题。如下图所示，从左到右有 x、y、z 三根柱子，其中 x 柱子上面有从小叠到大的 n 个圆盘。现要求将 x 柱子上的圆盘移到 z 柱子上去。要求是，每次只能移动一个盘子，且大盘子不能被放在小盘子上面。求移动的步骤。
 
-![](https://maxpixelton.github.io/images/assert/structures/1104.png)
+![1101](https://maxpixelton.github.io/images/assert/structures/1104.png)
 
 分析下这个问题。这是一个大规模的复杂问题，如果要采用递归方法去解决的话，就要先把问题化简。
 
@@ -99,7 +99,7 @@ public static void inOrderTraverse(Node node) {
 
 **首先，我们来判断它是否满足递归的第一个条件。** 其中，第 1 和第 3 个问题就是汉诺塔问题。这样就完成了一次把大问题缩小为完全一样的小规模问题。已经定义好了递归体，也就是满足来递归的第一个条件。如下图所示：
 
-![](https://maxpixelton.github.io/images/assert/structures/1105.gif)
+![1101](https://maxpixelton.github.io/images/assert/structures/1105.gif)
 
 **接下来看判断它是否满足终止条件**。随着递归体不断缩小范围，汉诺塔问题由原来“移动从小到大的 n 个盘子”，缩小为“移动从小到大的 n-1 个盘子”，直到缩小为“移动从小到大的 1 个盘子”。移动从小到大的 1 个盘子，就是移动最小的那个盘子。根据规则可以发现，最小的盘子是可以自由移动的。因此，递归的第二个条件，终止条件，也是满足的。
 

@@ -26,7 +26,7 @@ mermaid: true
 
 大体的服务依赖可以抽象成下面的图：
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-15-01.jpg)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/jvm/jvm-15-01.jpg)
 
 初步排查，JVM 的资源太少。当接口 A 每次进行报表计算时，都要涉及几百兆的内存，而且在内存里驻留很长时间，同时有些计算非常耗 CPU，特别的“吃”资源。而我们分配给 JVM 的内存只有 3 GB，在多人访问这些接口的时候，内存就不够用了，进而发生了 OOM。在这种情况下，即使连最简单的报表都不能用了。
 
@@ -123,7 +123,7 @@ pancyOnly  -XX:MetaspaceSize=256M -XX:MaxMetaspaceSize=256M
 
 刚开始我们提到过，由于没有微服务体系，有些数据需要使用 HttpClient 来获取进行补全。提供数据的服务有的响应时间可能会很长，也有可能会造成服务整体的阻塞。
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-15-02.jpg)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/jvm/jvm-15-02.jpg)
 
 如上图所示，接口 A 通过 HttpClient 访问服务 2，响应 100ms 后返回；接口 B 访问服务 3，耗时 2 秒。HttpClient 本身是有一个最大连接数限制的，如果服务 3 迟迟不返回，就会造成 HttpClient 的连接数达到上限，最上层的 Tomcat 线程也会一直阻塞在这里，进而连响应速度比较快的接口 A 也无法正常提供服务。
 
@@ -143,7 +143,7 @@ pancyOnly  -XX:MetaspaceSize=256M -XX:MaxMetaspaceSize=256M
 
 demo 模拟了两个使用同一个 HttpClient 的接口。如下图所示，fast 接口用来访问百度，很快就能返回；slow 接口访问谷歌，由于众所周知的原因，会阻塞直到超时，大约 10 s。 
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-15-03.jpg)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/jvm/jvm-15-03.jpg)
 
 使用 **wrk** 工具对这两个接口发起压测。
 
@@ -152,7 +152,7 @@ wrk -t10 -c200 -d300s http://127.0.0.1:8084/slow
 wrk -t10 -c200 -d300s http://127.0.0.1:8084/fast
 ```
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-15-04.jpg)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/jvm/jvm-15-04.jpg)
 
 此时访问一个简单的接口，耗时竟然能够达到 20 秒。
 
@@ -171,7 +171,7 @@ fast648,slow:1curl http://localhost:8084/stat  0.01s user 0.01s system 0% cpu 20
 cat 10271.jstack |grep http-nio-80 -A 3
 ```
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-15-05.jpg)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/jvm/jvm-15-05.jpg)
 
 使用脚本分析，发现有大量的线程阻塞在 fast 方法上。我们上面也说过，这是一个假象，可能你到了这一步，会心生存疑，以至于无法再向下分析。
 
@@ -182,11 +182,11 @@ $ cat 10271.jstack | grep slow | wc -l 63
 
 分析栈信息，你可能会直接查找 locked 关键字，如下图所示，但是这样的方法一般没什么用，我们需要做更多的统计。 
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-15-06.jpg)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/jvm/jvm-15-06.jpg)
 
 注意下图中有一个处于 BLOCKED 状态的线程，它阻塞在对锁的获取上（wating to lock）。大体浏览一下 DUMP 文件，会发现多处这种状态的线程，可以使用如下脚本进行统计。
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-15-07.jpg)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/jvm/jvm-15-07.jpg)
 
 ```
 cat 10271.tdump| grep "waiting to lock " | awk '{print $5}' | sort | uniq -c | sort -k1 -r
@@ -211,7 +211,7 @@ cat 10271.tdump| grep "waiting to lock " | awk '{print $5}' | sort | uniq -c | s
 
 我们找到给 **0x0000000782e1b590** 上锁的执行栈，可以发现全部卡在了 HttpClient 的读操作上。在实际场景中，可以看下排行比较靠前的几个锁地址，找一下共性。 
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-15-08.jpg)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/jvm/jvm-15-08.jpg)
 
 返回头去再看一下代码。我们发现 HttpClient 是共用了一个连接池，当连接数超过 100 的时候，就会阻塞等待。它的连接超时时间是 10 秒，这和 slow 接口的耗时不相上下。 
 
@@ -361,7 +361,7 @@ public class WaitDemo {
 
 关于这部分的原理，可以参见一张经典的图。每个监视器（Monitor）在某个时刻，只能被一个线程拥有，该线程就是“Active Thread”，而其他线程都是“Waiting Thread”，分别在两个队列“Entry Set”和“Wait Set”里面等候。在“Entry Set”中等待的线程状态是“Waiting for monitor entry”，而在“Wait Set”中等待的线程状态是“in Object.wait()”。
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-15-09.jpg)
+![这是一张图片](https://maxpixelton.github.io/images/assert/java/jvm/jvm-15-09.jpg)
 
 ```java
 "wait-demo" #12 prio=5 os_prio=31 cpu=0.14ms elapsed=12.58s tid=0x00007fb66609e000 nid=0x6103 in Object.wait()  [0x000070000f2bd000]

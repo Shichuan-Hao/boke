@@ -74,7 +74,7 @@ mermaid: true
 
 下图 2 是读服务的自动化测试回归的整体架构：
 
-![](https://maxpixelton.github.io/images/assert/backen-system/jiagou-07-02.png)
+![jiagou-07-02](https://maxpixelton.github.io/images/assert/backen-system/jiagou-07-02.png)
 
 在这个架构里包含三大模块，分别为**日志收集、数据回放，以及差异对比**。它们主要有以下 3 个功能：
 

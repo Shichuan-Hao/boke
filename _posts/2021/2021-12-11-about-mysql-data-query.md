@@ -17,7 +17,7 @@ mermaid: true
 
 读写分离是提升 MySQL 并发的首选方案，因为当单台 MySQL 无法满足要求时，就只能用多个具有相同数据的 MySQL 实例组成的集群来承担大量的读写请求。
 
-![](https://maxpixelton.github.io/images/assert/architecute/1101.png)
+![1101](https://maxpixelton.github.io/images/assert/architecute/1101.png)
 
 MySQL 做读写分离的前提，是把 MySQL 集群拆分成“主 + 从”结构的数据集群，这样才能实现程序上的读写分离，并且 MySQL 集群的主库、从库的数据是通过主从复制实现同步的。
 
@@ -37,7 +37,7 @@ MySQL 集群的主从复制过程梳理成 3 个阶段。
 - **同步 Binlog**：把 binlog 复制到所有从库上，每个从库把 binlog 写到暂存日志中。
 - **回放 Binlog**：回放 binlog，并更新存储数据。
 
-![](https://maxpixelton.github.io/images/assert/architecute/1102.png)
+![1102](https://maxpixelton.github.io/images/assert/architecute/1102.png)
 
 详细过程如下：
 
@@ -49,7 +49,7 @@ MySQL 集群的主从复制过程梳理成 3 个阶段。
 
 在完成主从复制之后，就可以在写数据时只写主库，在读数据时只读从库，这样即使写请求会锁表或者锁记录，也不会影响读请求的执行。
 
-![](https://maxpixelton.github.io/images/assert/architecute/1101.png)
+![1101](https://maxpixelton.github.io/images/assert/architecute/1101.png)
 
 同时，在读流量比较大时，可以部署多个从库共同承担读流量，这就是“一主多从”的部署方式，在垂直电商项目中可以用该方式抵御较高的并发读流量。另外，从库也可以作为一个备库，以避免主库故障导致的数据丢失。
 
@@ -81,7 +81,7 @@ MySQL 主从复制模型主要有三种：
 
 评论在更新完主库后，商品发布模块会异步调用审核模块，并把评论 ID 传递给审核模块，然后再由评论审核模块用评论 ID 查询从库中获取到完整的评论信息。此时如果主从数据库存在延迟，在从库中就会获取不到评论信息，整个流程就会出现异常。
 
-![](https://maxpixelton.github.io/images/assert/architecute/1103.png)
+![1103](https://maxpixelton.github.io/images/assert/architecute/1103.png)
 
 这是主从复制延迟导致的查询异常，解决思路有很多，几个方案如下：
 
@@ -97,7 +97,7 @@ MySQL 主从复制模型主要有三种：
 
 不过这种方式会带来缓存和数据库的一致性问题，比如两个线程同时更新数据，操作步骤如下：
 
-![](https://maxpixelton.github.io/images/assert/architecute/1104.png)
+![1104](https://maxpixelton.github.io/images/assert/architecute/1104.png)
 
 线程 A 先更新数据库为 100，此时线程 B 把数据库和缓存中的数据都更新成了 200，然后线程 A 又把缓存更新为 100，这样数据库中的值 200 和缓存中的值 100 就不一致了，解决这个问题，你可以参考 06 讲。
 
@@ -125,13 +125,13 @@ MySQL 主从复制模型主要有三种：
 
 
 
-![](https://maxpixelton.github.io/images/assert/architecute/1105.png)
+![1105](https://maxpixelton.github.io/images/assert/architecute/1105.png)
 
 以 Raft 协议为例，其内部是通过日志复制同步的方式来实现共识的，例如在领导者选举成功后，它就会开始接收客户端的请求，此时每一个客户端请求都将被解析成一条指令日志，然后并行地向其他节点发起通知，要求其他节点复制这个日志条目，并最终在各个节点中回放日志，实现共识。
 
 抽象一下它的运作机制：
 
-![](https://maxpixelton.github.io/images/assert/architecute/1106.png)
+![1106](https://maxpixelton.github.io/images/assert/architecute/1106.png)
 
 > 如果客户端将要执行的命令发送给集群中的一台服务器，那么这台服务器就会以日志的方式记录这条命令，然后将命令发送给集群内其他的服务，并记录在其他服务器的日志文件中，注意，只要保证各个服务器上的日志是相同的，并且各服务器都能以相同的顺序执行相同的命令的话，那么集群中的每个节点的执行结果也都会是一样的。
 

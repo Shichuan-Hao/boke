@@ -76,7 +76,7 @@ mermaid: true
 
 以上述案例的压测值和损耗比为例，架构如下图 3 所示：
 
-![](https://maxpixelton.github.io/images/assert/backen-system/jiagou-21-03.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/backen-system/jiagou-21-03.png)
 
 当前图示中部署了 100 台机器，理论上可以支撑 9000/s的QPS，但如果所依赖的存储只能支撑 5000/s的QPS，那么即使部署 100 台或者更多的应用机器，它能够承载的QPS 也不能线性增长，最大只能支撑到 5000/s的QPS。
 

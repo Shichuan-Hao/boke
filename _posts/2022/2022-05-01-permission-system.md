@@ -33,7 +33,7 @@ tags: [SSO]
 
 用一个图来描述如下：
 
-![](https://maxpixelton.github.io/images/assert/design/rbac.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/design/rbac.png)
 
 当使用 `RBAC模型` 时，通过分析用户的实际情况，基于共同的职责和需求，授予他们不同角色。这种 `用户 -> 角色 -> 权限` 间的关系，让我们可以不用再单独管理单个用户权限，用户从授予的角色里面获取所需的权限。
 
@@ -79,7 +79,7 @@ tags: [SSO]
 
 新权限系统方案如下图 ：
 
-![](https://maxpixelton.github.io/images/assert/design/new-permission-system.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/design/new-permission-system.png)
 
 - 首先，将集团所有的用户（包括外部用户），通过 **统一登录与注册** 功能实现了统一管理，同时与公司的组织架构信息模块打通，实现了同一个人员在所有系统中信息的一致，这也为后续基于组织架构进行权限管理提供了可行性。
 - 其次，因为新权限系统需要服务集团所有业务，所以需要支持多系统权限管理。用户进行权限管理前，需要先选择相应的系统，然后配置该系统的**菜单权限**和**数据权限**信息，建立好系统的各个权限点。
@@ -128,7 +128,7 @@ tags: [SSO]
 
 其中，1、2、3 的步骤，都是在系统管理模块完成，具体流程如下图：
 
-![](https://maxpixelton.github.io/images/assert/design/new-permission-system-module.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/design/new-permission-system-module.png)
 
 用户可以对系统的基本信息进行增删改查的操作，不同系统之间通过 `系统编码` 作为唯一区分。同时 `系统编码` 也会用作于菜单和数据权限编码的前缀，通过这样的设计保证权限编码全局唯一性。
 
@@ -153,7 +153,7 @@ tags: [SSO]
 
 角色与用户管理都是可以直接改变用户权限的核心模块，整个设计思路如下图：
 
-![](https://maxpixelton.github.io/images/assert/design/new-permission-system-role-user.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/design/new-permission-system-role-user.png)
 
 这个模块设计重点是需要考虑到批量操作。无论是通过角色关联用户，还是给用户批量增加/删除/重置权限，批量操作的场景都是系统需要设计好的。
 

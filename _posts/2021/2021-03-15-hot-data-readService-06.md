@@ -50,7 +50,7 @@ mermaid: true
 
 主从复制开启后，一个主节点可以挂一至多个从。升级后的架构如下图 3 所示（方案解读在架构图中）：
 
-![](https://maxpixelton.github.io/images/assert/backen-system/jiagou-06-03.png)
+![这是一张图片](https://maxpixelton.github.io/images/assert/backen-system/jiagou-06-03.png)
 
 
 
