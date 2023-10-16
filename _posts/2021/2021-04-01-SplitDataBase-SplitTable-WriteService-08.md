@@ -26,7 +26,7 @@ mermaid: true
 
 假设原先单库只能最多存储 2 千万的数据量。采用分库之后，存储架构变成下图 1 所示的分库架构，每个分库都可以存储 2 千万数据量，容量的上限一下提升了。
 
-![分库架构图](https://images.happymaya.cn/assert/backen-system/jiagou-08-01.png)
+![分库架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-08-01.png)
 
 容量提升了，但也带来了很多其他问题。比如：
 
@@ -44,7 +44,7 @@ mermaid: true
 
 分表的拆分架构如下图 2 所示：
 
-![分表架构图](https://images.happymaya.cn/assert/backen-system/jiagou-08-02.png)
+![分表架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-08-02.png)
 
 以订单案例来说，假设订单只是**单量多而每一单的数据量较小，这就适合采用分表**。
 
@@ -54,7 +54,7 @@ mermaid: true
 
 如果采用了分库，虽然解决了写入和查询的问题，但每张表所占有的磁盘空间很少，也会产生资源浪费。两种方案的对比如下图 3 所示：
 
-![单表行数多单数据量小的对比图](https://images.happymaya.cn/assert/backen-system/jiagou-08-03.png)
+![单表行数多单数据量小的对比图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-08-03.png)
 
 在实际场景里，因为要详细记录用户的提单信息，单个订单记录的数据量均较多，所以**不存在行数多但单条数据量小**的情况。
 
@@ -89,7 +89,7 @@ mermaid: true
 
 在选择分库维度时，**按订单归属的用户**这个字段进行分库。按此维度分库后，同一个用户的订单都在某一个分库里。分库后的场景如下图 4 所示：
 
-![按用户进行分库的架构图](https://images.happymaya.cn/assert/backen-system/jiagou-08-04.png)
+![按用户进行分库的架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-08-04.png)
 
 订单模块除了提供提交订单接口外，还会**提供给售卖商家对自己店铺的订单进行查询及修改**等功能。
 
@@ -150,7 +150,7 @@ mermaid: true
 
 但如果每次获取 ID 时，ID 生成服务都需要从数据库实时获取，性能会比较差。为了解决性能问题，可以在生成 ID 的数据库前置一个具备持久化功能的内存缓存，预生成一批 ID。具体架构如下图 5 所示：
 
-![预生成 ID 架构图](https://images.happymaya.cn/assert/backen-system/jiagou-08-05.png)
+![预生成 ID 架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-08-05.png)
 
 ## 分库中间件选择
 
@@ -165,7 +165,7 @@ mermaid: true
 
 **代理式分库中间件**对于业务应用无任何侵入，业务应用和未分库时一样使用数据库，分库的选择及分库的维度对业务层完全隐藏，接入和使用成本极低。代理式的架构如下图 6 所示：
 
-![代理式分库架构图](https://images.happymaya.cn/assert/backen-system/jiagou-08-06.png)
+![代理式分库架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-08-06.png)
 
 代理式虽有使用成本低的好处，但也存在其他一些问题：
 
@@ -179,7 +179,7 @@ mermaid: true
 
 在使用时，业务应用需将分库字段传递给内嵌中间件去计算具体对应的分库。它相比代理式性能更好。内嵌式的架构如下图 7 所示：
 
-![内嵌式的分库架构图](https://images.happymaya.cn/assert/backen-system/jiagou-08-07.png)
+![内嵌式的分库架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-08-07.png)
 
 除了性能优势外，内嵌式同样存在问题。
 

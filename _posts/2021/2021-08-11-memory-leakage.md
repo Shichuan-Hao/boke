@@ -29,7 +29,7 @@ mermaid: true
 
 我们有个线上应用，单节点在运行一段时间后，CPU 的使用会飙升，一旦飙升，一般怀疑某个业务逻辑的计算量太大，或者是触发了死循环（比如著名的 HashMap 高并发引起的死循环），但排查到最后其实是 GC 的问题。
 
-![](https://images.happymaya.cn/assert/java/jvm/jvm-11-01.png)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-11-01.png)
 
 在 Linux 上，分析哪个线程引起的 CPU 问题，通常有一个固定的步骤，如下：
 
@@ -41,7 +41,7 @@ mermaid: true
 
 在 jstack 日志中找到了 CPU 使用最多的几个线程。
 
-![](https://images.happymaya.cn/assert/java/jvm/jvm-11-02.png)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-11-02.png)
 
 可以看到问题发生的根源，是堆已经满了，但是又没有发生 OOM，于是 GC 进程就一直在那里回收，回收的效果又非常一般，造成 CPU 升高应用假死。
 
@@ -66,7 +66,7 @@ mermaid: true
 
 **问题不是凭空产生的，在分析时，一般要收集系统的整体变更集合，比如代码变更、网络变更，甚至数据量的变化。**
 
-![](https://images.happymaya.cn/assert/java/jvm/jvm-11-03.png)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-11-03.png)
 
 ### 保留信息
 
@@ -231,11 +231,11 @@ jhsdb jmap  --binaryheap --pid  37340
 
 heap 参数能够帮我们看到大体的内存布局，以及每一个年代中的内存使用情况。这和我们前面介绍的内存布局，以及在 VisualVM 中看到的 没有什么不同。但由于它是命令行，所以使用更加广泛。
 
-![](https://images.happymaya.cn/assert/java/jvm/jvm-11-04.png)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-11-04.png)
 
 histo 能够大概的看到系统中每一种类型占用的空间大小，用于初步判断问题。比如某个对象 instances 数量很小，但占用的空间很大，这就说明存在大对象。但它也只能看大概的问题，要找到具体原因，还是要 dump 出当前 live 的对象。
 
-![](https://images.happymaya.cn/assert/java/jvm/jvm-11-05.png)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-11-05.png)
 
 一般内存溢出，表现形式就是 Old 区的占用持续上升，即使经过了多轮 GC 也没有明显改善。内存泄漏的根本就是，有些对象并没有切断和 GC Roots 的关系，可通过一些工具，能够看到它们的联系。
 
@@ -271,7 +271,7 @@ swap 是很多性能场景的万恶之源，建议禁用。当你的应用真正
 
 ### 内存泄漏
 
-![](https://images.happymaya.cn/assert/java/jvm/jvm-11-06.png)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-11-06.png)
 
 内存溢出和内存泄漏的区别：
 

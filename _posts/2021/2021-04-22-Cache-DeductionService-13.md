@@ -92,7 +92,7 @@ Redis 作为最近几年非常流行的 NoSQL  数据库，它的原始版本或
 
 当请求发送到 Redis 后，lua 脚本执行流程如下图 2 所示：
 
-![lua 脚本执行流程](https://images.happymaya.cn/assert/backen-system/jiagou-13-02.png)
+![lua 脚本执行流程](https://maxpixelton.github.io/images/assert/backen-system/jiagou-13-02.png)
 
 Redis 中的 lua 脚本执行时，首先会使用 get 命令查询 uuid  是否已存在，如已存在则直接返回，并提示用户请求重复。当防重通过后，会按 SKU 批量获取对应的剩余库存状态并进行判断，如果其中一个 SKU  此次扣减的数量大于剩余数量，则直接给扣减服务返回错误并提示数量不足。通过 Redis 的单线程模型，确保当所有 SKU  的扣减数量在判断均满足后，在实际扣减时，数量不够的情况是不会出现的。同时，单线程保证判断数量的步骤和后续扣减步骤之间，没有其他任何线程出现并发的执行。
 
@@ -140,7 +140,7 @@ Redis 中的 lua 脚本执行时，首先会使用 get 命令查询 uuid  是否
 
 优化后的整体方案如下图 3 所示：
 
-![纯缓存升级版架构](https://images.happymaya.cn/assert/backen-system/jiagou-13-03.png)
+![纯缓存升级版架构](https://maxpixelton.github.io/images/assert/backen-system/jiagou-13-03.png)
 
 ## 纯缓存方案适用性分析
 

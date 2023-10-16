@@ -33,7 +33,7 @@ mermaid: true
 
 有了上述的理论基础后，只要对上一讲的架构稍做变更，就可以得到兼具性能和高可靠的扣减架构了，整体架构如下图 1 所示：
 
-![兼具性能和更加高可靠的扣减架构](https://images.happymaya.cn/assert/backen-system/jiagou-14-01.png)
+![兼具性能和更加高可靠的扣减架构](https://maxpixelton.github.io/images/assert/backen-system/jiagou-14-01.png)
 
 上述的架构和纯缓存的架构区别在于，**写入数据库不是异步写入，而是在扣减的时候同步写入**。
 
@@ -64,7 +64,7 @@ CREATE TABLE task { id BIGINT NOT NULL COMMENT "任务顺序编号", task_id BIG
 
 在引入了任务表之后，整体的扣减流程如下图 2 所示：
 
-![兼具性能和更加高可靠的扣减架构](https://images.happymaya.cn/assert/backen-system/jiagou-14-02.png)
+![兼具性能和更加高可靠的扣减架构](https://maxpixelton.github.io/images/assert/backen-system/jiagou-14-02.png)
 
 上述的流程**和纯缓存的区别在于增加了事务开启与回滚的步骤，以及同步的数据库写入流程**，详细分析如下：
 
@@ -111,7 +111,7 @@ CREATE TABLE task { id BIGINT NOT NULL COMMENT "任务顺序编号", task_id BIG
 
 在扣减时，依然以缓存中的数量为准。补货或新增商品的数据同步架构如下图 3 所示：
 
-![兼具性能和更加高可靠的扣减架构](https://images.happymaya.cn/assert/backen-system/jiagou-14-03.png)
+![兼具性能和更加高可靠的扣减架构](https://maxpixelton.github.io/images/assert/backen-system/jiagou-14-03.png)
 
 通过任务库同步至正式业务库里那份数据岂不是没用了？
 
@@ -138,7 +138,7 @@ CREATE TABLE task { id BIGINT NOT NULL COMMENT "任务顺序编号", task_id BIG
 
 这两个功能均不依赖具体的路由规则，也是随机的、无状态的。因此，升级后的架构如下图 4 所示：
 
-![无状态存储的架构图](https://images.happymaya.cn/assert/backen-system/jiagou-14-04.png)
+![无状态存储的架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-14-04.png)
 
 采用无状态存储后，任务库便可以进行水平扩展了，在性能和高可用上得到进一步的加强。
 
@@ -150,7 +150,7 @@ CREATE TABLE task { id BIGINT NOT NULL COMMENT "任务顺序编号", task_id BIG
 
 因此最终只要使用 Worker 将数据从任务库同步至业务正式库即可，架构如下图 5 所示：
 
-![Worker 架构图](https://images.happymaya.cn/assert/backen-system/jiagou-14-05.png)
+![Worker 架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-14-05.png)
 
 ## 总结
 

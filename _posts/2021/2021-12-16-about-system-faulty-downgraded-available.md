@@ -16,7 +16,7 @@ mermaid: true
 
 先来看下面一个场景：
 
-![](https://images.happymaya.cn/assert/architecute/1601.png)
+![](https://maxpixelton.github.io/images/assert/architecute/1601.png)
 
 某电商平台中有：
 
@@ -63,13 +63,13 @@ mermaid: true
 
 这三种状态间切换过成如下图所示：
 
-![](https://images.happymaya.cn/assert/architecute/1602.png)
+![](https://maxpixelton.github.io/images/assert/architecute/1602.png)
 
 
 
 ### 断路器的实现
 
-![](https://images.happymaya.cn/assert/architecute/1603.png)
+![](https://maxpixelton.github.io/images/assert/architecute/1603.png)
 
 - **“关闭”转“打开”：** 当请求到来，首先判断是否在熔断中，如果没有熔断，则正常调用系统服务，此时统计系统的调用状态，如果失败次数超过阈值，则断路器“打开”；
 

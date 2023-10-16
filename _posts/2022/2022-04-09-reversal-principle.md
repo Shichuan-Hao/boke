@@ -244,7 +244,7 @@ public class SPTest {
    - **实际上更准确的描述应该是 DI 容器**，只不过因为 Spring 号称自己为 IoC 容器而造成了误解。
 
 IoC、DI、IoC 容器和 DIP 之间的关系如下图所示：
-![IoC、DI、IoC 容器和 DIP 之间的关系图](https://images.happymaya.cn/assert/design-patterns/dip-DI-IOC.png)
+![IoC、DI、IoC 容器和 DIP 之间的关系图](https://maxpixelton.github.io/images/assert/design-patterns/dip-DI-IOC.png)
 
 如上图所示，这四者之间关系可总结为：
 - IoC 容器，一种技术框架，用来管理对象创建以及其生命周期，提供依赖注入实现，是 DI 的具体实现；

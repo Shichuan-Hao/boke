@@ -23,7 +23,7 @@ mermaid: true
 
 在目前的并发编程中，使用 concurrent 包里的工具更多一些。
 
-![](https://images.happymaya.cn/assert/java/jvm/jvm-19-01.jpg)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-19-01.jpg)
 
 ## 线程模型
 
@@ -31,13 +31,13 @@ JVM 的线程模型，以及它和操作系统进程之间的关系。
 
 如下图所示，对于 Hotspot 来说，每一个 Java 线程，都会映射到一条轻量级进程中（LWP，Light Weight Process）。轻量级进程是用户进程调用系统内核所提供的一套接口，实际上它还需要调用更加底层的内核线程（KLT，Kernel-Level Thread）。而具体的功能，比如创建、同步等，则需要进行系统调用。
 
-![](https://images.happymaya.cn/assert/java/jvm/jvm-19-02.jpg)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-19-02.jpg)
 
 这些系统调用的操作，代价都比较高，需要在用户态（User Mode）和内核态（Kernel Mode）中来回切换，也就是常说的线程上下文切换（ CS，Context Switch）。
 
 使用 vmstat 命令能够方便地观测到这个数值。
 
-![](https://images.happymaya.cn/assert/java/jvm/jvm-19-03.jpg)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-19-03.jpg)
 
 Java 在保证正确的前提下，要想高效并发，就要尽量减少上下文的切换。
 
@@ -110,7 +110,7 @@ synchronized 关键字给代码或者方法上锁时，会有显示或者隐藏�
 
 关于对象对锁的争夺，依然拿前面的一张图来看一下这个过程：
 
-![](https://images.happymaya.cn/assert/java/jvm/jvm-19-04.jpg)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-19-04.jpg)
 
 下面看一段简单的代码，并观测一下它的字节码：
 
@@ -207,7 +207,7 @@ public class SynchronizeDemo {
 
 说到 synchronized 加锁原理，就不得不先说 Java 对象在内存中的布局，Java 对象内存布局如下图所示:
 
-![](https://images.happymaya.cn/assert/java/jvm/jvm-19-05.jpg)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-19-05.jpg)
 
 各部分的含义：
 
@@ -234,7 +234,7 @@ Java 中线程获得对象锁的操作是以线程而不是以调用为单位的
 
 我们再看一下 Mark Word 的结构。其中，Biased 有 1 bit 大小，Tag 有 2 bit 大小，锁升级就是通过 Thread Id、Biased、Tag 这三个变量值来判断的。
 
-![](https://images.happymaya.cn/assert/java/jvm/jvm-19-06.jpg)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-19-06.jpg)
 
 ### 偏向锁
 
@@ -270,4 +270,4 @@ Java 中线程获得对象锁的操作是以线程而不是以调用为单位的
 
 下面这张图展示了三种锁的状态和 Mark Word 值的变化：
 
-![](https://images.happymaya.cn/assert/java/jvm/jvm-19-07.jpg)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-19-07.jpg)

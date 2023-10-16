@@ -51,12 +51,12 @@ mermaid: true
 - 服务与服务等。
 
 通常都知道，局部的分离不代表整体的分离，因为模块与模块之间依然需要通信，一旦没有某种策略来限制相互通信的耦合度，架构稍不注意就会演变为大泥球式的架构。比如：常用 MVC 分层策略来做架构上的关注点分离。二者对比如下图所示：
-![常用 MVC 分层策略来做架构上的关注点分离](https://images.happymaya.cn/assert/design-patterns/soc-01.jpg)
+![常用 MVC 分层策略来做架构上的关注点分离](https://maxpixelton.github.io/images/assert/design-patterns/soc-01.jpg)
 
 显然，在图中右侧的 MVC 架构中，相关的主题聚合在某一层，这样就不再难以理解了。也就是，**将层作为关注点来进行分离，通过解决每一个层的问题来实现整体问题的解决**。
 
 同样，现在流行的微服务架构也是采用水平分离的策略来达到服务与服务之间关注点分离的目的，如下图所示：
-![](https://images.happymaya.cn/assert/design-patterns/soc-02.jpg)
+![](https://maxpixelton.github.io/images/assert/design-patterns/soc-02.jpg)
 
 虽说每个微服务的关注点可能完全不同，但通过统一的 API 层来进行通信就不会影响它们之间的相互配合。
 
@@ -67,11 +67,11 @@ mermaid: true
 
 比如，下面的代码实现（找出 3 个年龄大于 35 岁的员工的名字），就是基于**操作职责相似性**来进行关注点分离的，使用的是 Lambda 表达式。
 
-![](https://images.happymaya.cn/assert/design-patterns/soc-03.jpg)
+![](https://maxpixelton.github.io/images/assert/design-patterns/soc-03.jpg)
 如图中所示，关注点现在变成了数据流上的操作步骤（过滤、映射、限制等），读取每一个用户信息数据后，都会经过相同的步骤来处理，这样不仅利于理解每一个步骤操作的具体含义，也更符合思考习惯。
 
 再比如，算法中基于**任务职责相似性**来进行关注点的分离，如下图所示：
-![](https://images.happymaya.cn/assert/design-patterns/soc-04.jpg)
+![](https://maxpixelton.github.io/images/assert/design-patterns/soc-04.jpg)
 从图中可以清晰地看到，一个任务先被 Fork（拆分职责）为更小的任务，然后开始并行对所有子任务进行求值操作（计算职责，可以在多线程下并行处理），接着提供一个等待点进行 Join（合并职责），最终合并得到期望的值。
 这里，关注点分离能非常有效地将复杂的问题拆分为小问题去解决，而且能够清晰地知道不同职责需要关注的是什么、不需要关注什么。
 **虽然架构设计和编码实现中的关注点各有不同，但是对关注点进行分离后获得的效果却是一样的**：
@@ -112,7 +112,7 @@ mermaid: true
 看似简单却直击本质的关注点分离，也是一个经常使用却常常被忽略的关注点，重要性不亚于封装、多态和继承，即**实体的实例化（创建）与实体间相互使用（使用）的分离**。
 
 从一个简单例子开始，假定现在想要使用一个 StringProcessor 类来进行字符串相关的过滤处理操作，示意图如下：
-![](https://images.happymaya.cn/assert/design-patterns/soc-05.jpg)
+![](https://maxpixelton.github.io/images/assert/design-patterns/soc-05.jpg)
  代码实现如下所示：  
 ```java
 public class StringProcessor {
@@ -149,7 +149,7 @@ public class StringProcessor {
 
 **这就是将使用和创建混在一起后的结果**——你既创建它又在使用它，就好比你使用智能手机拍照前，还得学会如何开发拍照程序。
 使用和创建分离，会带来下面一个效果，如下示意图：
-![](https://images.happymaya.cn/assert/design-patterns/soc-06.jpg)
+![](https://maxpixelton.github.io/images/assert/design-patterns/soc-06.jpg)
 
  其代码实现如下：  
 ```java

@@ -58,7 +58,7 @@ mermaid: true
 
 例如，马路上的十字路口，所有车辆在通过红绿灯时需要分批次通行。这样，就消耗了所有车辆的通行时间。如果要降低这里的时间损耗，人们想到了修建立交桥。修建立交桥后，每个可能的转弯或直行的行进路线，都有专属的一条公路支持。这样，车辆就不需要全部去等待红绿灯分批通行了。最终，实现了用空间换取时间。
 
-![](https://images.happymaya.cn/assert/structures/0201.gif)
+![](https://maxpixelton.github.io/images/assert/structures/0201.gif)
 
 其实，程序开发也是可以借鉴这里的思想的。**在程序开发中，连接时间和空间的桥梁就是<font color="red">数据结构</font>。**
 
@@ -147,7 +147,7 @@ public static void s2_3() {
 
 2. 再去遍历一遍这个字典，找到出现次数最多的那个元素，就能找到最后的结果了。
 
-   ![](https://images.happymaya.cn/assert/structures/0202.gif)
+   ![](https://maxpixelton.github.io/images/assert/structures/0202.gif)
 
 具体代码如下：
 

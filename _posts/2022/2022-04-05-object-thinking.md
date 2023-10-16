@@ -45,7 +45,7 @@ public class SayHelloWorld {
 
 ## 编程语言和编程范式的关系
 根据功能重视的侧重点不同，编程范式通常可分为**命令式**和**声明式**两大类：命令式再往下又可以细分为面向过程编程范式、面向对象编程范式和并发处理范式，声明式又分为逻辑编程范式、函数编程和数据库编程范式。编程范式与编程语言的关系可参考下图：
-![编程语言与编程范式的关系](https://images.happymaya.cn/assert/design-patterns/relationship-between-programming-paradigm-and-programming-language.png)
+![编程语言与编程范式的关系](https://maxpixelton.github.io/images/assert/design-patterns/relationship-between-programming-paradigm-and-programming-language.png)
 **由此可知，编程语言 ≠ 编程范式。** 换句话说，编程语言是对编程范式的一种工具技术上的支撑，一种语言可以适用多种编程范式。
 
 # 什么是面向对象编程

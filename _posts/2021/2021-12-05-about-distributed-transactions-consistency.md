@@ -57,21 +57,21 @@ Java 平台上事务规范 JTA（Java Transaction API）是对 XA 分布式事�
 
 那么 2PC 具体是如何运行的呢？ 以开头的系统为例，订单数据、商品数据，以及促销数据被分别存储在多个数据库实例中，用户在执行下单的时候，交易主流程的业务逻辑则集中部署在一个应用服务器集群上，然后通过 Spring 容器访问底层的数据库实例，而容器中的 JTA 事务管理器在这里就作为事务管理器，Resource 资源管理器就作为底层的数据库实例的资源管理器。
 
-![Spring事务管理](https://images.happymaya.cn/assert/architecute/0501.png)
+![Spring事务管理](https://maxpixelton.github.io/images/assert/architecute/0501.png)
 
 假设订单数据，商品数据和促销数据分别保存在数据库 D1，数据库 D2 和数据库 D3 上。
 
 - **准备阶段。**事务管理器首先通知所有资源管理器开启事务，询问是否做好提交事务的准备。如资源管理器此时会将 undo 日志和 redo 日志计入事务日志中，并做出应答，当协调者接收到反馈 Yes 后，则准备阶段结束。
 
-  ![2PC 准备阶段](https://images.happymaya.cn/assert/architecute/0502.png)
+  ![2PC 准备阶段](https://maxpixelton.github.io/images/assert/architecute/0502.png)
 
 - **提交阶段。**当收到所有数据库实例的 Yes 后，事务管理器会发出提交指令。每个数据库接受指令进行本地操作，正式提交更新数据，然后向协调者返回 Ack 消息，事务结束。
 
-  ![2PC 提交阶段](https://images.happymaya.cn/assert/architecute/0503.png)
+  ![2PC 提交阶段](https://maxpixelton.github.io/images/assert/architecute/0503.png)
 
 - **中断阶段。**如果任何一个参与者向协调者反馈了 No 响应，例如用户 B 在数据库 D3 上面的余额在执行其他扣款操作，导致数据库 D3 的数据无法锁定，则只能向事务管理器返回失败。此时，协调者向所有参与者发出 Rollback 请求，参与者接收 Rollback 请求后，会利用其在准备阶段中记录的 undo 日志来进行回滚操作，并且在完成事务回滚之后向协调者发送 Ack 消息，完成事务回滚操作。
 
-  ![2PC 中断阶段](https://images.happymaya.cn/assert/architecute/0504.png)
+  ![2PC 中断阶段](https://maxpixelton.github.io/images/assert/architecute/0504.png)
 
   
 
@@ -97,7 +97,7 @@ Java 平台上事务规范 JTA（Java Transaction API）是对 XA 分布式事�
 
 还是拿下单场景举例，当订单系统调用优惠券系统时，将扣减优惠券的事件放入消息队列中，最终给优惠券系统来执行，然后只要保证事件消息能够在优惠券系统内被执行就可以了，因为消息已经持久化在消息中间件中，即使消息中间件发生了宕机，我们将它重启后也不会出现消息丢失的问题。
 
-![](https://images.happymaya.cn/assert/architecute/0505.png)
+![](https://maxpixelton.github.io/images/assert/architecute/0505.png)
 
 基于 MQ 的可靠消息投递的方案**不仅可以解决由于业务流程的同步执行而造成的阻塞问题，还可以实现业务解耦合流量削峰。**
 
@@ -121,7 +121,7 @@ Java 平台上事务规范 JTA（Java Transaction API）是对 XA 分布式事�
 
 那么如何落地实现呢？可以先让订单系统把要发送的消息持久化到本地数据库里，然后将这条消息记录的状态设置为代发送，紧接着订单系统再投递消息到消息队列，优惠券系统消费成功后，也会向消息队列发送一个通知消息。当订单系统接收到这条通知消息后，再把本地持久化的这条消息的状态设置为完成。
 
-![](https://images.happymaya.cn/assert/architecute/0506.png)
+![](https://maxpixelton.github.io/images/assert/architecute/0506.png)
 
 这样做后，即使最终 MQ 出现了消息丢失，也可以通过定时任务从订单系统的本地数据库中扫描出一段时间内未完成的消息，进行重新投递，最终保证订单系统和优惠券系统的最终事务一致性。
 

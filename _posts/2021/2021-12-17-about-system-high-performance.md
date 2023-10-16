@@ -46,7 +46,7 @@ $$
 
 一般来说，**延迟和吞吐量既互斥，又不绝对的互斥**，可以通过性能压测分别绘制吞吐量和延迟的曲线图：
 
-![](https://images.happymaya.cn/assert/architecute/1701.png)
+![](https://maxpixelton.github.io/images/assert/architecute/1701.png)
 
 延迟总是非递减的曲线，开始时表现比较平稳，到了某一个特定值后，会迅速增大。而吞吐量曲线在开始时迅速增加，到达峰值后逐渐减小。
 
@@ -70,7 +70,7 @@ $$
 
 架构师视角说白了就是系统的全链路视角，从前端请求流程开始，链路会涉及的前后端性能指标，如下图所示。
 
-![](https://images.happymaya.cn/assert/architecute/1702.png)
+![](https://maxpixelton.github.io/images/assert/architecute/1702.png)
 
 
 

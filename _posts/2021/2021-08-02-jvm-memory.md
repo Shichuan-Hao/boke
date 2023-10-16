@@ -12,7 +12,7 @@ mermaid: true
 
 随着 Java 的发展，内存布局一直在调整之中。比如，Java 8 及之后的版本，彻底移除了持久代，而使用 Metaspace 来进行替代。这也表示着 `-XX:PermSize` 和 `-XX:MaxPermSize` 等参数调优，已经没有了意义。但大体上，比较重要的内存区域是固定的。
 
-![Java 内存区域划分](https://images.happymaya.cn/assert/java/jvm/jvm-02-01.png)
+![Java 内存区域划分](https://maxpixelton.github.io/images/assert/java/jvm/jvm-02-01.png)
 
 - 数据私有（线程相关）
   - 程序计数器（Program counter register）
@@ -27,7 +27,7 @@ mermaid: true
 
 # 虚拟机栈
 
-![Java 内存区域划分](https://images.happymaya.cn/assert/java/jvm/jvm-02-02.gif)
+![Java 内存区域划分](https://maxpixelton.github.io/images/assert/java/jvm/jvm-02-02.gif)
 
 栈是什么样的数据结构？你可以想象一下子弹上膛的这个过程，后进的子弹最先射出，最上面的子弹就相当于栈顶。
 
@@ -42,7 +42,7 @@ mermaid: true
 
 我们的应用程序，就是在不断操作这些内存空间中完成的。
 
-![Java 内存区域划分](https://images.happymaya.cn/assert/java/jvm/jvm-02-03.png)
+![Java 内存区域划分](https://maxpixelton.github.io/images/assert/java/jvm/jvm-02-03.png)
 
 本地方法栈是和虚拟机栈非常相似的一个区域，它服务的对象是 native 方法。你甚至可以认为虚拟机栈和本地方法栈是同一个区域，这并不影响我们对 JVM 的了解。
 
@@ -50,7 +50,7 @@ mermaid: true
 
 这里有一个比较特殊的数据类型叫作 returnAdress。因为这种类型只存在于字节码层面，所以我们平常打交道的比较少。对于 JVM 来说，程序就是存储在方法区的字节码指令，而 returnAddress 类型的值就是指向特定指令内存地址的指针。
 
-![Java 内存区域划分](https://images.happymaya.cn/assert/java/jvm/jvm-02-04.png)
+![Java 内存区域划分](https://maxpixelton.github.io/images/assert/java/jvm/jvm-02-04.png)
 
 这部分有两个比较有意思的内容，面试中说出来会让面试官眼前一亮。
 
@@ -70,17 +70,17 @@ mermaid: true
 
 程序计数器是一块较小的内存空间，它的作用可以看作是当前线程所执行的字节码的行号指示器。这里面存的，就是当前线程执行的进度。下面这张图，能够加深大家对这个过程的理解。
 
-![程序计数器](https://images.happymaya.cn/assert/java/jvm/jvm-02-05.png)
+![程序计数器](https://maxpixelton.github.io/images/assert/java/jvm/jvm-02-05.png)
 
 可以看到，程序计数器也是因为线程而产生的，与虚拟机栈配合完成计算操作。程序计数器还存储了当前正在运行的流程，包括正在执行的指令、跳转、分支、循环、异常处理等。
 
 我们可以看一下程序计数器里面的具体内容。下面这张图，就是使用 javap 命令输出的字节码。大家可以看到在每个 opcode 前面，都有一个序号。就是图中红框中的偏移地址，你可以认为它们是程序计数器的内容。
 
-![opcode ](https://images.happymaya.cn/assert/java/jvm/jvm-02-06.png)
+![opcode ](https://maxpixelton.github.io/images/assert/java/jvm/jvm-02-06.png)
 
 # 堆
 
-![Java 内存区域划分](https://images.happymaya.cn/assert/java/jvm/jvm-02-07.png)
+![Java 内存区域划分](https://maxpixelton.github.io/images/assert/java/jvm/jvm-02-07.png)
 
 堆是 JVM 上最大的内存区域，申请的几乎所有的对象，都是在这里存储的。我们常说的垃圾回收，操作的对象就是堆。
 
@@ -120,7 +120,7 @@ Java 的对象可以分为基本数据类型和普通对象。
 
 Perm 区在 Java 8 中已经被彻底废除，取而代之的是 Metaspace。原来的 Perm 区是在堆上的，现在的元空间是在非堆上的，这是背景。关于它们的对比，可以看下这张图。
 
-![Java 内存区域划分](https://images.happymaya.cn/assert/java/jvm/jvm-02-08.png)
+![Java 内存区域划分](https://maxpixelton.github.io/images/assert/java/jvm/jvm-02-08.png)
 
 
 
@@ -141,7 +141,7 @@ Perm 区在 Java 8 中已经被彻底废除，取而代之的是 Metaspace。原
 
 关于它们的关系，我们可以看一张图。在我的感觉里，堆是软绵绵的，松散而有弹性；而非堆是冰冷生硬的，内存非常紧凑。
 
-![Java 内存区域划分](https://images.happymaya.cn/assert/java/jvm/jvm-02-09.png)
+![Java 内存区域划分](https://maxpixelton.github.io/images/assert/java/jvm/jvm-02-09.png)
 
 大家都知道，JVM 在运行时，会从操作系统申请大块的堆内内存，进行数据的存储。但是，堆外内存也就是申请后操作系统剩余的内存，也会有部分受到 JVM 的控制。比较典型的就是一些 native 关键词修饰的方法，以及对内存的申请和处理。
 

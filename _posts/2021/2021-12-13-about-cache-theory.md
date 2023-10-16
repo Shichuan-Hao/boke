@@ -36,7 +36,7 @@ Redis 是单线程的，主要是指 Redis 的网络 I/O 线程，以及键值�
 
 
 
-![](https://images.happymaya.cn/assert/architecute/1301.png)
+![](https://maxpixelton.github.io/images/assert/architecute/1301.png)
 
 线程模型只是 Redis 核心点的一环，此外包括了持久化、数据复制（主从复制，哨兵复制）等内容。
 
@@ -65,7 +65,7 @@ Redis 的数据持久化有三种方式。
 
 而 AOF 里记录的是 Redis 收到的每一条命令，这些命令是以文本形式保存的，不同的是，Redis 的 AOF 日志的记录顺序与传统关系型数据库正好相反，它是写后日志，“写后”是指 Redis 要先执行命令，把数据写入内存，然后再记录日志到文件。
 
-![](https://images.happymaya.cn/assert/architecute/1302.png)
+![](https://maxpixelton.github.io/images/assert/architecute/1302.png)
 
 **Reids 为什么先执行命令，在把数据写入日志呢**，原因是：因为 Redis 在写入日志之前，不对命令进行语法检查，所以只记录执行成功的命令，避免了出现记录错误命令的情况，并且在命令执行完之后再记录，不会阻塞当前的写操作。
 
@@ -106,7 +106,7 @@ Redis 的数据持久化有三种方式。
 
      - 如果主线程执行写操作，则被修改的数据会复制一份副本，然后 bgsave 子进程会把该副本数据写入 RDB 文件，在这个过程中，主线程仍然可以直接修改原来的数据。
 
-       ![](https://images.happymaya.cn/assert/architecute/1303.png)
+       ![](https://maxpixelton.github.io/images/assert/architecute/1303.png)
 
 ### 混合模式实现原理
 
@@ -128,13 +128,13 @@ Redis 不仅仅可以用来当作缓存，很多时候也会直接作为数据�
 
 在使用 Redis 主从服务的时候，会有一个问题，就**是当 Redis 的主从服务器出现故障宕机时，需要手动进行恢复，**为了解决这个问题，Redis 增加了哨兵模式（因为哨兵模式做到了可以监控主从服务器，并且提供自动容灾恢复的功能）。
 
-![](https://images.happymaya.cn/assert/architecute/1304.png)
+![](https://maxpixelton.github.io/images/assert/architecute/1304.png)
 
 ### Redis Cluster（集群）
 
 Redis Cluster 是一种分布式去中心化的运行模式，是在 Redis 3.0 版本中推出的 Redis 集群方案，它将数据分布在不同的服务器上，以此来降低系统对单主节点的依赖，从而提高 Redis 服务的读写性能。
 
-![](https://images.happymaya.cn/assert/architecute/1305.png)
+![](https://maxpixelton.github.io/images/assert/architecute/1305.png)
 
 Redis Cluster 方案采用**哈希槽（Hash Slot）**，来处理数据和实例之间的映射关系。
 
@@ -149,7 +149,7 @@ Redis Cluster 方案采用**哈希槽（Hash Slot）**，来处理数据和实�
 
 - **手动分配：** 可以使用 cluster meet 命令手动建立实例间的连接，组成集群，再使用 cluster addslots 命令，指定每个实例上的哈希槽个数。如下图来解释数据、哈希槽，以及实例三者的映射分布关系。
 
-  ![](https://images.happymaya.cn/assert/architecute/1306.png)
+  ![](https://maxpixelton.github.io/images/assert/architecute/1306.png)
 
 示意图中的分片集群一共有 3 个实例，假设有 4 个哈希槽时，就可以通过命令手动分配哈希槽，比如实例 1 保存哈希槽 0 和 1，实例 2 保存哈希槽 2 和 3。
 

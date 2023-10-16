@@ -25,7 +25,7 @@ mermaid: true
 
 其他的写场景，比如发布短视频、发布博客等亦是如此。上述几种场景的架构如下图 1 所示：
 
-![外部依赖的架构常见场景](https://images.happymaya.cn/assert/backen-system/jiagou-10-01.png)
+![外部依赖的架构常见场景](https://maxpixelton.github.io/images/assert/backen-system/jiagou-10-01.png)
 
 对于整个链路依赖的各项外部接口，可能是出现了以下几个问题，导致系统不可用：
 
@@ -41,7 +41,7 @@ mermaid: true
 
 假设一次写请求要依赖二十个外部接口，可以将这些依赖全部并行化，优化的架构如下图 2 所示：
 
-![串行改并行的架构方案图](https://images.happymaya.cn/assert/backen-system/jiagou-10-02.png)
+![串行改并行的架构方案图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-10-02.png)
 
 如果一个依赖接口的性能为 10ms，以串行执行的方式，请求完所有外部依赖就需要  200ms（10ms*20）。但改为并行执行后，只需要 10ms 即可完成。上述情况中，我们假设每个接口的性能都是  10ms，但在实际场景中并没有这么精确的数字，有的外部依赖可能快一点、有的可能慢一点。**实际并行执行的耗时，等于最慢的那个接口的性能**。
 
@@ -49,7 +49,7 @@ mermaid: true
 
 按相互依赖梳理后的并行执行方案如下图 3 所示。对于并行中存在相互依赖的场景，并行化后的性能等于最长子串（下图 3 中红色框）的性能总和。
 
-![并行中需串行执行的架构方式](https://images.happymaya.cn/assert/backen-system/jiagou-10-03.png)
+![并行中需串行执行的架构方式](https://maxpixelton.github.io/images/assert/backen-system/jiagou-10-03.png)
 
 ### 依赖后置化
 
@@ -61,7 +61,7 @@ mermaid: true
 
 采用依赖后置化后，需要增加一个异步 Worker 进行数据补齐。架构如下图 4 所示：
 
-![依赖后置化架构](https://images.happymaya.cn/assert/backen-system/jiagou-10-04.png)
+![依赖后置化架构](https://maxpixelton.github.io/images/assert/backen-system/jiagou-10-04.png)
 
 对于一些可以后置补齐的数据，可以在写请求完成时将原始数据写入一张任务表。然后启动一个异步 Worker，异步 Worker 再调用后置化的接口去补齐数据，以及执行相应的后置流程（比如发送 MQ 等）。
 
@@ -77,13 +77,13 @@ mermaid: true
 
 比如从几十毫秒飙升至十几秒及以上，进而导致你的请求被阻塞，此请求线程得不到释放，还会导致你的微服务的 RPC 线程池被占满。此时又会带来新的问题，进程的 RPC 线程池被占满之后，就无法再接受任何新的请求，系统基本上也就宕机了。导致上述问题的架构如下图 5 所示：
 
-![超时导致请求线程阻塞问题](https://images.happymaya.cn/assert/backen-system/jiagou-10-05.png)
+![超时导致请求线程阻塞问题](https://maxpixelton.github.io/images/assert/backen-system/jiagou-10-05.png)
 
 在设置依赖的接口的超时阈值时，很多时候为了简便快速，大家都习惯设置一个不会太大，但下游接口实际执行时间远小于它的值，比如设置 3s 或者 5s。**我建议在设置此值时，通过系统上线后的性能监控图进行设置，设置超时时间等于 Max 的性能值，依据数据说话而不是“拍脑袋”做决定**。
 
 **如果你依赖的下游接口毛刺特别严重，表现就是它的接口性能的 Max 和 TP999，或与 TP99 相差特别大**，比如 TP999 在 200ms 左右，但 Max 在 3~5s 左右，如下图 6 所展示的情况：
 
-![TP999 和 Max 差距太大图示](https://images.happymaya.cn/assert/backen-system/jiagou-10-06.png)
+![TP999 和 Max 差距太大图示](https://maxpixelton.github.io/images/assert/backen-system/jiagou-10-06.png)
 
 产生此现象的原因可能是网络环境不好，偶尔会抖动，导致 Max飙高。遇到此种情况，**为了防止接口因下游太高的 Max 导致线程阻塞，你可以将此接口的超时时间设置为 TP999 和 Max 之间的值**。但此时也会带来一个问题，就是超时时间控制在此区间值范围之后，TP999 之外的 0.1% 请求都会因为超时而失败，应对方案见下述“重试设置”小节。
 

@@ -12,7 +12,7 @@ mermaid: true
 
 ## 为什么要怀疑下游
 
-![抽象的架构示意图](https://images.happymaya.cn/assert/backen-system/jiagou-19-01.png)
+![抽象的架构示意图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-19-01.png)
 
 从图一中可以看到，微服务会依赖很多其他微服务提供的接口、数据库、缓存，以及消息中间件等。
 
@@ -24,7 +24,7 @@ mermaid: true
 
 下面将基于图 2 展示的三大类依赖：**其他微服务**、**数据库**、**消息中间件**，总结可能引发的故障的应对方案和最佳使用准则。
 
-![包含三大类依赖的微服务图](https://images.happymaya.cn/assert/backen-system/jiagou-19-01.png)
+![包含三大类依赖的微服务图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-19-01.png)
 
 ## 对其他微服务的依赖
 
@@ -36,7 +36,7 @@ mermaid: true
 
 下面将重点讲解在采用微服务架构后，如何应对随之而来的分布式事务。这里以**提单**作为案例，介绍分布式事务的实际场景。在微服务架构下，订单和库存是两个单独的微服务，它们之间的架构如下图 3 所示：
 
-![订单和库存组成的微服务架构图](https://images.happymaya.cn/assert/backen-system/jiagou-19-03.png)
+![订单和库存组成的微服务架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-19-03.png)
 
 在提单时，订单模块需要调用库存模块进行商品的扣减，以便判断用户购买的商品是否有货。订单调用库存的扣减接口会有以下几种情况发生：
 
@@ -55,7 +55,7 @@ mermaid: true
 
 此方案的架构图如下图 4 所示，图中订单模块的数据库里除了订单原有的表之外，会增加一张任务表。
 
-![基于本地数据库的分布式事务架构](https://images.happymaya.cn/assert/backen-system/jiagou-19-04.png)
+![基于本地数据库的分布式事务架构](https://maxpixelton.github.io/images/assert/backen-system/jiagou-19-04.png)
 
 基于上述的架构，下单流程变更如下：
 

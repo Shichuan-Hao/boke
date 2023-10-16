@@ -66,7 +66,7 @@ mermaid: true
 
    1. 不管服务内部的逻辑如何变化，只要接口出入参格式不变（下图 1 中标记的 1、2 表示架构升级，但对外接口未变），就可以利用读服务的无状态特性进行流量回放。
 
-      ![新老版本的接口未变架构图](https://images.happymaya.cn/assert/backen-system/jiagou-07-01.png)
+      ![新老版本的接口未变架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-07-01.png)
 
 
 
@@ -74,7 +74,7 @@ mermaid: true
 
 下图 2 是读服务的自动化测试回归的整体架构：
 
-![](https://images.happymaya.cn/assert/backen-system/jiagou-07-02.png)
+![](https://maxpixelton.github.io/images/assert/backen-system/jiagou-07-02.png)
 
 在这个架构里包含三大模块，分别为**日志收集、数据回放，以及差异对比**。它们主要有以下 3 个功能：
 
@@ -88,7 +88,7 @@ mermaid: true
 
 采用过滤器的架构如下：
 
-![基于过滤器的日志收集架构图](https://images.happymaya.cn/assert/backen-system/jiagou-07-03.png)
+![基于过滤器的日志收集架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-07-03.png)
 
 
 
@@ -113,7 +113,7 @@ mermaid: true
 
 当前日志收集采用的过滤器是和业务应用同属于一个进程，它会占用业务应用的内存资源，同时对于业务也存在一定的侵入性。当遇到此种情况，可以将日志收集独立出来，采用单独进程进行运行。升级后的架构如下图 4 所示：
 
-![单独进程的日志收集架构图](https://images.happymaya.cn/assert/backen-system/jiagou-07-04.png)
+![单独进程的日志收集架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-07-04.png)
 
 采用单独进程后，业务应用需要按上述格式将出入参日志打印到指定文件。
 
@@ -135,7 +135,7 @@ mermaid: true
 
 整体架构如下图 5 所示：
 
-![实时数据回放架构图](https://images.happymaya.cn/assert/backen-system/jiagou-07-05.png)
+![实时数据回放架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-07-05.png)
 
 实时回放时：
 
@@ -146,7 +146,7 @@ mermaid: true
 
 1. **离线回放模式**，指在回放时只调用进行改造的新服务，将新服务返回的数据与收集日志里的出参进行比较。架构如下图 7 所示：
 
-   ![离线回放模式架构图](https://images.happymaya.cn/assert/backen-system/jiagou-05-07.png)
+   ![离线回放模式架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-05-07.png)
 
    优点：减少了对于线上老版本的调用量，避免对线上产生影响也节约了资源；
 
@@ -154,7 +154,7 @@ mermaid: true
 
 2. **实时回放模式**，为解决离线回放模式里，因为数据变化导致收集的日志里的出参无效问题，可以采用实时回放的模式，如下图 8 所示的架构图：
 
-   ![基于录制的实时回放模式](https://images.happymaya.cn/assert/backen-system/jiagou-07-08.png)
+   ![基于录制的实时回放模式](https://maxpixelton.github.io/images/assert/backen-system/jiagou-07-08.png)
 
    上述架构在收集的日志里，只记录入参而不记录出参，收集流程是图 8 中的标记 3。
 
@@ -166,7 +166,7 @@ mermaid: true
 
    针对上述的问题，可以采用无录制的实时回放模式，架构如下图 9 所示：
 
-   ![无录制的实时回放模式](https://images.happymaya.cn/assert/backen-system/jiagou-07-09.png)
+   ![无录制的实时回放模式](https://maxpixelton.github.io/images/assert/backen-system/jiagou-07-09.png)
 
    无录制实时回放不再记录入参数据了（见图 9 和图 8 里的标记 3 的差异)。
 
@@ -185,7 +185,7 @@ mermaid: true
 
 因此此处数据对比采用文本形式，先将数据转换为 JSON 格式，再进行对比。如下图 6 所示：
 
-![返回数据对比](https://images.happymaya.cn/assert/backen-system/jiagou-07-06.png)
+![返回数据对比](https://maxpixelton.github.io/images/assert/backen-system/jiagou-07-06.png)
 
 可以看到，同一个 SKU 的名称，在两边出现了不一致。如果只是进行了系统重构，相同的 SKU 对应的数据应该是一样，此处出现了不一致，代表出现了 Bug。
 

@@ -39,7 +39,7 @@ mermaid: true
 
 基于生产环境的流量录制压测架构如下图所示：
 
-![基于流量录制的压测架构图](https://images.happymaya.cn/assert/backen-system/jiagou-21-01.png)
+![基于流量录制的压测架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-21-01.png)
 
 上面架构和自动化回归架构类似，其中包含**内置于业务进程里的流量过滤器**、**日志保存模块**、**日志下发模块**、**压测模块**以及**压测管理端**。
 
@@ -55,7 +55,7 @@ mermaid: true
 
 首先，最简单的被压测应用架构如下图所示：
 
-![简单的被压测应用架构图](https://images.happymaya.cn/assert/backen-system/jiagou-21-02.png)
+![简单的被压测应用架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-21-02.png)
 
 上述架构是一个非常简单的应用部署图，其中包含一个存储模块（Redis  或数据库）及一台应用机器。
 
@@ -76,7 +76,7 @@ mermaid: true
 
 以上述案例的压测值和损耗比为例，架构如下图 3 所示：
 
-![](https://images.happymaya.cn/assert/backen-system/jiagou-21-03.png)
+![](https://maxpixelton.github.io/images/assert/backen-system/jiagou-21-03.png)
 
 当前图示中部署了 100 台机器，理论上可以支撑 9000/s的QPS，但如果所依赖的存储只能支撑 5000/s的QPS，那么即使部署 100 台或者更多的应用机器，它能够承载的QPS 也不能线性增长，最大只能支撑到 5000/s的QPS。
 
@@ -98,7 +98,7 @@ mermaid: true
 
 第**二种方式是采用压测数据打标 + 影子库的方式进行特殊处理**，架构如下图 4 所示:
 
-![数据打标+影子库压测架构](https://images.happymaya.cn/assert/backen-system/jiagou-21-04.png)
+![数据打标+影子库压测架构](https://maxpixelton.github.io/images/assert/backen-system/jiagou-21-04.png)
 
 上述架构里的数据打标和第一种里的数据修改是有区别的，它不会更改原始录制的任何数据，只是在压测的时候，对于压测模块发起的任何请求都增加一个标记，标记它为压测请求。
 

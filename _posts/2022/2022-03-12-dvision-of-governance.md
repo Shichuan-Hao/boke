@@ -83,7 +83,7 @@ mermaid: true
 
 首先判断 8 和中位数 5 的大小关系。因为 8 更大，所以在更小的范围 6, 7, 8, 9, 10 中继续查找。此时更小的范围的中位数是 8。由于 8 等于中位数 8，所以查找到并打印查找到的 8 对应在数组中的 index 值。如下图所示。
 
-![](https://images.happymaya.cn/assert/structures/1201.gif)
+![](https://maxpixelton.github.io/images/assert/structures/1201.gif)
 
 从代码实现的角度来看，可以采用两个索引 `low` 和 `high`，确定查找范围。最初 `low `为 `0`，`high` 为数组长度减 `1`。在一个循环体内，判断 `low` 到 `high` 的中位数与目标变量 `targetNumb` 的大小关系。根据结果确定向左走$（high = middle - 1）$或者向右走$（low = middle + 1）$，来调整 `low` 和 `high` 的值。直到 `low` 反而比 `high` 更大时，说明查找不到并跳出循环。代码如下：
 

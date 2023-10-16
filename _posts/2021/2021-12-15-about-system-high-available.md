@@ -102,7 +102,7 @@ $$
 
    为什么要监控这些指标？因为它们是判断系统基础环境是否为高可用的重要核心指标。
 
-   ![监控报警指标](https://images.happymaya.cn/assert/architecute/1501.png)
+   ![监控报警指标](https://maxpixelton.github.io/images/assert/architecute/1501.png)
 
 2. 监控工具
 
@@ -118,7 +118,7 @@ $$
 
    **监控报警策略一般由时间维度**、**报警级别**、**阈值设定三部分组成**。
 
-   ![监控报警策略](https://images.happymaya.cn/assert/architecute/1502.png)
+   ![监控报警策略](https://maxpixelton.github.io/images/assert/architecute/1502.png)
 
    假设系统的监控指标有CPU、内存和磁盘，监控的时间维度是分钟级，监控的阈值设置为占比。那么你可以定义出如下的监控报警策略：
 
@@ -140,7 +140,7 @@ $$
 
 监控工具有 CAT、SkyWalking、Pinpoint、Zipkin 等。
 
-![](https://images.happymaya.cn/assert/architecute/1504.png)
+![](https://maxpixelton.github.io/images/assert/architecute/1504.png)
 
 ### 存储服务监控
 
@@ -189,4 +189,4 @@ $$
 
 ## 总结
 
-![](https://images.happymaya.cn/assert/architecute/1506.png)
+![](https://maxpixelton.github.io/images/assert/architecute/1506.png)

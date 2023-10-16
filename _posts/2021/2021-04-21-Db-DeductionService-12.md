@@ -85,7 +85,7 @@ mermaid: true
 
 基于上述特性实现的架构方案如下图 1 所示：
 
-![纯数据库扣减架构图](https://images.happymaya.cn/assert/backen-system/jiagou-12-01.png)
+![纯数据库扣减架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-12-01.png)
 
 包含：
 
@@ -127,7 +127,7 @@ mermaid: true
 
 完成了存储的数据结构设计后，咱们再来学习一下扣减服务提供的扣减接口的实现。扣减接口接受用户提交的扣减请求，包含用户账号、一批商品及对应的购买数量，大致实现逻辑如下图 2 所示：
 
-![扣减实现流程](https://images.happymaya.cn/assert/backen-system/jiagou-12-02.png)
+![扣减实现流程](https://maxpixelton.github.io/images/assert/backen-system/jiagou-12-02.png)
 
 在图 2  的流程开始时：
 
@@ -187,7 +187,7 @@ mermaid: true
 
 针对上述的问题，可以对整体架构进行升级，升级后的架构如下图 3 所示：
 
-![读写分离的扣减架构图](https://images.happymaya.cn/assert/backen-system/jiagou-12-03.png)
+![读写分离的扣减架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-12-03.png)
 
 整体的升级策略采用了读写分离的方式，另外主从复制直接使用了 MySQL 等数据库已有功能，改动上非常小，只要在扣减服务里配置两个数据源。当客户查询剩余库存数量、扣减服务中的前置校验时，读取从数据库即可。而真正的数据扣减还是使用主数据库。
 
@@ -199,7 +199,7 @@ mermaid: true
 
 在基于数据库的主从复制降低了主库流量压力之后，还需要升级的就是读取的性能了。使用 Binlog 实现简单、可靠的异构数据同步的技能，应用此方案后整体的架构如下图 4 所示：
 
-![读写基于不同存储的架构图](https://images.happymaya.cn/assert/backen-system/jiagou-12-04.png)
+![读写基于不同存储的架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-12-04.png)
 
 和上面第 2 点实现的区别是增加了**缓存**，用来提升读取从库的性能。在技术实现上，采用 Binlog 技术。
 

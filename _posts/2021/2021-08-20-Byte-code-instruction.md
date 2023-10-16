@@ -18,7 +18,7 @@ mermaid: true
 
 Java 字节码的异常处理机制，如下图所示：
 
-![](https://images.happymaya.cn/assert/java/jvm/jvm-20-01.jpg)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-20-01.jpg)
 
 其中：
 

@@ -21,7 +21,7 @@ mermaid: true
 
 当一个系统出现问题的时候，一般不会想要立刻优化 JVM，会优先尝试从最高层次上进行问题的解决：解决最主要的瓶颈点。下面是一张关于优化层次的图，箭头表示优化时需要考虑的路径（也有例外）
 
-![](https://images.happymaya.cn/assert/assert/java/jvm/jvm-23-01.png)
+![](https://maxpixelton.github.io/images/assert/assert/java/jvm/jvm-23-01.png)
 
 ### 数据库优化
 

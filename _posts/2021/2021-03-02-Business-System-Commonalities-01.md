@@ -28,7 +28,7 @@ mermaid: true
 # 1. 什么是业务后台系统
 以一个外卖订购服务为例子，帮助理解和明确“业务后台系统（后台开发）”的定义和边界。
 
-[外卖系统全局架构](https://images.happymaya.cn/assert/backen-system/jiagou-01-01.png)
+[外卖系统全局架构](https://maxpixelton.github.io/images/assert/backen-system/jiagou-01-01.png)
 上面展示的是一个外卖系统的全局架构图，如果某个公司要进军外卖业务，就需要开发一套外卖系统。
 
 其中包含用户可直接使用的各个终端，如 IOS、Android、M页以及PC端。提供内容展示和系统交互，称为**业务前台系统。**
@@ -83,7 +83,7 @@ mermaid: true
 
 ## 2.3 库存及支付类业务
 
-[提单扣减流程](https://images.happymaya.cn/assert/backen-system/jiagou-01-02.png)
+[提单扣减流程](https://maxpixelton.github.io/images/assert/backen-system/jiagou-01-02.png)
 上图展示的是扣减场景中的提单扣减流程，属于一个大型业务之下的某个系统的技术诉求，比如库存的扣减、次数的限制、支付金额的扣减等。虽然这几个系统都会对外提供诸如查询库存、次数等能力，**但它最重要是保障扣减的高可用，因为一般扣减都是和提单共同发生。如果扣减失败，那么提单也无法成功，所以，扣减业务也是一个需要重点保障的场景。**
 
 **以上，我使用目的性这个维度对不同类型的公司业务（短视频、微博、新闻资讯、电商、打车等）梳理分类，得出了以下的结论：**

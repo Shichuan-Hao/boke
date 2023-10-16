@@ -80,7 +80,7 @@ mermaid: true
 
    **常用的探测方法是线性探测法。** 比如有一组关键字 {12，13，25，23}，采用的哈希函数为 key mod 11。当插入 12，13，25 时可以直接插入，地址分别为 1、2、3。而当插入 23 时，哈希地址为 23 mod 11 = 1。然而，地址 1 已经被占用，因此沿着地址 1 依次往下探测，直到探测到地址 4，发现为空，则将 23 插入其中。如下图所示：
 
-   ![](https://images.happymaya.cn/assert/structures/1001.gif)
+   ![](https://maxpixelton.github.io/images/assert/structures/1001.gif)
 
 2. 链地址法
 
@@ -88,7 +88,7 @@ mermaid: true
 
    例如，有一组关键字 {12,13,25,23,38,84,6,91,34}，采用的哈希函数为 key mod 11。如下图所示：
 
-   ![](https://images.happymaya.cn/assert/structures/1002.gif)
+   ![](https://maxpixelton.github.io/images/assert/structures/1002.gif)
 
 
 
@@ -143,11 +143,11 @@ mermaid: true
 
 **按关键字序列顺序依次向哈希表中填入，发生冲突后按照“线性探测”探测到第一个空位置填入。**
 
-![](https://images.happymaya.cn/assert/structures/1003.gif)
+![](https://maxpixelton.github.io/images/assert/structures/1003.gif)
 
 **最终的插入结果如下表所示：**
 
-![](https://images.happymaya.cn/assert/structures/1004.png)
+![](https://maxpixelton.github.io/images/assert/structures/1004.png)
 
 **接着，有了这个表之后，再来看查找流程：**
 

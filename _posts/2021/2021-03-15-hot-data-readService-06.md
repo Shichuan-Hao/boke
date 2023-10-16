@@ -22,13 +22,13 @@ mermaid: true
 
 当百万的 QPS 属于不同用户时，因缓存是集群化的，所有到达业务后台的请求会根据一定路由规则（如 Hash），分散到请求缓存集群中的某一个节点，具体架构如下图 1 所示：
 
-![百万请求属于不同用户的架构图](https://images.happymaya.cn/assert/backen-system/jiagou-06-01.png)
+![百万请求属于不同用户的架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-06-01.png)
 
 假设一个节点最大能够支撑 10W QPS，只需在集群中部署 10 台节点即可支持百万流量。
 
 但当百万 QPS 都属于同一用户时，即使缓存是集群化的，同一个用户的请求都会被路由至集群中的某一个节点，整体架构如图 2 所示：
 
-![百万请求属于相同用户的架构图](https://images.happymaya.cn/assert/backen-system/jiagou-06-02.png)
+![百万请求属于相同用户的架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-06-02.png)
 
 即使此节点的机器配置非常好，当前能够支持住百万 QPS。但随着流量上涨，它也无法满足未来的流量诉求。原因有 2 点：
 
@@ -50,7 +50,7 @@ mermaid: true
 
 主从复制开启后，一个主节点可以挂一至多个从。升级后的架构如下图 3 所示（方案解读在架构图中）：
 
-![](https://images.happymaya.cn/assert/backen-system/jiagou-06-03.png)
+![](https://maxpixelton.github.io/images/assert/backen-system/jiagou-06-03.png)
 
 
 
@@ -74,7 +74,7 @@ mermaid: true
 
 针对此类业务特性，可以**将热点数据前置缓存在应用程序内来应对热点查询**，并解决前一小节里主从复制方案的扩展性问题。使用了前置缓存的架构如下图 4 所示：
 
-![前置缓存的架构图](https://images.happymaya.cn/assert/backen-system/jiagou-06-04.png)
+![前置缓存的架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-06-04.png)
 
 
 
@@ -112,7 +112,7 @@ mermaid: true
 
    另外，前置缓存里数据很少，很多变更消息都会因不在前置缓存中而被忽略掉。**为了实现前置缓存的更新，可以将前置缓存的数据异构一份出来用作判断**，升级的方案如下图 5 所示：
 
-   ![前置缓存实时更新方案图](https://images.happymaya.cn/assert/backen-system/jiagou-06-05.png)
+   ![前置缓存实时更新方案图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-06-05.png)
 
    通过异构前置缓存用作判断，可以过滤出需要处理的数据，并实时调用对应机器更新即可。此方案实现起来较复杂且异构本来也导致了延迟，实际上大部分场景设置刷新时间即可满足。
 
@@ -126,11 +126,11 @@ mermaid: true
 
    其次，如果前置缓存采用定期过期，在过期时若将数据清理掉，那么所有的请求都会逃逸至后端加载最新的缓存，也有可能把后端缓存打挂。这两种情况对应的流程图如下图 6 所示：
 
-   ![逃逸流量的架构图](https://images.happymaya.cn/assert/backen-system/jiagou-06-06.png)
+   ![逃逸流量的架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-06-06.png)
 
    对于这两种情况，可以对逃逸流量进行前置等待或使用历史数据的方案。不管是初始化还是数据过期，在从后端加载数据时，只允许一个请求逃逸。这样最大的逃逸流量为部署的应用总数，量级可控。架构如下图 7 所示：
 
-   ![逃逸流量控制的架构图](https://images.happymaya.cn/assert/backen-system/jiagou-06-07.png)
+   ![逃逸流量控制的架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-06-07.png)
 
    对于数据初始化为空时，其他非逃逸的请求可以等待前置缓存的数据并设置一个超时时间。
 
@@ -171,7 +171,7 @@ mermaid: true
 
      下图 8 为在缓存服务器进行计数的架构方案：
 
-     ![主动发现热点缓存架构图](https://images.happymaya.cn/assert/backen-system/jiagou-06-08.png)
+     ![主动发现热点缓存架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-06-08.png)
 
      采用主动发现的架构后，读服务接受到请求后仍然会默认的从前置缓存获取数据，如获取到即直接返回。
 
@@ -185,7 +185,7 @@ mermaid: true
 
 在系统上线前，对于开启了前置缓存的应用进行压测，得到单机最大的 QPS。根据压测值设置单机的限流阈值，阈值可以设置为压测值的一半或者更低。设置为压测阈值的一半或更低，是因为压测时应用 CPU 基本已达到  100%，为了保证线上应用能够正常运转，是不能让 CPU 达到 100% 的。架构如下图 9 所示：
 
-![前置限流的架构图](https://images.happymaya.cn/assert/backen-system/jiagou-06-09.png)
+![前置限流的架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-06-09.png)
 
 
 根据此方案你可以看到，在做架构设计时，即使已经做了非常多的应对方案，最后的兜底降级还是必不可少，因为超出预期的事情说来就来。

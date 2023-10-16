@@ -99,7 +99,7 @@ mermaid: true
 
 上文中，采用了“目的性”这个维度，将后台业务系统拆分或者说归类为三大类，**读服务、写服务和扣减服务。**拆分后可以得到三种类型的模块，当然难道所有的后台系统都只有这三个模块？
 
-![电商后台拆分架构](https://images.happymaya.cn/assert/backen-system/jiagou-02-01.png)
+![电商后台拆分架构](https://maxpixelton.github.io/images/assert/backen-system/jiagou-02-01.png)
 
 以上图 1 的电商后台拆分架构为例，电商后台一般包含：
 
@@ -136,7 +136,7 @@ mermaid: true
 
 微信读书业务流程图，如下图所示：
 
-![微信读书业务流程图](https://images.happymaya.cn/assert/backen-system/jiagou-02-02.png)
+![微信读书业务流程图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-02-02.png)
 
 结合前面文字描述与图 2 的流程图展示之后，第一次垂直拆分的结果，如下：
 
@@ -161,7 +161,7 @@ mermaid: true
 
 支付模块通常会对外提供余额查询与支付扣减的能力，此处可以将支付模块分为**额度查询模块**和**支付扣减模块**，同样完成了支付模块的第二次技术维度的垂直划分。拆分结果如下图 3 所示：
 
-![微信读书业务流程图](https://images.happymaya.cn/assert/backen-system/jiagou-02-03.png)
+![微信读书业务流程图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-02-03.png)
 
 
 
@@ -178,7 +178,7 @@ mermaid: true
 
 如果是 Java 应用，还会包含 MyBatis 或者 Hibernate 相关的数据库 ORM 映射的脚手架代码，其他语言以此类推。这些通用的代码只编写一次即可形成一个模块，比如数据访问模块，可以供用户的读模块和写模块共同使用，这就是水平拆分的结果，它的上层是读写模块、下层为共性的数据访问模块。具体形式见下图 4：
 
-![微信读书业务流程图](https://images.happymaya.cn/assert/backen-system/jiagou-02-04.png)
+![微信读书业务流程图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-02-04.png)
 
 如果单独部署水平拆分得到的数据访问模块会因为网络、数据序列化等因素降低读写模块的性能。为了规避此问题，在实际应用中，可以将数据访问模块的代码单独一个工程，但在编译时以动态包的形式链接进用户读模块、用户写模块里，这样就两全其美了。
 

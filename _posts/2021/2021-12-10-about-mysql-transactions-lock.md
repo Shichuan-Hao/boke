@@ -18,7 +18,7 @@ MySQL 的事务隔离级别（Isolation Level）是指：当多个线程操作�
 
 它分为四个不同层次，按隔离水平高低排序，**读未提交 < 读已提交 < 可重复度 < 串行化**。
 
-![](https://images.happymaya.cn/assert/architecute/1001.png)
+![](https://maxpixelton.github.io/images/assert/architecute/1001.png)
 
 - **读未提交（Read uncommitted）**：隔离级别最低、隔离度最弱，脏读、不可重复读、幻读三种现象都可能发生。所以它基本是理论上的存在，实际项目中没有人用，但性能最高。
 - **读已提交（Read committed）**：保证了事务不出现中间状态的数据，所有数据都是已提交且更新的，解决了脏读问题。但读已提交级别依旧很低，它允许事务间可并发修改数据，所以不保证再次读取时能得到同样的数据，也就是还会存在不可重复读、幻读的可能。
@@ -50,7 +50,7 @@ MySQL 事务和锁机制需要熟悉的点：
 
 **脏读：** 读到了未提交事务的数据。
 
-![](https://images.happymaya.cn/assert/architecute/1002.png)
+![](https://maxpixelton.github.io/images/assert/architecute/1002.png)
 
 假设有 A 和 B 两个事务，在并发情况下，事务 A 先开始读取商品数据表中的数据，然后再执行更新操作，如果此时事务 A 还没有提交更新操作，但恰好事务 B 开始，然后也需要读取商品数据，此时事务 B 查询得到的是刚才事务 A 更新后的数据。
 
@@ -65,7 +65,7 @@ MySQL 事务和锁机制需要熟悉的点：
 
 事务 A 先读取一条数据，然后执行逻辑的过程中，事务 B 更新了这条数据，事务 A 再读取时，发现数据不匹配，这个现象就是“不可重复读”。
 
-![](https://images.happymaya.cn/assert/architecute/1003.png)
+![](https://maxpixelton.github.io/images/assert/architecute/1003.png)
 
 不可重复需要关注点：
 
@@ -78,7 +78,7 @@ MySQL 事务和锁机制需要熟悉的点：
 
 在一个事务内，同一条查询语句在不同时间段执行，得到不同的结果集。
 
-![](https://images.happymaya.cn/assert/architecute/1004.png)
+![](https://maxpixelton.github.io/images/assert/architecute/1004.png)
 
 事务 A 读了一次商品表，得到最后的 ID 是 3，事务 B 也同样读了一次，得到最后 ID 也是 3。接下来事务 A 先插入了一行，然后读了一下最新的 ID 是 4，刚好是前面 ID 3 加上 1，然后事务 B 也插入了一行，接着读了一下最新的 ID 发现是 5，而不是 3 加 1。
 
@@ -100,7 +100,7 @@ MySQL 事务和锁机制需要熟悉的点：
 
 死锁一般发生在多线程（两个或两个以上）执行的过程中。因为争夺资源造成线程之间相互等待，这种情况就产生了死锁。
 
-![](https://images.happymaya.cn/assert/architecute/1005.png)
+![](https://maxpixelton.github.io/images/assert/architecute/1005.png)
 
 比如有资源 1 和 2，以及线程 A 和 B，当线程 A 在已经获取到资源 1 的情况下，期望获取线程 B 持有的资源 2。与此同时，线程 B 在已经获取到资源 2 的情况下，期望获取现场 A 持有的资源 1。
 
@@ -110,19 +110,19 @@ MySQL 事务和锁机制需要熟悉的点：
 
 **互斥：** 多个线程不能同时使用一个资源。比如线程 A 已经持有的资源，不能再同时被线程 B 持有。如果线程 B 请求获取线程 A 已经占有的资源，那线程 B 只能等待这个资源被线程 A 释放。
 
-![互斥条件](https://images.happymaya.cn/assert/architecute/1006.png)
+![互斥条件](https://maxpixelton.github.io/images/assert/architecute/1006.png)
 
 **持有并等待：** 当线程 A 已经持有了资源 1，又提出申请资源 2，但是资源 2 已经被线程 C 占用，所以线程 A 就会处于等待状态，但它在等待资源 2 的同时并不会释放自己已经获取的资源 1。
 
-![](https://images.happymaya.cn/assert/architecute/1007.png)
+![](https://maxpixelton.github.io/images/assert/architecute/1007.png)
 
 **不可剥夺：** 线程 A 获取到资源 1 之后，在自己使用完之前不能被其他线程（比如线程 B）抢占使用。如果线程 B 也想使用资源 1，只能在线程 A 使用完后，主动释放后再获取。
 
-![](https://images.happymaya.cn/assert/architecute/1008.png)
+![](https://maxpixelton.github.io/images/assert/architecute/1008.png)
 
 **循环等待：** 发生死锁时，必然会存在一个线程，也就是资源的环形链。比如线程 A 已经获取了资源 1，但同时又请求获取资源 2。线程 B 已经获取了资源 2，但同时又请求获取资源 1，这就会形成一个线程和资源请求等待的环形图。
 
-![](https://images.happymaya.cn/assert/architecute/1009.png)
+![](https://maxpixelton.github.io/images/assert/architecute/1009.png)
 
 
 

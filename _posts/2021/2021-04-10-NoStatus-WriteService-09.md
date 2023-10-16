@@ -51,7 +51,7 @@ mermaid: true
 
 分库分表架构里，假设当前只有两个分库，并且这两个分库分别部署在不同机房里，架构如下图 1 所示：
 
-![分库分表且分机房架构](https://images.happymaya.cn/assert/backen-system/jiagou-09-01.png)
+![分库分表且分机房架构](https://maxpixelton.github.io/images/assert/backen-system/jiagou-09-01.png)
 
 当其中一个分库所处的机房出现网络故障，导致该分库不可达时，理论上系统就出现故障了。
 
@@ -61,13 +61,13 @@ mermaid: true
 
 从保障数据可随时写入的角度看，此方式是可行的。升级后的架构如下图 2 所示：
 
-![可随时写入的架构方案](https://images.happymaya.cn/assert/backen-system/jiagou-09-02.png)
+![可随时写入的架构方案](https://maxpixelton.github.io/images/assert/backen-system/jiagou-09-02.png)
 
 这种当分库分表里一个分库出现故障后，就随机寻找一个可用的数据库进行写入的方式即是一种保障系统高可用的架构方案。
 
 此方案可以将图 2 和按固定规则路由的分库分表方案进行结合，方案如下图 3 所示：
 
-![结合后的随机写入架构](https://images.happymaya.cn/assert/backen-system/jiagou-09-03.png)
+![结合后的随机写入架构](https://maxpixelton.github.io/images/assert/backen-system/jiagou-09-03.png)
 
 结合后的架构里，存储依然使用分库分表，但写入规则则发生了一些变化。它不再按固定路由进行写入，而是根据当前实时可用的数据库列表进行随机（如顺序轮流）写入。
 
@@ -93,7 +93,7 @@ mermaid: true
 
 因为新扩容的机器容量为空，**更高的写入权重，可以让数据更快地在全部数据库里变得均衡**。增加权重的架构如下图 4 所示：
 
-![按权重的数据写入架构](https://images.happymaya.cn/assert/backen-system/jiagou-09-04.png)
+![按权重的数据写入架构](https://maxpixelton.github.io/images/assert/backen-system/jiagou-09-04.png)
 
 ## 写入的处理问题
 
@@ -106,7 +106,7 @@ mermaid: true
 
 对于上述的问题，一个整体的架构解决方案。如下图 5 所示：
 
-![采用随机写入后的整体架构方案](https://images.happymaya.cn/assert/backen-system/jiagou-09-05.png)
+![采用随机写入后的整体架构方案](https://maxpixelton.github.io/images/assert/backen-system/jiagou-09-05.png)
 
 简单来说，整体的架构方案就是在分库分表的方案基础上，做了进一步升级。
 
@@ -126,7 +126,7 @@ mermaid: true
 
 针对这个问题，解决的架构方案如下图 6 所示：
 
-![解决数据延迟的架构](https://images.happymaya.cn/assert/backen-system/jiagou-09-06.png)
+![解决数据延迟的架构](https://maxpixelton.github.io/images/assert/backen-system/jiagou-09-06.png)
 
 在数据写入后，用户需要立即查看写入内容的场景并不太多。
 
@@ -142,7 +142,7 @@ mermaid: true
 
 兜底策略和同步模块比较类似，主要架构如下图 7 所示：
 
-![兜底同步策略](https://images.happymaya.cn/assert/backen-system/jiagou-09-07.png)
+![兜底同步策略](https://maxpixelton.github.io/images/assert/backen-system/jiagou-09-07.png)
 
 兜底的同步对于无状态存储中的数据按创建时间进行不断轮询，轮询会对超过设置的时间阈值（如  5S）仍未得到同步的数据进行主动同步。
 
@@ -158,7 +158,7 @@ mermaid: true
 
 可降级的架构方案如下图 8 所示：
 
-![缓存可降级架构方案](https://images.happymaya.cn/assert/backen-system/jiagou-09-08.png)
+![缓存可降级架构方案](https://maxpixelton.github.io/images/assert/backen-system/jiagou-09-08.png)
 
 ## 其他功能流程保持复用
 

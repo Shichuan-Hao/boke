@@ -23,7 +23,7 @@ mermaid: true
 
 举个例子，假设要在一个在线系统中实时处理数据，该系统平均每分钟会新增 300M 数据量。如果代码不能在 1 分钟内完成对这 300M 数据的处理，那么这个系统就会发生时间爆炸和空间爆炸。表现就是，电脑执行越来越慢，直到死机。因此，需要选择合理的计算方法，尽可能降低代码复杂程度，来完成计算任务。
 
-![](https://images.happymaya.cn/assert/structures/0101.gif)
+![](https://maxpixelton.github.io/images/assert/structures/0101.gif)
 
 # 复杂度的衡量
 提到降低复杂度，首先需要知道怎么衡量复杂度，在实际衡量时，通常会围绕以下两个维度进行：
@@ -36,7 +36,7 @@ mermaid: true
 
 有一个生活中常见的栗子：某个十字路口没有建立立交桥时，所有车辆通过红绿灯分批次行驶通过。当大量汽车同时过路口的时候，就会分别消耗大家的时间。但建了立交桥之后，所有车辆都可以同时通过了，因为立交桥的存在，等于是消耗了空间资源，来换取了时间资源。
 
-![](https://images.happymaya.cn/assert/structures/0102.gif)
+![](https://maxpixelton.github.io/images/assert/structures/0102.gif)
 
 ## 这段代码对资源的消耗是什么 ？
 一般情况下，不必关注这段代码对于资源消耗的绝对量，因为不管是时间还是空间，它们的消耗程度都与输入的数据量高度相关，输入数据少时消耗自然就少。
@@ -75,7 +75,7 @@ mermaid: true
 
 方法一，建立并初始化数组 b，得到一个与输入数组等长的全零数组。通过一个 for 循环，从左到右将 a 数组的元素，从右到左地赋值到 b 数组中，最后输出数组 b 得到结果。
 
-![](https://images.happymaya.cn/assert/structures/0103.gif)
+![](https://maxpixelton.github.io/images/assert/structures/0103.gif)
 
 代码如下：
 
@@ -110,7 +110,7 @@ public static void s1_1() {
 
 定义缓存变量 tmp，接着通过一个 for 循环，从 0 遍历到a 数组长度的一半（即 $\frac{len(a)}{2}$）。每次遍历执行的内容是交换首尾对应的元素。最后打印数组 a，得到结果。
 
-![](https://images.happymaya.cn/assert/structures/0104.gif)
+![](https://maxpixelton.github.io/images/assert/structures/0104.gif)
 
 如下代码：
 

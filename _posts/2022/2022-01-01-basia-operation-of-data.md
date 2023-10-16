@@ -30,7 +30,7 @@ mermaid: true
 
 - 如果没有出现过，则把这个元素新增到未知数据结构中，并且把次数赋值为 1。
 
-  ![](https://images.happymaya.cn/assert/structures/0301.gif)
+  ![](https://maxpixelton.github.io/images/assert/structures/0301.gif)
 
 这里的数据操作包括下面三个：
 
@@ -91,7 +91,7 @@ mermaid: true
 
 既然是这样，要查找其第二个元素，就必须要先知道第一个元素在哪里。以此类推，链表中某个位置的元素的查找，只能通过从前往后的顺序逐一去查找。不难发现，链表因为没有索引，只能“一个接一个”地按照位置条件查找，在这种情况下时间复杂度就是 O (n)。
 
-![](https://images.happymaya.cn/assert/structures/0302.gif)
+![](https://maxpixelton.github.io/images/assert/structures/0302.gif)
 
 **例三：关于数值条件的查找。**
 
@@ -101,7 +101,7 @@ mermaid: true
 
 有没有时间复杂度更低的方式呢？答案当然是：有。
 
-![](https://images.happymaya.cn/assert/structures/0303.gif)
+![](https://maxpixelton.github.io/images/assert/structures/0303.gif)
 
 在前面遇到过，查找出数组中出现次数最多的元素的情况。采用的方法是，把数组转变为字典，以保存元素及其出现次数的 k-v 映射关系。而在每次的循环中，都需要对当前遍历的元素，去查找它是否在字典中出现过。这里就是很实际按照元素数值查找的例子。如果借助字典的数据类型，这个例子的查找问题，就可以在 $O(1)$ 的时间复杂度内完成了。
 

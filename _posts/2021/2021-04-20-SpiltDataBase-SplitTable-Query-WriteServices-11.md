@@ -22,7 +22,7 @@ mermaid: true
 
 **为了满足和原有分库维度不一样的查询，最简单的方式是按新的维度异构一套数据**，它的架构如下图 1 所示，数据异构可以采用在本专栏模块二中介绍的 Binlog 进行处理。
 
-![数据异构架构图](https://images.happymaya.cn/assert/backen-system/jiagou-11-01.png)
+![数据异构架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-11-01.png)
 
 采用数据异构满足了上述按商家维度查看数据的诉求，但如果又来一个新的需求，需要按订单所属的来源（小程序、App、M 页或者 PC 站点）进行订单数据查询呢？此时，是否需要按来源维度进行数据异构呢？
 
@@ -37,7 +37,7 @@ mermaid: true
 
 **代理式的分库分表的架构方案：分库代理中间件解析用户指定的 SQL 并提取路由字段，根据路由字段去访问具体的分库进行数据的查询**。如下图 2 所示：
 
-![代理式分库分表方案](https://images.happymaya.cn/assert/backen-system/jiagou-11-02.png)
+![代理式分库分表方案](https://maxpixelton.github.io/images/assert/backen-system/jiagou-11-02.png)
 
 当用户没有指定路由字段时，可以在分库代理中间件进行转换处理。以订单为例，假设路由字段为用户账号，当查询时只指定了订单号，代理层无法计算到具体命中了哪个分库。但是代理层可以多线程并发地去请求所有的分库，查询此条订单信息。此方式，也可以查询到指定的订单信息。
 
@@ -49,7 +49,7 @@ select 订单信息 from t_order order by createdTime limit 100
 
 在没有路由字段时，分库分表的前 100 个订单如何获取呢？因为在极端情况下全局的前 100  条数据可能都分布在某一个分库里，为了保障一定能够获取到全局的前 100 条数据，代理层需要向每一个分库（上述有三个分库）都获取 100  条数据，并在代理层进行汇总排序，如下图 3 所示：
 
-![分库分表查询架构图](https://images.happymaya.cn/assert/backen-system/jiagou-11-03.png)
+![分库分表查询架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-11-03.png)
 
 从上图中可以看到，不管是不带路由字段的条件查询还是排序聚合的查询，代理层都可以通过扫描分库来实现，比如上述的获取前 100 条订单数据。但在实现时，其实总共需要获取 300 条数据才能实现上述目标，这对于代理层的内存和 CPU  占用是非常巨大的，因为一次代理层的查询需要分裂出分库数量的查询，才能满足上述目标，这增加了调用量。
 
@@ -101,7 +101,7 @@ ES 里的所有内容都可以建立索引，虽然能带来提升性能的好�
 
 基于 Binlog 的 ES 数据异构如下图 4 所示：
 
-![基于 Binlog 的 ES 数据异构图](https://images.happymaya.cn/assert/backen-system/jiagou-11-04.png)
+![基于 Binlog 的 ES 数据异构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-11-04.png)
 
 上述异构的数据同步至 ES 时，ES 中的数据结构应该如何设计来满足存储呢？在正式设计前，需要搞明白 ES 中的几个重要概念。
 
@@ -203,11 +203,11 @@ detail_address BIGINT NOT NULL }
 
 基于上述概念的架构如下图 5 所示：
 
-![ES 的架构简介](https://images.happymaya.cn/assert/backen-system/jiagou-11-05.png)
+![ES 的架构简介](https://maxpixelton.github.io/images/assert/backen-system/jiagou-11-05.png)
 
 可以看到 ES 的架构里没有代理式网关，ES 里所有的节点都可以接受用户的请求。对于类似第二小节里提到的排序+数量查询，**ES 和代理式分库分表的架构比较类似，接受请求的节点并行地去获取所有其他节点，并在该节点里进行集群排序和过滤**，具体流程如下图 6 所示：
 
-![请求处理流程](https://images.happymaya.cn/assert/backen-system/jiagou-11-06.png)
+![请求处理流程](https://maxpixelton.github.io/images/assert/backen-system/jiagou-11-06.png)
 
 
 

@@ -19,7 +19,7 @@ mermaid: true
 
 **对于无状态存储集群的数据同步任务，最简单的实现方式便是对于每一个分库启动一个自循环的 Worker**，它的架构如下图 1 所示：
 
-![自循环的 Worker 架构](https://images.happymaya.cn/assert/backen-system/jiagou-15-01.png)
+![自循环的 Worker 架构](https://maxpixelton.github.io/images/assert/backen-system/jiagou-15-01.png)
 
 自循环的 Worker 在启动时，会开启一个不跳出的循环或者借助一些开源工具（如 Java 中比较出名的  Quartz）来保证任务不间断执行。
 
@@ -47,7 +47,7 @@ ORDER BY
 
 对于上述两个问题，有一种可以提升任务执行速度，既具备扩展性、又能保障高可用的任务架构模式，如下图 2 所示：
 
-![自循环的 Worker 架构](https://images.happymaya.cn/assert/backen-system/jiagou-15-02.png)
+![自循环的 Worker 架构](https://maxpixelton.github.io/images/assert/backen-system/jiagou-15-02.png)
 
 在上述的整体架构里，每个分库对应的 Worker 的执行流程都类似，因此，只对一个分库的 Worker 进行分析，其余的可以以此类推：
 
@@ -63,7 +63,7 @@ ORDER BY
 
    4. 每一个 Worker 都会获取到当前分库的所有其他 Worker  的哈希值。假设一个分库配置了四个 Worker，其中一个 Worker 会获取到自己及其他三个 Worker  的哈希值，假设为{200，300，500，800}。这四个 Worker 的 Hash 值便组成了一个环形区间，如下图 3 所示：
 
-      ![自循环的 Worker 架构](https://images.happymaya.cn/assert/backen-system/jiagou-15-03.png)
+      ![自循环的 Worker 架构](https://maxpixelton.github.io/images/assert/backen-system/jiagou-15-03.png)
 
       这个环形区间，类似一致性 Hash，每一个结点都代表一个 Worker，这个 Worker 负责任务编号在它区间范围内的任务的执行。
 
@@ -162,11 +162,11 @@ UNIQUE idx_return_sku ( return_uuid, sku_id ) COMMENT '返还商品唯一标识'
 
 如果技术上没有并发的时序控制，在处理两个请求时，有可能都判断为可返还并实际进行返还，最终就会出现返还 6 个 A（实际当时只扣减了 5 个）的超返还的场景。具体如下图 4 所示：
 
-![超返还的场景](https://images.happymaya.cn/assert/backen-system/jiagou-15-04.png)
+![超返还的场景](https://maxpixelton.github.io/images/assert/backen-system/jiagou-15-04.png)
 
 **对于上述潜在的风险，可以在返还前，对返还所属的扣减 ID 进行加锁来保证串行化操作，规避超卖的风险**，架构如下图 5 所示：
 
-![加锁串行的架构](https://images.happymaya.cn/assert/backen-system/jiagou-15-04.png)
+![加锁串行的架构](https://maxpixelton.github.io/images/assert/backen-system/jiagou-15-04.png)
 
 在扣减 ID 上加锁，会导致该扣减 ID  下的所有返还都串行执行，有一定的性能损耗。但从业务上看，同一个扣减 ID  并发产生返还的场景极低且返还的调用次数也相对较少，从“架构是技术与业务场景的取舍”这个角度来看，暂不需要花费太大的人力去构建一个更加复杂的加锁架构。
 
@@ -180,7 +180,7 @@ UNIQUE idx_return_sku ( return_uuid, sku_id ) COMMENT '返还商品唯一标识'
 
 处理这个问题最简单的做法是：**在返还接口增加返还编号（上述表结构中的 return_uuid）字段并由外部系统传入，通过数据库唯一索引来防重，进而实现幂等性**，大致的架构如下图 6 所示：
 
-![幂等的返还架构图](https://images.happymaya.cn/assert/backen-system/jiagou-15-06.png)
+![幂等的返还架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-15-06.png)
 
 > 提供的分布式 Worker 扩容两台机器后，etcd 或 ZK 里的哈希列表值，以及后续任务执行的区间是如何变化的：
 >

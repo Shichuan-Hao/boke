@@ -93,7 +93,7 @@ CREATE TABLE `product` (
 
   每一层父节点的数据值都会出现在下层子节点的数据值中，因此在叶子节点中，包括了所有的数据值信息，并且每一个叶子节点都指向下一个叶子节点，形成一个链表。如图所示：
 
-  ![](https://images.happymaya.cn/assert/architecute/0903.png)
+  ![](https://maxpixelton.github.io/images/assert/architecute/0903.png)
 
   如果想要查找数据值 15，B+Tree 会自顶向下逐层进行查找：
 
@@ -159,7 +159,7 @@ CREATE TABLE `product` (
 
 表中包含了主键索引、name 字段上的普通索引，以及 id 和 name 两个字段的联合索引。看下面查询语句的执行计划：
 
-![](https://images.happymaya.cn/assert/architecute/0904.png)
+![](https://maxpixelton.github.io/images/assert/architecute/0904.png)
 
 对于执行计划，参数有 possible_keys 字段表示可能用到的索引，key 字段表示实际用的索引，key_len 表示索引的长度，rows 表示扫描的数据行数。
 
@@ -178,7 +178,7 @@ CREATE TABLE `product` (
 
 在工作中，经常会碰到 SQL 语句不适用已有索引的情况，来看一个索引失效的例子：
 
-![](https://images.happymaya.cn/assert/architecute/0905.png)
+![](https://maxpixelton.github.io/images/assert/architecute/0905.png)
 
 这条带有 like 查询的 SQL 语句，没有用到 product 表中的 index_name 索引。
 
@@ -230,7 +230,7 @@ $$
 
 索的使用原则：
 
-![](https://images.happymaya.cn/assert/architecute/uTools_1659341679567.png)
+![](https://maxpixelton.github.io/images/assert/architecute/uTools_1659341679567.png)
 
 另外，在了解索引优势的同时，也要了解索引存在的问题：
 

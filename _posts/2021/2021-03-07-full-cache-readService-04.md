@@ -16,7 +16,7 @@ mermaid: true
 
 **全量缓存是指将数据库中的所有数据都存储在缓存中**（**需要高性能查询的数据，而不是全部业务数据。**如果高性能的数据依然很多，可以对数据按查询频率进行区分。缓存里只存储高频率访问数据，其他低频率数据可以放到 hbase 或者数据库里。 ），同时在缓存中**不设置过期时间**的一种实现方式，此实现的架构如下图所示：
 
-![全量缓存的架构图](https://images.happymaya.cn/assert/backen-system/jiagou-04-01.png)
+![全量缓存的架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-04-01.png)
 
 - 优点：所有数据都存储在缓存里，读服务在查询时不会再降级到数据库里，所有的请求都完全依赖缓存。此时，因降级到数据库导致的**毛刺问题**就解决了。
 
@@ -26,7 +26,7 @@ mermaid: true
 
 ## 基于 Binlog 的全量缓存架构
 
-![Binlog 原理图](https://images.happymaya.cn/assert/backen-system/jiagou-04-02.png)
+![Binlog 原理图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-04-02.png)
 
 Binlog 是 MySQL 及大部分主流数据库的**主从数据同步方案：**
 
@@ -37,7 +37,7 @@ Binlog 是 MySQL 及大部分主流数据库的**主从数据同步方案：**
 
 基于 Binlog 的全量缓存架构正是依赖此类中间件完来成数据同步的，架构如下图所示：
 
-![基于 Binlog 的缓存同步架构图](https://images.happymaya.cn/assert/backen-system/jiagou-04-03.png)
+![基于 Binlog 的缓存同步架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-04-03.png)
 
 将 Binlog 的中间件挂载至目标数据库上，就可以实时获取该数据库的所有变更数据。对这些变更数据解析后，便可直接写入缓存里。
 
@@ -107,7 +107,7 @@ Binlog 是 MySQL 及大部分主流数据库的**主从数据同步方案：**
 为了保留全量缓存的优点同时解决此极端问题，可以**采用异步校准加报警及自动化补齐的方式来应对**。
 
 此方案的架构如下图所示：
-![异步校准+自动化架构方案图](https://images.happymaya.cn/assert/backen-system/jiagou-04-04.png)
+![异步校准+自动化架构方案图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-04-04.png)
 
 
 当读服务查询缓存中无数据后，会直接返回空数据给到调用方（上图中标记 1 处）。与此同时，它会通过 MQ 中间件发送一条消息（上图标记 2）。此消息的消费程序会异步查询数据库（见上图的标记 3），如果数据库确实存在数据，则会进行一次告警或者一次记录，并自动把数据刷新至缓存中去（见上图的标记 4）。
@@ -131,7 +131,7 @@ Binlog 是 MySQL 及大部分主流数据库的**主从数据同步方案：**
 
 为了提升性能和可用性，将数据同步模块写入的缓存由一个集群变成两个集群，此时的架构演化为如下图的所示：
 
-![双缓存集群架构图](https://images.happymaya.cn/assert/backen-system/jiagou-04-05.png)
+![双缓存集群架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-04-05.png)
 
 在部署上，如果资源允许，两套缓存集群可以分别部署到不同城市的机房或者同城市的不同分区。
 
@@ -146,7 +146,7 @@ Binlog 是 MySQL 及大部分主流数据库的**主从数据同步方案：**
 
 最简单的读服务场景是一次请求只和存储交互一次，但实际上很多时候交互都不止一次。对于需要多次和存储交互的场景，可以采用**异步并行化**的方式——接收到一次读请求后，在读服务内部，将串行与存储交互的模式改为异步并行与存储进行交互，形式如下图所示：
 
-![异步并行化读取数据](https://images.happymaya.cn/assert/backen-system/jiagou-04-06.png)
+![异步并行化读取数据](https://maxpixelton.github.io/images/assert/backen-system/jiagou-04-06.png)
 
 如果一次读请求和存储需要交互三次，假设每次交互时间为 10ms，采用串行的方式总耗时为 30ms，而采用了异步并行的方式后，三次交互为并行执行，总耗时仍为 10ms。整体的性能提升了很多。但异步并行缺点如下：
 

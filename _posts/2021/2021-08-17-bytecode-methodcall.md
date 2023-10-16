@@ -16,7 +16,7 @@ mermaid: true
 
 [class 文件结构的资料](https://docs.oracle.com/javase/specs/jvms/se11/html/jvms-4.html)，大体结构如下：
 
-![](https://images.happymaya.cn/assert/java/jvm/jvm-17-01.jpg)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-17-01.jpg)
 
 - **magic**：魔法数，用于标识当前 class 的文件格式，JVM 可据此判断该文件是否可以被解析，目前固定为 0xCAFEBABE；
 
@@ -52,7 +52,7 @@ mermaid: true
 
 - **attributes**：属性表，是一个表结构，表中每个成员必须是 attribute_info 数据结构，这里的属性是对 class 文件本身，方法或者字段的补充描述，比如 SourceFile 属性用于表示 class 文件的源代码文件名。
 
-![](https://images.happymaya.cn/assert/java/jvm/jvm-17-02.jpg)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-17-02.jpg)
 
 ## 实际观测
 
@@ -144,19 +144,19 @@ public class InvokeDemo extends Abs implements I {
 
 为了更加明显的看到这个过程，使用 jhsdb 工具，这是在 Java 9 之后 JDK 先加入的调试工具，可以在命令行中使用 jhsdb hsdb 来启动它。注意，要加载相应的进程时，必须确保是同一个版本的应用进程，否则会产生报错。
 
-![](https://images.happymaya.cn/assert/java/jvm/jvm-17-03.jpg)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-17-03.jpg)
 
 attach 启动 Java 进程后，可以在 Class Browser 菜单中查看加载的所有类信息。我们在搜索框中输入 InvokeDemo，找到要查看的类。
 
-![](https://images.happymaya.cn/assert/java/jvm/jvm-17-04.jpg)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-17-04.jpg)
 
 @ 符号后面的，就是具体的内存地址，我们可以复制一个，然后在 Inspector 视图中查看具体的属性，可以大体认为这就是类在方法区的具体存储。
 
-![](https://images.happymaya.cn/assert/java/jvm/jvm-17-05.jpg)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-17-05.jpg)
 
 在 Inspector 视图中，我们找到方法相关的属性 _methods，可惜它无法点开，也无法查看。
 
-![](https://images.happymaya.cn/assert/java/jvm/jvm-17-06.jpg)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-17-06.jpg)
 
 接下来使用命令行来检查这个数组里面的值。打开菜单中的 Console，然后输入 examine 命令，可以看到这个数组里的内容，对应的地址就是 Class 视图中的方法地址。
 
@@ -164,19 +164,19 @@ attach 启动 Java 进程后，可以在 Class Browser 菜单中查看加载的�
 examine 0x000000010e650570/10
 ```
 
-![](https://images.happymaya.cn/assert/java/jvm/jvm-17-07.jpg)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-17-07.jpg)
 
 可以在 Inspect 视图中看到方法所对应的内存信息，这确实是一个 Method 方法的表示。
 
-![](https://images.happymaya.cn/assert/java/jvm/jvm-17-08.jpg)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-17-08.jpg)
 
 相比较起来，对象就简单了，它只需要保存一个到达 Class 对象的指针即可。我们需要先从对象视图中进入，然后找到它，一步步进入 Inspect 视图。
 
-![](https://images.happymaya.cn/assert/java/jvm/jvm-17-09.jpg)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-17-09.jpg)
 
 由以上的这些分析，可以得出下面这张图。执行引擎想要运行某个对象的方法，需要先在栈上找到这个对象的引用，然后再通过对象的指针，找到相应的方法字节码。
 
-![](https://images.happymaya.cn/assert/java/jvm/jvm-17-10.jpg)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-17-10.jpg)
 
 ## 方法调用指令
 
@@ -290,7 +290,7 @@ BootstrapMethods 属性在 Java 1.7 以后才有，位于类文件的属性列�
 
 其实，invokedynamic 指令的底层，是使用**方法句柄（MethodHandle）**来实现的。方法句柄是一个能够被执行的引用，它可以指向静态方法和实例方法，以及虚构的 get 和 set 方法，从 IDE 中可以看到这些函数。
 
-![](https://images.happymaya.cn/assert/java/jvm/jvm-17-11.jpg)
+![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-17-11.jpg)
 
 **句柄类型（MethodType）是对方法的具体描述，配合方法名称，能够定位到一类函数。访问方法句柄和调用原来的指令基本一致，但它的调用异常，包括一些权限检查，在运行时才能被发现。**
 

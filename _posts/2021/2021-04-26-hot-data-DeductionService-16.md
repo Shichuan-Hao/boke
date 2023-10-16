@@ -25,7 +25,7 @@ mermaid: true
 
 因为需要保障高可靠的扣减，在应对秒杀时，可以在【缓存+数据库】的方案基础上进行升级改造。结合【如何应对热点数据的查询】总结的关于热点查询的分析内容，在面对热点扣减时，整个架构图和对应的存储命中如下图 1 所示：
 
-![基于数据库+缓存的热点扣减现状](https://images.happymaya.cn/assert/backen-system/jiagou-16-01.png)
+![基于数据库+缓存的热点扣减现状](https://maxpixelton.github.io/images/assert/backen-system/jiagou-16-01.png)
 
 秒杀与热点扣减所带来技术问题是一样的——所有的热点请求均命中同一个存储分片。
 
@@ -37,7 +37,7 @@ mermaid: true
 
    **而热点查询里的缓存副本或者本地缓存里的商品数量均是原始分片的数据镜像**，不能被拿来进行扣减的，否则就会出现数据错乱，甚至超卖的现象。对应的架构示图如下图 2 所示：
 
-   ![基于数据库+缓存的热点扣减现状](https://images.happymaya.cn/assert/backen-system/jiagou-16-02.png)
+   ![基于数据库+缓存的热点扣减现状](https://maxpixelton.github.io/images/assert/backen-system/jiagou-16-02.png)
 
 2. 其次，本地缓存里的数据是非持久化数据，易丢失。即使将本地缓存持久化至宿主机的磁盘，也会因磁盘故障、不满足 ACID 等原因而导致数据丢失。
 
@@ -53,7 +53,7 @@ mermaid: true
 
 体现在流量监控上如下图 3 所示：
 
-![削峰架构对比图](https://images.happymaya.cn/assert/backen-system/jiagou-16-03.png)
+![削峰架构对比图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-16-03.png)
 
 
 
@@ -67,11 +67,11 @@ mermaid: true
 
 上述提到的拦截在实现上，可以采用比较成熟的漏桶算法、令牌桶算法。这两个算法在网络上有很多介绍，这里不再赘述。此外，现在有很多开源工具包提供了这两个算法的实现，比如 Java 里的 Guava 包就提供了开箱即用的实现。采用限流算法的架构如下图 4 所示：
 
-![削峰架构对比图](https://images.happymaya.cn/assert/backen-system/jiagou-16-04.png)
+![削峰架构对比图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-16-04.png)
 
 **限流在实现上有两种方式，一种是集中式，另外一种是单机式**。集中式是指设置一个总的限流阈值，并将此值存储在一个单独的限流应用中。所有的扣减应用在接收到请求后，均采用远程请求此限流应用的方式，来判断当前是否达到限流值。它的架构如下图 5 所示：
 
-![削峰架构对比图](https://images.happymaya.cn/assert/backen-system/jiagou-16-05.png)
+![削峰架构对比图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-16-05.png)
 
 集中式的限流方式最大的好处是**设置简单**，当对整个扣减应用的集群进行极限压测后，得到了极限值。便可以基于此值，设置集群的限流阈值。但这种限流方式也带来了一些问题：
 
@@ -81,7 +81,7 @@ mermaid: true
 
 **单机式限流**是指将上述提到的限流阈值在管理端配置后，主动下发到每一台扣减应用中去，它的架构如下图 6 所示：
 
-![削峰架构对比图](https://images.happymaya.cn/assert/backen-system/jiagou-16-06.png)
+![削峰架构对比图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-16-06.png)
 
 单机式限流是将限流器内置到扣减应用内，可以规避上述集中式限流出现的问题，但它也会带来其他问题：
 
@@ -102,7 +102,7 @@ mermaid: true
 
 首先对缓存的单分片进行压测，得到单分片能够承载的最大值，这个最大值乘以 50% 或者 60%  即可得到缓存单分片线上能够实际承载的最大流量值。之所以要乘以一定比例获得实际承载最大值，是因为在压测时，被压测的缓存单分片的各项指标（如  CPU、网络等）均已达到极限值，系统处在宕机的边缘了。为了保证系统稳定，线上环境的限流值不能设置为此极限值，只能进行一定的折扣。有了单分片的最大承载值，才可以做最后一步的兜底，兜底架构如下图 7 所示：
 
-![兜底架构图](https://images.happymaya.cn/assert/backen-system/jiagou-16-07.png)
+![兜底架构图](https://maxpixelton.github.io/images/assert/backen-system/jiagou-16-07.png)
 
 在部署的所有扣减应用里，通过上图中编号为 0 的配置中心推送每台机器需要负责的每个缓存分片的限流值（单分片最大承载值/扣减应用机器数），在扣减应用中，按上述推送值，给每一个缓存分片设置一个限流器。
 
@@ -112,7 +112,7 @@ mermaid: true
 
 **最后进行的削峰是，售完的商品需前置拦截。** 秒杀商品会在瞬间售完，后续所有的请求都会返回无货。对于已经无货的商品，可以采用【06 】里的方案，将商品已经无货的标记记录在本地缓存里。在秒杀扣减前，先在本地缓存进行判断，如果无货直接返回即可。架构如下图 8 所示：
 
-![无货前置拦截](https://images.happymaya.cn/assert/backen-system/jiagou-16-08.png)
+![无货前置拦截](https://maxpixelton.github.io/images/assert/backen-system/jiagou-16-08.png)
 
 ## 水平扩展架构升级
 
@@ -120,7 +120,7 @@ mermaid: true
 
 我们可以在上述方案的基础上，做一定的升级来减少有损体验。升级后的架构如下图 9 所示：
 
-![具备水平扩展的架构](https://images.happymaya.cn/assert/backen-system/jiagou-16-09.png)
+![具备水平扩展的架构](https://maxpixelton.github.io/images/assert/backen-system/jiagou-16-09.png)
 
 上述架构里，在设置秒杀库存时，将秒杀库存按缓存分片的数量进行平均等分，每一个缓存里均存储一等份即可。比如某一个商品（记为 SKU1）的秒杀库存为 10，当前部署的缓存分片共计 10 个，那么每一个分片里存储该 SKU 的库存数可以为 1，存储在各个缓存里的 key 可以为：SKU1_1、SKU1_2、...、SKU1_10。
 
@@ -134,7 +134,7 @@ mermaid: true
 
 **首先，前端静态资源前置。** 在秒杀开始之前及在秒杀中，焦急的用户会不断地刷新页面，判断秒杀是否开始，避免自己错过开始时间。刷新秒杀页面其实是热点查询的功能，可以借鉴【06】的方式采用应用内的前置缓存解决。对于前台页面上涉及的静态数据，如 JS、CSS、图片等，可以使用 CDN 来提升性能，具体架构如下图 10 所示：
 
-![具备水平扩展的架构](https://images.happymaya.cn/assert/backen-system/jiagou-16-10.png)
+![具备水平扩展的架构](https://maxpixelton.github.io/images/assert/backen-system/jiagou-16-10.png)
 
 **其次，业务上隔离。\**秒杀与正常的购物是有区别的，它是短时间内抢购某一商品。在应对策略上，可以从根据其业务特点进行定制，降低系统的压力。正常的网上购物流程是用户先选购\**多个商品**，加入购物车后再提交订单并进行库存扣减。对于秒杀，可以定制它的前台页面，开发单独的秒杀页面。秒杀开始后，跳过添加购物车的过程，直接提交订单。这样设计，有几个好处。
 
@@ -144,7 +144,7 @@ mermaid: true
 
 **最后，部署隔离。** 在完成上述业务隔离后，可以在机器部署上，更往前一步。对于秒杀所涉及的后端应用模块、存储均进行单独部署隔离。通过此种方式，可以更好地应对秒杀，此外也能够减少秒杀的热点并发流量对于原有扣减模块的影响。单独部署的架构如下图 11 所示：
 
-![单独部署的秒杀部署（增加对比正常的扣减）](https://images.happymaya.cn/assert/backen-system/jiagou-16-11.png)
+![单独部署的秒杀部署（增加对比正常的扣减）](https://maxpixelton.github.io/images/assert/backen-system/jiagou-16-11.png)
 
 ## 总结
 
