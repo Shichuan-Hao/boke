@@ -15,7 +15,7 @@ mermaid: true
 
 系统收到用户的频繁查询请求时，会先从缓存中查找数据，如果缓存中有数据，直接从中读取数据，响应给请求方；如果缓存中没有数据，则从数据库中读取数据，然后再更新缓存，这样再获取这条数据时，可以直接从缓存中获取，不用再读取数据库。
 
-![](https://maxpixelton.github.io/images/assert/architecute/1401.png)
+![缓存设计场景问题](https://maxpixelton.github.io/images/assert/architecute/1401.png)
 
 这是一种常见的解决“查询请求频繁”的设计方案，那么这种方案在查询请求并发较高时，会存在什么问题呢？
 
@@ -29,7 +29,7 @@ mermaid: true
 
 缓存穿透指的是每次查询个别 key 时，key 在缓存系统不命中，此时应用系统就会从数据库中查询，如果数据库中存在这条数据，则获取数据并更新缓存系统。但如果数据库中也没有这条数据，这个时候就无法更新缓存，就会造成一个问题：**查询缓存中不存在的数据时，每次都要查询数据库**。
 
-![](https://maxpixelton.github.io/images/assert/architecute/1402.png)
+![缓存穿透问题](https://maxpixelton.github.io/images/assert/architecute/1402.png)
 
 那么如果有人利用“查询缓存中不存在的数据时，每次都要查询数据库”恶意攻击的话，数据库会承担非常大的压力，甚至宕机。
 
@@ -41,7 +41,7 @@ mermaid: true
 
 这里就会引发一个问题，所有请求更新的是同一条数据，这不仅会增加数据库的压力，还会因为反复更新缓存而占用缓存资源，这就叫缓存并发。**那你怎么解决缓存并发呢？**
 
-![](https://maxpixelton.github.io/images/assert/architecute/1403.png)
+![缓存并发问题](https://maxpixelton.github.io/images/assert/architecute/1403.png)
 
 1. 首先，客户端发起请求，先从缓存中读取数据，判断是否能从缓存中读取到数据；
 2. 如果读取到数据，则直接返回给客户端，流程结束；
@@ -74,7 +74,7 @@ mermaid: true
 
 我们同样举电商平台场景中的例子，现在要求只缓存用户经常访问的 Top 1000 的商品。
 
-![](https://maxpixelton.github.io/images/assert/architecute/1404.png)
+![态缓存热点数据](https://maxpixelton.github.io/images/assert/architecute/1404.png)
 
 缓存策略的总体思路：就是通过判断数据最新访问时间来做排名，并过滤掉不常访问的数据，只留下经常访问的数据，具体细节如下。
 
@@ -91,11 +91,11 @@ mermaid: true
 
 比如用户在应用系统的后台添加一条配置信息，配置信息存储到了 MySQL 数据库中，同时数据库更新了 Binlog 日志数据，接着再通过使用 Canal 组件来获读取最新的 Binlog 日志数据，然后解析日志数据，并通过事先约定好的数据格式，发送到 MQ 消息队列中，最后再由应用系统将 MQ 中的数据更新到 Redis 中，这样就完成了缓存操作和业务代码之间的解耦。
 
-![](https://maxpixelton.github.io/images/assert/architecute/1405.png)
+![缓存操作与业务分离的架构](https://maxpixelton.github.io/images/assert/architecute/1405.png)
 
 ### 总结
 
-![](https://maxpixelton.github.io/images/assert/architecute/1406.png)
+![缓存操作与业务分离的架构](https://maxpixelton.github.io/images/assert/architecute/1406.png)
 
 - 推荐采用预设值方案解决缓存穿透（当然还有基于布隆过滤器的实现方式，但它本身存在误判的情况，实现起来也较复杂）。
 

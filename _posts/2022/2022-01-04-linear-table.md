@@ -27,7 +27,7 @@ mermaid: true
 
 类比一下，当计算机要处理大量数据时，同样需要考虑如何去组织这些数据，这就是数据结构。类似于小朋友站队方式有无数种情况，数据组织方式也是有无数种可能性。
 
-![](https://maxpixelton.github.io/images/assert/structures/0401.gif)
+![线性表](https://maxpixelton.github.io/images/assert/structures/0401.gif)
 
 
 然而，在实际开发中，经过工程师验证并且能有效解决问题的高效率数据结构就比较有限。事实上，只要把这些能真正解决问题的数据结构学会，就足以成为一名合格的软件工程师了。
@@ -41,13 +41,13 @@ mermaid: true
 1. 具体数据值；
 2. 指针。指向下一个结点。
 
-![](https://maxpixelton.github.io/images/assert/structures/0402.png)
+![线性表](https://maxpixelton.github.io/images/assert/structures/0402.png)
 
 在链表最前面，通常会有个**头指针**用来指向第一个结点。对于链表最后一个结点，由于在它之后没有下一个结点，因此它的指针是个空指针。链表结构，和小朋友手拉手站成一排的场景是非常相似的。
 
 假设，需要处理的数据集是 10 个同学考试的得分。如果用链表进行存储，就会得到如下的数据：
 
-![](https://maxpixelton.github.io/images/assert/structures/0403.png)
+![单向链表](https://maxpixelton.github.io/images/assert/structures/0403.png)
 
 仔细观察上图，会发现这个链表只能通过上一个结点的指针找到下一个结点，反过来则是行不通的。因此，这样的链表也被称作**单向链表。**
 
@@ -55,15 +55,15 @@ mermaid: true
 
 - 对于一个单向链表，让最后一个元素的指针指向第一个元素，就得到了**循环链表**；
 
-  ![](https://maxpixelton.github.io/images/assert/structures/0404.png)
+  ![循环链表](https://maxpixelton.github.io/images/assert/structures/0404.png)
 
 - 或者把结点的结构进行改造，除了有指向下一个结点的指针以外，再增加一个指向上一个结点的指针。这样就得到了**双向链表**；
 
-  ![](https://maxpixelton.github.io/images/assert/structures/0405.png)
+  ![双向链表](https://maxpixelton.github.io/images/assert/structures/0405.png)
 
 - 还可以对双向链表和循环链表进行融合，就得到了**双向循环链表**，如下图所示：  
 
-  ![](https://maxpixelton.github.io/images/assert/structures/0406.png)
+  ![双向循环链表](https://maxpixelton.github.io/images/assert/structures/0406.png)
 
 这些种类的链表，都是**以单向链表为基础进行的变种**。**在某些场景下能提高线性表的效率**。
 ## 线性表对于数据的增删查处理
@@ -79,7 +79,7 @@ mermaid: true
 
 如下图所示：
 
-![](https://maxpixelton.github.io/images/assert/structures/0407.png)
+![线性表增加操作](https://maxpixelton.github.io/images/assert/structures/0407.png)
 
 代码如下：
 
@@ -94,7 +94,7 @@ p.next = s;
 
 链表的删除操作跟新增操作一样，都非常简单。如果待删除的结点为 b，那么只需要把指向 b 的指针 （p.next），指向 b 指针指向的结点（p.next.next）。如下图所示：  
 
-![](https://maxpixelton.github.io/images/assert/structures/0408.png)
+![线性表删除操作](https://maxpixelton.github.io/images/assert/structures/0408.png)
 
  代码如下：  
 
@@ -112,7 +112,7 @@ p.next = p.next.next;
 
    其实，链表的查找功能是比较弱的，对于这个查找问题，**唯一的办法就是一个一个地遍历去查找。**也就是，从头开始，先找到学号为 1 的同学，再经过他跳转到学号为 2 的同学。直到经过多次跳转，找到了学号为 5 的同学，才能取出这个同学的成绩。如下图所示：
 
-   ![](https://maxpixelton.github.io/images/assert/structures/0409.gif)
+   ![线性表查找操作](https://maxpixelton.github.io/images/assert/structures/0409.gif)
 
 2. 按照具体成绩查找。
 
@@ -126,9 +126,9 @@ p.next = p.next.next;
 
    - 如果不是，则需要通过指针去判断下一个结点的值是否等于 95。以此类推，直到把所有结点都访问完。
 
-     ![](https://maxpixelton.github.io/images/assert/structures/0410.gif)
+     ![线性表](https://maxpixelton.github.io/images/assert/structures/0410.gif)
 
-     ![](https://maxpixelton.github.io/images/assert/structures/0411.gif)
+     ![线性表](https://maxpixelton.github.io/images/assert/structures/0411.gif)
 
 根据这里的分析不难发现：
 
@@ -143,7 +143,7 @@ p.next = p.next.next;
 
 2. 再新增一个数据结点。整体的复杂度就是 $O(n) + O(1)$。根据复杂度计算方法，这等同于 O(n) 的时间复杂度。
 
-   ![](https://maxpixelton.github.io/images/assert/structures/0412.gif)
+   ![线性表](https://maxpixelton.github.io/images/assert/structures/0412.gif)
 
 线性表真正的价值在于，**它对数据的存储方式是按照顺序的存储。如果数据的元素个数不确定，且需要经常进行数据的新增和删除时，则链表会比较合适。如果数据元素大小确定，删除插入的操作并不多，那么数组可能更适合些。**
 
@@ -160,7 +160,7 @@ p.next = p.next.next;
 
    具体如下图所示：
 
-   ![](https://maxpixelton.github.io/images/assert/structures/0413.gif)
+   ![线性表](https://maxpixelton.github.io/images/assert/structures/0413.gif)
 
    代码如下：
 
@@ -202,7 +202,7 @@ p.next = p.next.next;
 
   如下图所示：
 
-  ![](https://maxpixelton.github.io/images/assert/structures/0414.gif)
+  ![线性表](https://maxpixelton.github.io/images/assert/structures/0414.gif)
 
   代码如下：
   
@@ -229,7 +229,7 @@ p.next = p.next.next;
 
 **例 3，判断链表是否有环。如下图所示，这就是一个有环的链表。**  
 
-![](https://maxpixelton.github.io/images/assert/structures/0416.png)
+![线性表](https://maxpixelton.github.io/images/assert/structures/0416.png)
 
 链表的快慢指针方法，在很多链表操作场景下都非常适用，对于这个问题也是一样。
 
@@ -239,7 +239,7 @@ p.next = p.next.next;
 
 根据这个性质就能对链表是否有环进行准确判断 。如下图所示：
 
-![](https://maxpixelton.github.io/images/assert/structures/0415.gif)
+![线性表](https://maxpixelton.github.io/images/assert/structures/0415.gif)
 
 代码如下：
 

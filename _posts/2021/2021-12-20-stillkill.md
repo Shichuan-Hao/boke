@@ -137,15 +137,15 @@ end
 
 在支付回调成功之后，抢购系统还会通过异步通知的方式，实现订单更新之外的非核心业务处理，比如积分累计、短信通知等，此阶段可以基于 MQ 实现业务的异步操作。
 
-![](https://maxpixelton.github.io/images/assert/architecute/seckill-1.png)
+![seckill-1](https://maxpixelton.github.io/images/assert/architecute/seckill-1.png)
 
 不过针对服务的异常（如宕机），会存在请求数据丢失的可能，比如当支付回调系统后，修改订单状态成功了，但是在异步通知积分系统，更新用户累计积分时，订单系统挂掉了，此时 MQ 还没有收到这条消息，那么这条消息数据就无法还原了。
 
-![](https://maxpixelton.github.io/images/assert/architecute/seckill-2.png)
+![seckill-2](https://maxpixelton.github.io/images/assert/architecute/seckill-2.png)
 
 所以你还要考虑[海量并发场景的分布式事务一致性问题]()中，可靠消息投递机制：**先做消息的本地存储，再通过异步重试机制，来实现消息的补偿。**比如当支付平台回调订单系统，然后在更新状态的同时，插入一个消息，之后再返回第三方支付操作成功的结果。最后，通过数据库中的这条消息，再异步推送其他系统，完成后续的工作。
 
-![](https://maxpixelton.github.io/images/assert/architecute/sckill-3.png)
+![seckill-3](https://maxpixelton.github.io/images/assert/architecute/sckill-3.png)
 
 还有一种场景，用户提交订单抢到商品后，此时系统的库存已经扣减掉了，但是订单中的状态还是未支付，如果此时用户是恶意的行为，可以通过订单生成后创建延时任务，比如使用 RabbitMQ 的私信队列实现。任务到期后检查订单状态，未支付的及时取消订单，并回退库存。同时针对这种账号可以设置黑名单机制，降低其抢购成功率甚至直接拉黑。
 

@@ -51,7 +51,7 @@ select * from user where 1=1
 
 ## 内存使用问题
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-16-01.jpg)
+![内存使用问题](https://maxpixelton.github.io/images/assert/java/jvm/jvm-16-01.jpg)
 
 拿一个最简单的 Spring Boot 应用来说：
 
@@ -149,7 +149,7 @@ JPA 比起 MyBatis 等 ORM 拥有更多的特性，看起来容易使用，但�
 
 如果数据库的记录非常多，达到千万或者亿级别，对于一个传统的 RDBMS 来说，最通用的解决方式就是分库分表。这也是海量数据的互联网公司必须面临的一个问题。
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-16-02.jpg)
+![分库分表组件](https://maxpixelton.github.io/images/assert/java/jvm/jvm-16-02.jpg)
 
 根据切入的层次，数据库中间件一般分为：
 
@@ -181,7 +181,7 @@ private DataSource dataSource;
 
 这个过程也是比较好理解的，如图所示，订单数据被存放在两个库中。如果没有提供切分键，查询语句就会被分发到所有的数据库中，这里的查询语句是 limit 10、offset 1000，最终结果只需要返回 10 条记录，但是数据库中间件要完成这种计算，则需要 (1000+10)*2=2020 条记录来完成这个计算过程。如果 offset 的值过大，使用的内存就会暴涨。虽然 sharding-jdbc 使用归并算法进行了一些优化，但在实际场景中，深分页仍然引起了内存和性能问题。
 
-![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-16-03.jpg)
+![问题](https://maxpixelton.github.io/images/assert/java/jvm/jvm-16-03.jpg)
 
 下面这一句简单的 SQL 语句，会产生严重的后果：
 

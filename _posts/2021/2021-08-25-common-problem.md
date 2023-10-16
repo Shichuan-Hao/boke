@@ -43,7 +43,7 @@ mermaid: true
 
 6. 永久代
 
-   ![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-25-01.jpg)
+   ![永久代](https://maxpixelton.github.io/images/assert/java/jvm/jvm-25-01.jpg)
 
    注意左半部分是 Java 8 版本之前的内存区域，右半部分是 Java 8 的内存区域，主要区别就在 Perm 区和 Metaspace 区。
 
@@ -55,19 +55,19 @@ mermaid: true
 
    JVM 包含堆、元空间、Java 虚拟机栈、本地方法栈、程序计数器等内存区域，其中，堆是占用内存最大的一块，如下图所示。
 
-   ![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-25-02.jpg)
+   ![JVM 的内存布局](https://maxpixelton.github.io/images/assert/java/jvm/jvm-25-02.jpg)
 
 8. Java 的内存模型是什么？（JMM 是什么？）
 
    JVM 试图定义一种统一的内存模型，能将各种底层硬件以及操作系统的内存访问差异进行封装，使 Java 程序在不同硬件以及操作系统上都能达到相同的并发效果。它分为工作内存和主内存，线程无法对主存储器直接进行操作，如果一个线程要和另外一个线程通信，那么只能通过主存进行交换，如下图所示。
 
-   ![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-25-03.jpg)
+   ![Java 的内存模型](https://maxpixelton.github.io/images/assert/java/jvm/jvm-25-03.jpg)
 
 9. JVM 垃圾回收时如何确定垃圾？什么是 GC Roots？
 
    JVM 采用的是可达性分析算法。JVM 是通过 GC Roots 来判定对象存活的，从 GC Roots 向下追溯、搜索，会产生一个叫做 Reference Chain 的链条。当一个对象不能和任何一个 GC Root 产生关系时，就判定为垃圾，如下图所示。
 
-   ![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-25-04.jpg)
+   ![JVM 垃圾回收](https://maxpixelton.github.io/images/assert/java/jvm/jvm-25-04.jpg)
 
    GC Roots 大体包括：
 
@@ -117,7 +117,7 @@ mermaid: true
 
     常用的垃圾回收算法有标记清除、标记整理、复制算法等，引用计数器也算是一种，但垃圾回收器不使用这种算法，因为有循环依赖的问题。
 
-    ![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-25-05.jpg)
+    ![垃圾回收器的循环依赖的问题](https://maxpixelton.github.io/images/assert/java/jvm/jvm-25-05.jpg)
 
     很多垃圾回收器都是分代回收的：
 
@@ -128,7 +128,7 @@ mermaid: true
 
 17. 生产上如何配置垃圾收集器？
 
-    ![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-25-06.jpg)
+    ![生产上如何配置垃圾收集器](https://maxpixelton.github.io/images/assert/java/jvm/jvm-25-06.jpg)
 
     首先是内存大小问题，基本上每一个内存区域我都会设置一个上限，来避免溢出问题，比如元空间。通常，堆空间我会设置成操作系统的 2/3，超过 8GB 的堆，优先选用 G1。
 
@@ -150,7 +150,7 @@ mermaid: true
 
 19. 假如生产环境 CPU 占用过高，请谈谈你的分析思路和定位。
 
-    ![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-25-07.jpg)
+    ![生产环境 CPU 占用过高，分析思路和定位](https://maxpixelton.github.io/images/assert/java/jvm/jvm-25-07.jpg)
 
     首先，使用 top -H 命令获取占用 CPU 最高的线程，并将它转化为十六进制。
 
@@ -170,7 +170,7 @@ mermaid: true
 
     栈帧包含：局部变量表、操作数栈、动态连接、返回地址等。
 
-    ![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-02-03.png)
+    ![栈帧都有哪些数据](https://maxpixelton.github.io/images/assert/java/jvm/jvm-02-03.png)
 
 22. JIT 是什么？
 
@@ -180,7 +180,7 @@ mermaid: true
 
     双亲委托的意思是，除了顶层的启动类加载器以外，其余的类加载器，在加载之前，都会委派给它的父加载器进行加载，这样一层层向上传递，直到祖先们都无法胜任，它才会真正的加载，Java 默认是这种行为。
 
-    ![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-03-03.jpeg)
+    ![Java 的双亲委托机制](https://maxpixelton.github.io/images/assert/java/jvm/jvm-03-03.jpeg)
 
 24. 有哪些打破了双亲委托机制的案例？
 
@@ -189,7 +189,7 @@ mermaid: true
 
 25. 简单描述一下（分代）垃圾回收的过程
 
-    ![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-06-10.png)
+    ![（分代）垃圾回收的过程](https://maxpixelton.github.io/images/assert/java/jvm/jvm-06-10.png)
 
     分代回收器有两个分区：老生代和新生代，新生代默认的空间占总空间的 1/3，老生代的默认占比是 2/3。
 
@@ -225,7 +225,7 @@ mermaid: true
 
 28. 你使用过 G1 垃圾回收器的哪几个重要参数？
 
-    ![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-07-02.png)
+    ![G1 垃圾回收器的重要参数](https://maxpixelton.github.io/images/assert/java/jvm/jvm-07-02.png)
 
     最重要的是 MaxGCPauseMillis，可以通过它设定 G1 的目标停顿时间，它会尽量去达成这个目标。G1HeapRegionSize 可以设置小堆区的大小，一般是 2 的次幂。InitiatingHeapOccupancyPercent 启动并发 GC 时的堆内存占用百分比，G1 用它来触发并发 GC 周期，基于整个堆的使用率，而不只是某一代内存的使用比例，默认是 45%。
 
@@ -314,13 +314,13 @@ mermaid: true
 
     
 
-39. 什么是方法内联？
+39. 什么是方法内联 ？
 
     为了减少方法调用的开销，可以把一些短小的方法，比如 getter/setter，纳入到目标方法的调用范围之内，这样就少了一次方法调用，速度就能得到提升，这就是方法内联的概念。
 
     
 
-40. 对象是怎么从年轻代进入老年代的？
+40. 对象是怎么从年轻代进入老年代的 ？
 
     在下面 4 种情况下，对象会从年轻代进入到老年代：
 
@@ -332,15 +332,15 @@ mermaid: true
 
     - 超出某个大小的对象将直接在老年代上分配，不过这个值默认为 0，意思是全部首选 Eden 区进行分配。
 
-      ![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-25-08.jpg)
+      ![对象是怎么从年轻代进入老年代的](https://maxpixelton.github.io/images/assert/java/jvm/jvm-25-08.jpg)
 
     
 
-41. safepoint 是什么？
+41. safepoint 是什么 ？
 
     当发生 GC 时，用户线程必须全部停下来，才可以进行垃圾回收，这个状态我们可以认为 JVM 是安全的（safe），整个堆的状态是稳定的。
 
-    ![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-25-09.jpg)
+    ![safepoint 是什么](https://maxpixelton.github.io/images/assert/java/jvm/jvm-25-09.jpg)
 
     如果在 GC 前，有线程迟迟进入不了 safepoint，那么整个 JVM 都在等待这个阻塞的线程，造成了整体 GC 的时间变长。
 
@@ -360,7 +360,7 @@ mermaid: true
 
     加载、验证、准备、解析、初始化。
 
-    ![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-03-03.jpeg)
+    ![类加载有几个过程](https://maxpixelton.github.io/images/assert/java/jvm/jvm-03-03.jpeg)
 
 44. 什么情况下会发生栈溢出？
 
@@ -370,8 +370,8 @@ mermaid: true
 
 45. 生产环境服务器变慢，请谈谈诊断思路和性能评估？
 
-    ![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-11-03.png)
+    ![生产环境服务器变慢，请谈谈诊断思路和性能评估](https://maxpixelton.github.io/images/assert/java/jvm/jvm-11-03.png)
 
     从各个层次分析代码优化的手段，如下图所示：
 
-    ![](https://maxpixelton.github.io/images/assert/java/jvm/jvm-16-01.jpg)
+    ![代码优化的手段](https://maxpixelton.github.io/images/assert/java/jvm/jvm-16-01.jpg)
