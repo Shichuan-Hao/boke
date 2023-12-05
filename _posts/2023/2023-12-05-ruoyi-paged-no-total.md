@@ -1,7 +1,7 @@
 ---
 title: 若以分页失效，显示总数为当前查询集合数量错误
-date: 2023-12-04 09:47:12 UTC+8
-categories: [Java, Library]
+date: 2023-12-05 21:58:55 UTC+8
+categories: [文章]
 tags: [java, 若以分页]     # TAG names should always be lowercase
 # author: 1
 ---

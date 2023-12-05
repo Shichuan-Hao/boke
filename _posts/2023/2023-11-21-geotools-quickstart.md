@@ -1,7 +1,7 @@
 ---
 title: GeoTools Quickstart
 date: 2023-11-21 09:47:12 UTC+8
-categories: [Java, Library]
+categories:  [文章]
 tags: [java, geo tools, open source java library, opsj]     # TAG names should always be lowercase
 # author: 1
 ---
