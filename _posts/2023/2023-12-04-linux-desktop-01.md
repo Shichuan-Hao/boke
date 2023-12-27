@@ -1,9 +1,9 @@
 ---
 title: Linux 桌面玩家指南：01. 玩转 Linux 系统的方法论
 date: 2023-12-04 09:47:12 UTC+8
-categories:  [文章]
+categories:  [博客]
 tags: [java, geo tools, open source java library, opsj]     # TAG names should always be lowercase
-# author: 1
+author: Shichuan Hao
 ---
 
 > 本文引自京山游侠《Linux 桌面玩家指南：01. 玩转 Linux 系统的方法论》，原文地址：https://www.cnblogs.com/youxia/p/LinuxDesktop001.html
