@@ -2,10 +2,10 @@
 title: 工厂方法模式：解决生成对象时的不确定性
 author:
   name: superhsc
-  link: https://github.com/maxpixelton
+  link: https://github.com/Shichuan-hao
 date: 2018-02-03 22:45:00 +0800
 categories: [设计模式, 创建型]
-tags:  [设计模式, Design Pattern, Factory Method, 工厂方法模式, 对象创建型模式]
+tags:  [design pattern]
 math: true
 mermaid: true
 ---
@@ -20,7 +20,7 @@ mermaid: true
 
 工厂方法模式的 UML 图：
 
-![工厂方法模式的 UML 图](https://maxpixelton.github.io/images/assert/design-patterns/factory-uml.png)
+![工厂方法模式的 UML 图](https://Shichuan-hao.github.io/images/assert/design-patterns/factory-uml.png)
 
 工厂方法模式包含三个关键角色：
 1. 抽象接口（也叫抽象产品）；

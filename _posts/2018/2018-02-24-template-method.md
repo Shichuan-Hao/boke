@@ -2,10 +2,10 @@
 title: 模板方法模式：实现同一模板框架下的算法扩展
 author:
   name: superhsc
-  link: https://github.com/maxpixelton
+  link: https://github.com/Shichuan-hao
 date: 2018-02-24 21:11:22 +0800
 categories: [设计模式, 行为型]
-tags:  [设计模式, Design Pattern, Template Method, 模板方法, 类行为型模式]
+tags:  [design pattern]
 math: true
 mermaid: true
 ---
@@ -19,7 +19,7 @@ mermaid: true
 
 UML 图：
 
-![this is images](https://maxpixelton.github.io/images/assert/design-patterns/template-uml.png)
+![this is images](https://Shichuan-hao.github.io/images/assert/design-patterns/template-uml.png)
 
 模板方法模式包含的关键角色有两个：
 

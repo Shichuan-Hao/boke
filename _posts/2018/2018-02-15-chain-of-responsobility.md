@@ -2,10 +2,10 @@
 title: 责任链模式
 author:
   name: superhsc
-  link: https://github.com/maxpixelton
+  link: https://github.com/Shichuan-hao
 date: 2018-02-15 21:18:32 +0800
 categories: [设计模式, 行为型]
-tags:  [设计模式, Design Pattern, Chain of Responsibility, 责任链模式, 对象行为型模式]
+tags:  [design pattern]
 math: true
 mermaid: true
 ---
@@ -21,7 +21,7 @@ mermaid: true
 就像网购一样：当你收到了购的商品后，发现商品有质量问题，于是打电话询问客服关于退货流程，客服接到电话后，会先打开订单系统查询提供的订单信息并确认是否正确，确认后再使用物流系统通知快递小哥上门取件，快递小哥取件后会返回商品让仓储系统进行确认，并通知商品系统……这样的一个过程就是责任链模式的真实应用。
 
 责任链模式的 UML 图：
-![责任链模式的 UML 图](https://maxpixelton.github.io/images/assert/design-patterns/chain-of-responsibility.png)
+![责任链模式的 UML 图](https://Shichuan-hao.github.io/images/assert/design-patterns/chain-of-responsibility.png)
 
 从该 UML 图中，可以看出责任链模式其实只有两个关键角色。
 - **处理类（Handler）**：可以是一个接口，用于接收请求并将请求分派到处理程序链条中（实际上就是一个数组链表），其中，会先将链中的第一个处理程序放入开头来处理。

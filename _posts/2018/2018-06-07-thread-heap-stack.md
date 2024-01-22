@@ -2,10 +2,10 @@
 title: Java 线程堆栈
 author:
   name: superhsc
-  link: https://github.com/maxpixelton
+  link: https://github.com/Shichuan-hao
 date: 2018-06-07 22:33:00 +0800
-categories: [Java, JVM]
-tags:  [thread,heap,stack]
+categories: [Java, thread]
+tags:  [thread, heap, stack, jstack]
 math: true
 mermaid: true
 ---
@@ -341,7 +341,7 @@ public static void terminatedState() throws Exception {
 
 ### 线程状态切换关系
 
-![this is images](https://maxpixelton.github.io/images/assert/java/log-stack/0805.jpg)
+![this is images](https://Shichuan-hao.github.io/images/assert/java/log-stack/0805.jpg)
 
 ## 总结
 

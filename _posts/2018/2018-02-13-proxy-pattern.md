@@ -2,10 +2,10 @@
 title: 代理模式：控制和管理对象访问
 author:
   name: superhsc
-  link: https://github.com/maxpixelton
+  link: https://github.com/Shichuan-hao
 date: 2018-02-13 20:45:00 +0800
-categories: [设计模式, 创建型]
-tags:  [设计模式, Design Pattern, Proxy, 代理模式, 对象结构型模式]
+categories: [设计模式, 结构型]
+tags:  [design pattern]
 math: true
 mermaid: true
 ---
@@ -22,7 +22,7 @@ mermaid: true
 拿现实中的例子来说，假设你有一套房子要卖，可你却正好在外地出差，你不能亲自处理带人看房、过户等购房手续，这时你就可以找一个房产中介来作为你的代理人，委托他来帮你带人看房、处理过户手续。这就是现实中经典的代理模式的例子。
 
 代理模式的 UML 图：
-![this is images](https://maxpixelton.github.io/images/assert/design-patterns/12442250/1658462244564-64be4d47-2c8c-43eb-b3a9-f8da8f56313e.jpeg)
+![this is images](https://Shichuan-hao.github.io/images/assert/design-patterns/12442250/1658462244564-64be4d47-2c8c-43eb-b3a9-f8da8f56313e.jpeg)
 
 从这个 UML 图中，代理模式中有三个关键角色：
 1. **抽象主题类（RealObject）**：声明公用的方法，定义可供客户端使用的统一功能；

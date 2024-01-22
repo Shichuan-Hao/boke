@@ -2,9 +2,9 @@
 title: IDEA 的 Debug 模式
 author:
   name: superhsc
-  link: https://github.com/maxpixelton
+  link: https://github.com/Shichuan-hao
 date: 2018-06-06 22:33:00 +0800
-categories: [常用工具, IDEA]
+categories: [Java, 异常]
 tags:  [IDEA Debug]
 math: true
 mermaid: true
@@ -15,7 +15,7 @@ IDEA 几乎是 Java 程序员工作的标配，能够大大简化编码的额外
 
 ##  IDEA debug 模式下的界面
 
-![this is images](https://maxpixelton.github.io/images/assert/java/log-stack/0601.jpg)
+![this is images](https://Shichuan-hao.github.io/images/assert/java/log-stack/0601.jpg)
 
 这张图里面，我们需要关注三处（我用不同颜色的框进行了标记，且使用了编号）：
 
@@ -27,11 +27,11 @@ IDEA 几乎是 Java 程序员工作的标配，能够大大简化编码的额外
 
 为了看到 IDEA debug 模式下的样子，先给 Controller 的方法打上一个断点（左键点击行号附近就可以），如下图红框中所示：
 
-![this is images](https://maxpixelton.github.io/images/assert/java/log-stack/0602.jpg)
+![this is images](https://Shichuan-hao.github.io/images/assert/java/log-stack/0602.jpg)
 
 接着，点击调试按钮，以调试模式启动当前的工程，并发送请求到打了断点的那个工程，会发现，IDEA 界面变成了下面这样（注意，我在图中所做的标记）：
 
-![this is images](https://maxpixelton.github.io/images/assert/java/log-stack/0603.jpg)
+![this is images](https://Shichuan-hao.github.io/images/assert/java/log-stack/0603.jpg)
 
 参照上图中所做的标记，其中 “每一项” 的含义是：
 
@@ -49,7 +49,7 @@ IDEA 几乎是 Java 程序员工作的标配，能够大大简化编码的额外
 
 对照着下图，依次来看看这 8 个按钮都起到怎样的作用：
 
-![this is images](https://maxpixelton.github.io/images/assert/java/log-stack/0604.jpg)
+![this is images](https://Shichuan-hao.github.io/images/assert/java/log-stack/0604.jpg)
 
 - `Show Execution Point`，点击这个按钮可以跳转到当前代码执行的行，这对于光标在其他页面时特别有用
 - `Step Over`，步过，一行一行地往下走，如果这一行是调用方法，不会进入到方法中
@@ -64,7 +64,7 @@ IDEA 几乎是 Java 程序员工作的标配，能够大大简化编码的额外
 
 对照着下图，依次来看看这些功能按钮的作用是什么：
 
-![this is images](https://maxpixelton.github.io/images/assert/java/log-stack/0605.jpg)
+![this is images](https://Shichuan-hao.github.io/images/assert/java/log-stack/0605.jpg)
 
 - `Rerun Application`，重新运行程序，相当于 kill and run
 - `Modify Run Configuration`，修改程序运行配置
@@ -80,7 +80,7 @@ IDEA 几乎是 Java 程序员工作的标配，能够大大简化编码的额外
 
 #### IDEA 直接显示
 
-![this is images](https://maxpixelton.github.io/images/assert/java/log-stack/0606.jpg)
+![this is images](https://Shichuan-hao.github.io/images/assert/java/log-stack/0606.jpg)
 
 如图所示，IDEA 会直接在变量的后面显示其当前值，包括了给方法传递的参数，这种方式不需要做任何额外的操作，这是 IDEA 的默认行为。
 
@@ -88,17 +88,17 @@ IDEA 几乎是 Java 程序员工作的标配，能够大大简化编码的额外
 
 这是最方便也是使用频率最高的方式之一，当想要知道方法中某个变量的信息时，将光标悬停在变量上即可，如下图所示：
 
-![this is images](https://maxpixelton.github.io/images/assert/java/log-stack/0607.jpg)
+![this is images](https://Shichuan-hao.github.io/images/assert/java/log-stack/0607.jpg)
 
 注意到变量信息左边的 “+” 号，点击可以查看对象的详细信息（非常有用，且非常常用），如下图所示：
 
-![this is images](https://maxpixelton.github.io/images/assert/java/log-stack/0608.jpg)
+![this is images](https://Shichuan-hao.github.io/images/assert/java/log-stack/0608.jpg)
 
 #### 变量（查看）区中查看变量信息
 
 debug 面板中有两块区域可以用来查看当前方法中的变量信息，其中，变量区会把当前方法中的所有变量都给列出来，可以寻找你想要查看的变量；变量查看区中，可以输入想要查看的变量或者直接从变量区中拖过来，也会显示出变量的详细信息。如下图所示：
 
-![this is images](https://maxpixelton.github.io/images/assert/java/log-stack/0609.jpg)
+![this is images](https://Shichuan-hao.github.io/images/assert/java/log-stack/0609.jpg)
 
 debug 模式下的变量查看功能是非常实用的，几乎所有的代码调试过程都离不开查看变量。以上所说的几种方式都是可行的。
 
@@ -108,13 +108,13 @@ debug 模式下的变量查看功能是非常实用的，几乎所有的代码�
 
 之前介绍过 debug 按钮一共有8个，最后一个是 “计算表达式”。顾名思义，它的功能就是用来计算指定表达式的值的。这样的话，就不需要手动输出（sout 或者 log 出来）了。变量值的查看或者简单计算比较简单， “计算表达式” 的第一个核心功能，如下图所示：
 
-![this is images](https://maxpixelton.github.io/images/assert/java/log-stack/0610.jpg)
+![this is images](https://Shichuan-hao.github.io/images/assert/java/log-stack/0610.jpg)
 
 可以直接在窗口中输入计算方法，并查看其返回值。这对于某一行代码调用了多个方法时会特别有用，可以分别查看每个方法的返回值。
 
 “计算表达式” 第二个核心功能非常强悍，它让我们不用构造参数多次发起请求，这就是设置变量的功能。例如，请求方法传递的 level 参数值是 debug，我可以使用 “计算表达式” 将其修改为 info。如下图所示：
 
-![this is images](https://maxpixelton.github.io/images/assert/java/log-stack/0611.jpg)
+![this is images](https://Shichuan-hao.github.io/images/assert/java/log-stack/0611.jpg)
 
 这个功能对于想要查看各种值的情况再好不过了，我在工作中做代码调试时，也是会经常使用这个功能，毕竟，请求接口的参数是多样化的，需要保证尽量多的覆盖不同的请求参数。
 
@@ -149,11 +149,11 @@ debug 模式下的变量查看功能是非常实用的，几乎所有的代码�
 
 打开 IDEA 的 `Run/Debug Configurations` 面板（启动按钮的旁边），如下图所示：
 
-![this is images](https://maxpixelton.github.io/images/assert/java/log-stack/0612.jpg)
+![this is images](https://Shichuan-hao.github.io/images/assert/java/log-stack/0612.jpg)
 
 点击左上角的 “+” 号，新增加一个配置，并从配置模板中选择 `Remote JVM Debug`，确定之后弹出如下所示的面板：
 
-![this is images](https://maxpixelton.github.io/images/assert/java/log-stack/0613.jpg)
+![this is images](https://Shichuan-hao.github.io/images/assert/java/log-stack/0613.jpg)
 
 默认情况下，模板都已经帮助填好了所需要的信息，唯一要做的就是给当前的远程调试配置起个名字。最后，我们需要注意，这里的配置告诉我们在启动远程程序的时候，需要加上给出的 JVM 参数（自动生成的）：
 
@@ -205,7 +205,7 @@ Listening for transport dt_socket at address: 5005
 
 可以看到，工程像原来一样正常启动（服务器端口号仍然是 8000），只是第一句打印了：调试端口在 5005 上监听。接着，我们就可以在本地对远程的工程进行调试了，如下图所示，点击 “绿色的小虫” 按钮：
 
-![this is images](https://maxpixelton.github.io/images/assert/java/log-stack/0615.jpg)
+![this is images](https://Shichuan-hao.github.io/images/assert/java/log-stack/0615.jpg)
 
 如果顺利的话，在 debug tab 面板上会显示如下内容，代表着连接远程工程成功。
 

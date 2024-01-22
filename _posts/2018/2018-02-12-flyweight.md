@@ -2,10 +2,10 @@
 title: 享元模式：通过共享对象减少内存加载消耗
 author:
   name: superhsc
-  link: https://github.com/maxpixelton
+  link: https://github.com/Shichuan-hao
 date: 2018-02-12 22:18:32 +0800
 categories: [设计模式, 结构型]
-tags:  [设计模式, Design Pattern, 享元模式, Flyweight, 对象结构型模式]
+tags:  [design pattern]
 math: true
 mermaid: true
 ---
@@ -18,7 +18,7 @@ mermaid: true
 从定义中可以发现，享元模式要解决的核心问题就是**节约内存空间**，使用的办法是**找出相似对象之间的共有特征，然后复用这些特征**。
 
 UML 图是如何表示享元模式的，如下图：
-![FlyWeight UML 图](https://maxpixelton.github.io/images/assert/design-patterns/flyweight.png)
+![FlyWeight UML 图](https://Shichuan-hao.github.io/images/assert/design-patterns/flyweight.png)
 
 从这个 UML 图中，享元模式包含的关键角色有四个：
 1. **享元类（Flyweight）**：定义了享元对象需要实现的公共操作方法。在该方法中会使用一个状态作为输入参数，也叫外部状态，由客户端保存，在运行时改变；

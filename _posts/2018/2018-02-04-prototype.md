@@ -2,10 +2,10 @@
 title: 原型模式：对象拷贝
 author:
   name: superhsc
-  link: https://github.com/maxpixelton
+  link: https://github.com/Shichuan-hao
 date: 2018-02-04 22:24:55 +0800
 categories: [设计模式, 创建型]
-tags:  [设计模式, Design Pattern, Prototype, 原型模式, 对象创建型模式]
+tags:  [design pattern]
 math: true
 mermaid: true
 ---
@@ -26,7 +26,7 @@ mermaid: true
 原理很简单，在现代编程中，经常会用到的 Ctrl+C 加 Ctrl+V 编程，可以说就是最直接的原型模式的实践之一。
 
 原型模式的 UML 图：
-![this is images](https://maxpixelton.github.io/images/assert/design-patterns/prototype.jpg)
+![this is images](https://Shichuan-hao.github.io/images/assert/design-patterns/prototype.jpg)
 
 从这个 UML 图中，可以看到原型模式中的关键角色有三个：
 1. 使用者；

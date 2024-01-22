@@ -2,10 +2,10 @@
 title: 组合模式：实现抽象协议与不同实现的绑定
 author:
   name: superhsc
-  link: https://github.com/maxpixelton
+  link: https://github.com/Shichuan-hao
 date: 2018-02-09 22:18:32 +0800
 categories: [设计模式, 结构型]
-tags:  [设计模式, Design Pattern, 组合模式, Composite, 对象结构型模式]
+tags:  [design pattern]
 math: true
 mermaid: true
 ---
@@ -37,7 +37,7 @@ mermaid: true
 
 组合场景的 UML 如下图所示：
 
-![组合场景的 UML](https://maxpixelton.github.io/images/assert/design-patterns/compostie-uml.png)
+![组合场景的 UML](https://Shichuan-hao.github.io/images/assert/design-patterns/compostie-uml.png)
 
 组合模式中包含了三个关键角色：
 - 抽象组件：定义需要实现的统一操作；
@@ -48,11 +48,11 @@ mermaid: true
 
 可以结合现实中的例子来理解，比如，一个公司中有总经理，在总经理之下有经理、秘书、副经理等，而在经理之下则有组长、开发人员等，其结构图大致如下：
 
-![this is images](https://maxpixelton.github.io/images/assert/desgin/compostie-tree.png)
+![this is images](https://Shichuan-hao.github.io/images/assert/desgin/compostie-tree.png)
 
 除了树形结构以外，组合模式中还有环形结构和双向结构（如下图），其中，环形结构和数据结构中的单向链表很相似，而双向结构其实就是 Spring 中 Bean 常用的结构。
 
-![this is images](https://maxpixelton.github.io/images/assert/design-patterns/cpmpostie-other.png)
+![this is images](https://Shichuan-hao.github.io/images/assert/design-patterns/cpmpostie-other.png)
 
 组合模式对应的 UML 的代码实现：
 
@@ -108,7 +108,7 @@ public class Node extends Component{
 
 以”订单信息"为例。假设一个新的商品订单系统（如下图），如何计算每个订单的总费用呢？
 
-![this is images](https://maxpixelton.github.io/images/assert/design-patterns/compostoe-order.png)
+![this is images](https://Shichuan-hao.github.io/images/assert/design-patterns/compostoe-order.png)
 
 从上面的简图可以看到，一个订单中可能通常会包含各类商品、发票等信息。
 

@@ -2,10 +2,10 @@
 title: 抽象工厂模式：统一不同代码风格下代码级别
 author:
   name: superhsc
-  link: https://github.com/maxpixelton
+  link: https://github.com/Shichuan-hao
 date: 2018-02-01 20:45:00 +0800
 categories: [设计模式, 创建型]
-tags:  [设计模式, design Pattern, Abstract factory, 抽象工厂模式, 创建型模式]
+tags:  [design pattern, Abstract factory, 抽象工厂模式, 创建型模式]
 math: true
 mermaid: true
 ---
@@ -15,7 +15,7 @@ mermaid: true
 2. 工厂方法
 3. 抽象工厂
 
-其中，在书中作者将简单工厂模式看作是工厂方法模式的一种特例。
+其中，在书中作者将 __简单工厂__ 看作是 __工厂__ 的一种特例。
 
 在实际工作中，用的比较多的是**工厂方法模式**和**抽象工厂模式**这两类**。**
 下面先总结一下抽象工厂模式。
@@ -40,7 +40,7 @@ mermaid: true
 由此可见，抽象工厂模式的定义只是说了抽象工厂模式应该朝着分析共性规律的方向走，而具体操作时需要仔细分析具体实现类应该怎么实现才可以。
 
 下面是抽象工厂模式原始的 UML 图：
-![抽象工厂模式原始的 UML 图](https://maxpixelton.github.io/images/assert/design-patterns/abstract-factory.png)
+![抽象工厂模式原始的 UML 图](https://Shichuan-hao.github.io/images/assert/design-patterns/abstract-factory.png)
 
 在上面的 UML 图中，能看出抽象工厂模式中包含了四个关键节点：
 

@@ -2,10 +2,10 @@
 title: 设计模式总览
 author:
   name: superhsc
-  link: https://github.com/maxpixelton
+  link: https://github.com/Shichuan-hao
 date: 2018-02-24 21:11:22 +0800
-categories: [系统设计, 设计模式]
-tags:  [设计模式, design pattern]
+categories: [设计模式]
+tags:  [design pattern]
 math: true
 mermaid: true
 ---

@@ -2,7 +2,7 @@
 title: Java 异常
 author:
   name: superhsc
-  link: https://github.com/maxpixelton
+  link: https://github.com/Shichuan-hao
 date: 2018-06-02 22:33:00 +0800
 categories: [Java, 异常]
 tags:  [exception]
@@ -25,7 +25,7 @@ mermaid: true
 
 好的，既然这里提到了 Java 中的核心异常类 RuntimeException，就来看一张图，这张图是 Java 异常类组织结构。同时，为了更好区分异常类别（上文所说的两类异常），用红色和绿色区分。
 
-![this is images](https://maxpixelton.github.io/images/assert/java/log-stack/0201.jpg)
+![this is images](https://Shichuan-hao.github.io/images/assert/java/log-stack/0201.jpg)
 
 从上面的这张图可以看出，Throwable 是 Java 异常的顶级类，所有的异常都继承于这个类。Error 和 Exception 则是 “语言级别” 的两个大分类。其中：
 

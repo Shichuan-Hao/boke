@@ -2,10 +2,10 @@
 title: 装饰器模式：在基础组件上扩展新功能
 author:
   name: superhsc
-  link: https://github.com/maxpixelton
+  link: https://github.com/Shichuan-hao
 date: 2018-02-10 22:18:32 +0800
 categories: [设计模式, 结构型]
-tags:  [设计模式, Design Pattern, 装饰器模式, Decorator, 对象结构型模式]
+tags:  [design pattern]
 math: true
 mermaid: true
 ---
@@ -22,7 +22,7 @@ mermaid: true
 
 装饰器模式的 UML 图：
 
-![装饰器模式的 UML 图](https://maxpixelton.github.io/images/assert/design-patterns/decorator-uml.png)
+![装饰器模式的 UML 图](https://Shichuan-hao.github.io/images/assert/design-patterns/decorator-uml.png)
 
 装饰模式的四个关键角色：
 

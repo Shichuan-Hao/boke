@@ -2,10 +2,10 @@
 title: 解释器模式：实现自定义配置规则功能
 author:
   name: superhsc
-  link: https://github.com/maxpixelton
+  link: https://github.com/Shichuan-hao
 date: 2018-02-17 21:18:32 +0800
 categories: [设计模式, 行为型]
-tags:  [设计模式, Design Pattern, Interpreter, 解释器模式, 类行为型模式]
+tags:  [design pattern]
 math: true
 mermaid: true
 ---
@@ -27,7 +27,7 @@ mermaid: true
 - 再比如，“我爱中国”是一个中文句子，可以用名词、动词、形容词等语法规则来直观地描述句子。
 
 解释器模式的 UML 图：
-![this is images](https://maxpixelton.github.io/images/assert/design-patterns/iterpreter-uml.jpg)
+![this is images](https://Shichuan-hao.github.io/images/assert/design-patterns/iterpreter-uml.jpg)
 
 从该 UML 图中，可以看出解释器模式包含四个关键角色：
 1. **抽象表达式（AbstractExpression）**：定义一个解释器有哪些操作，可以是抽象类或接口，同时说明只要继承或实现的子节点都需要实现这些操作方法；
