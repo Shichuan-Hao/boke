@@ -1,7 +1,4 @@
-# Byteswalk 字节漫步
-
-This my boke.
-这是我的博客。
+# Byteswalk! 字节漫步
 
 installing dependencies: `bundle`
 
