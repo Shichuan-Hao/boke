@@ -2,7 +2,7 @@
 title: java.net.SocketException:Too many open files
 author: shaun
 date: 2019-07-11 21:33:11 +0800
-categories: [文章]
+categories: [博客]
 tags:  [SpringBoot Coding and debug]
 math: true
 mermaid: true

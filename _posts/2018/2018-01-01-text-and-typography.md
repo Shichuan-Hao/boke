@@ -2,7 +2,7 @@
 title: 文字和排版
 author: Shaun
 date: 2018-08-08 11:33:00 +0800
-categories: [文章]
+categories: [博客]
 tags: [排版]
 pin: true
 math: true

@@ -4,7 +4,7 @@ author:
   name: superhsc
   link: https://github.com/Shichuan-hao
 date: 2018-02-24 21:11:22 +0800
-categories: [Java, 基础]
+categories: [博客]
 tags:  [值传递]
 math: true
 mermaid: true

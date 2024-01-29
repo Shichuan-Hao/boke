@@ -4,7 +4,7 @@ author:
   name: superhsc
   link: https://github.com/Shichuan-hao
 date: 2018-06-07 22:33:00 +0800
-categories: [文章]
+categories: [博客]
 tags:  [thread, heap, stack, jstack]
 math: true
 mermaid: true
