@@ -4,7 +4,7 @@ author:
   name: superhsc
   link: https://github.com/Shichuan-hao
 date: 2018-06-09 21:33:11 +0800
-categories: [博客]
+categories: [文章]
 tags:  [SpringBoot Coding and debug]
 math: true
 mermaid: true

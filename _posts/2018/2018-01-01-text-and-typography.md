@@ -1,8 +1,8 @@
 ---
 title: 文字和排版
-author: Steve Hao
+author: Shaun
 date: 2018-08-08 11:33:00 +0800
-categories: [博客]
+categories: [文章]
 tags: [排版]
 pin: true
 math: true
