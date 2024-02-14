@@ -11,7 +11,7 @@ __官网下载链接 😅__：http://isoredirect.centos.org/centos/7/isos/x86_64
 
 __阿里云站点 😅__: http://isoredirect.centos.org/centos/7/isos/x86_64/
 
-![](https://shichuan-hao.github.io/images/static/os/aliyun-centos-ios-download.png)
+![阿里云站点](https://shichuan-hao.github.io/images/static/os/aliyun-centos-ios-download.png)
 
 各版本 ISO 镜像说明：
 - `CentOS-7-x86_64-DVD-1708.iso`：标准安装版（推荐）
