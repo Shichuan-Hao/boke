@@ -165,6 +165,8 @@ private Runnable getTask() {
         int rs = runStateOf(c);
         
         // Check if queue empty only if necessary.
+        // 如果状态为 STOP 了，这里会直接退出循环，且减少工作线程数量
+        // 退出循环了也就相当于这个线程的生命周期结束了
         if (rs >= SHUTDOWN && (rs >= STOP || workQueue.isEmpty())) {
             decrementWorkerCount();
             return null;
@@ -183,6 +185,7 @@ private Runnable getTask() {
         }
 
         try {
+            // 真正响应中断是在 poll() 方法或者 take() 方法中
             Runnable r = timed ?
                 workQueue.poll(keepAliveTime, TimeUnit.NANOSECONDS) :
                 workQueue.take();
@@ -190,11 +193,68 @@ private Runnable getTask() {
                 return r;
             timedOut = true;
         } catch (InterruptedException retry) {
+            // 这里捕获中断异常
             timedOut = false;
         }
     }
 }
 ```
+
+
+这里有一个问题，就是已经通过 `getTask()` 取出来且返回的任务怎么办 ？
+
+实际上它们会正常执行完毕，可以看 `runWorker()` 这个方法。
+
 ### TIDYING
 
+当执行 shutdown() 或 shutdownNow() 之后，如果所有任务已中止，且工作线程数量为 0，就会进入这个状态。
+
+```java
+final void tryTerminate() {
+    for (;;) {
+        int c = ctl.get();
+        // 下面几种情况不会执行后续代码
+        // 1. 运行中
+        // 2. 状态的值比 TIDYING 还大，也就是 TERMINATED
+        // 3. SHUTDOWN 状态且任务队列不为空
+        if (isRunning(c) ||
+            runStateAtLeast(c, TIDYING) ||
+            (runStateOf(c) == SHUTDOWN && ! workQueue.isEmpty()))
+            return;
+        // 工作线程数量不为 0，也不会执行后续代码
+        if (workerCountOf(c) != 0) { // Eligible to terminate
+            // 尝试中断空闲的线程
+            interruptIdleWorkers(ONLY_ONE);
+            return;
+        }
+
+        final ReentrantLock mainLock = this.mainLock;
+        mainLock.lock();
+        try {
+            // CAS 修改状态为 TIDYING 状态
+            if (ctl.compareAndSet(c, ctlOf(TIDYING, 0))) {
+                try {
+                    // 更新成功，执行 terminated 钩子方法
+                    terminated();
+                } finally {
+                    // 强制更新状态为 TERMINATED，这里不需要 CAS
+                    ctl.set(ctlOf(TERMINATED, 0));
+                    termination.signalAll();
+                }
+                return;
+            }
+        } finally {
+            mainLock.unlock();
+        }
+        // else retry on failed CAS
+    }
+}
+```
+
+实际更新状态为 TIDYING 和 TERMINATED 状态的代码都在 `tryTerminate()` 方法中，并且 `tryTerminate()` 方法在很多地方都有调用，比如 `shutdown()`、`shutdownNow()`、线程退出时，所以说几乎每个线程最后消亡的时候都会调用 `tryTerminate()` 方法，但最后只会有一个线程真正执行到修改状态为 TIDYING 的地方。
+
+修改状态为 TIDYING 后执行 `terminated()` 方法，最后修改状态为 TERMINATED，标志着线程池真正消亡了。
+
 ### TERMINATE
+
+与 TIDYING 差不多。
