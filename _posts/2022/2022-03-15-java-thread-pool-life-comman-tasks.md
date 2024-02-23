@@ -8,6 +8,12 @@ math: true
 mermaid: true
 ---
 
+> 基于 Java 8 版本
+{: .prompt-tip }
+
+> 本文基于 ThreadPoolExector 类
+{: .prompt-tip }
+
 ## 问题
 
 1. 线程池中的普通任务是怎么执行的 ？
@@ -453,11 +459,43 @@ public void allowCoreThreadTimeOut(boolean value) {
 答：实际上并没有什么区别，主要是根据 corePoolSize 来判断任务该去哪里，两者在执行任务的过程中并没有任何区别。有可能新建的时候是核心线程，而 keepAliveTime 时间到了结束了的也可能是刚开始创建的核心线程。
 
 
-**Q: Worker 继承自 AQS 有何意义？**
+**Q：Worker 继承自 AQS 有何意义？**
 
-Worker内部类的定义，它继承自AQS，天生自带锁的特性，那么，它的锁是用来干什么的呢？跟任务的执行有关系吗？
+Worker 内部类的定义，它继承自AQS，天生自带锁的特性，那么，它的锁是用来干什么的呢？跟任务的执行有关系吗？
 
 答：既然是跟锁（同步）有关，说明 Worker 类跨线程使用了，此时我们查看它的 `lock()` 方法发现只在`runWorker()` 方法中使用了，但是其 `tryLock()` 却是在 `interruptIdleWorkers()` 方法中使用的。
+```java
+private void interruptIdleWorkers(boolean onlyOne) {
+    final ReentrantLock mainLock = this.mainLock;
+    mainLock.lock();
+    try {
+        for (Worker w : workers) {
+            Thread t = w.thread;
+            if (!t.isInterrupted() && w.tryLock()) {
+                try {
+                    t.interrupt();
+                } catch (SecurityException ignore) {
+                } finally {
+                    w.unlock();
+                }
+            }
+            if (onlyOne)
+                break;
+        }
+    } finally {
+        mainLock.unlock();
+    }
+}
+```
+`interruptIdleWorkers()` 方法的意思是中断空闲线程的意思，它只会中断 BlockingQueue 的 `poll()` 或 `take()` 方法，而不会中断正在执行的任务。
+
+一般而言，`interruptIdleWorkers()` 方法的调用不是在本工作线程，而是在主线程中调用的，观察在 [线程池生命周期](./2022-03-01-java-thread-pool-life-cycle.md) 中说过的 `shutdown()` 和 `shutdownNow()` 方法：
+- `shutdown()` 中也是调用了 `interruptIdleWorkers()` 方法，这里 `tryLock()` 获取到锁了再中断，如果没有获取到锁就不中断。没获取到锁只有一种情况，就是 `lock()` 所在的地方，也就是有任务正在执行。
+
+- `shutdownNow()` 中中断线程就很暴力，并没有 `tryLock()`，而是直接中断了线程，所以调用 `shutdownNow()` 可能会中断正在执行的任务。
+
+<font color=red>所以，Worker 继承自 AQS 实际是要使用其锁的能力，这个锁主要是用来控制 shutdown() 时不要中断正在执行任务的线程 </font>
+
 
 
 ## 总结
