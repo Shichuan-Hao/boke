@@ -110,7 +110,9 @@ FutureTask 实现了 RunnbaleFuture 接口，而 RunnableFuture 接口组合了 
 
 ## FutureTask 类的 run() 方法
 
-在[Java 线程池普通任务执行流程](./2022-03-15-java-thread-pool-life-comman-tasks.md)一文中，我们知道了 `execute()` 方法最后调用的是 task 的 `run()` 方法，上面传进入的任务，最后被包装成了 FutureTask，也就是说 `execute()` 方法最后会调用 FutureTask 的 `run()` 方法，所以直接看这个方法了：
+<!-- 在[Java 线程池普通任务执行流程](./2022-03-15-java-thread-pool-life-comman-tasks.md)一文中， -->
+
+我们知道了 `execute()` 方法最后调用的是 task 的 `run()` 方法，上面传进入的任务，最后被包装成了 FutureTask，也就是说 `execute()` 方法最后会调用 FutureTask 的 `run()` 方法，所以直接看这个方法了：
 
 ```java
 public void run() {

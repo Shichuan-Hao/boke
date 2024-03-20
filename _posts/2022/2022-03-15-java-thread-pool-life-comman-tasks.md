@@ -64,7 +64,9 @@ public class ThreadPoolTest01 {
 }
 ```
 
-构造方法的 7 个参数可以参考[这里](./2022-01-28-java-thread-pool-construction-method.md)，运行结果如下：
+<!-- 构造方法的 7 个参数可以参考[这里](./2022-01-28-java-thread-pool-construction-method.md)。 -->
+
+运行结果如下：
 ```
 pool-1-thread-3, 2 running, 1708586297268
 pool-1-thread-4, 3 running, 1708586297268
@@ -147,7 +149,7 @@ public void execute(Runnable command) {
 }
 ```
 
-关于线程池状态，参考[这里](./2022-03-01-java-thread-pool-life-cycle.md)
+<!-- 关于线程池状态，参考[这里](./2022-03-01-java-thread-pool-life-cycle.md) -->
 
 提交任务的过程大致是：
 
