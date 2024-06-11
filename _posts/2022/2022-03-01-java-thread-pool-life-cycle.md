@@ -207,7 +207,7 @@ private Runnable getTask() {
 
 ### TIDYING
 
-当执行 shutdown() 或 shutdownNow() 之后，如果所有任务已中止，且工作线程数量为 0，就会进入这个状态。
+当执行 `shutdown()` 或 `shutdownNow()` 之后，如果所有任务已中止，且工作线程数量为 0，就会进入这个状态。
 
 ```java
 final void tryTerminate() {

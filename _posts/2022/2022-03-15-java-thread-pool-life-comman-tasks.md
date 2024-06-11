@@ -488,9 +488,9 @@ private void interruptIdleWorkers(boolean onlyOne) {
     }
 }
 ```
-`interruptIdleWorkers()` 方法的意思是中断空闲线程的意思，它只会中断 BlockingQueue 的 `poll()` 或 `take()` 方法，而不会中断正在执行的任务。
+`interruptIdleWorkers()` 方法的意思是中断空闲线程，它只会中断 BlockingQueue 的 `poll()` 或 `take()` 方法，而不会中断正在执行的任务。
 
-一般而言，`interruptIdleWorkers()` 方法的调用不是在本工作线程，而是在主线程中调用的，观察在 [线程池生命周期](./2022-03-01-java-thread-pool-life-cycle.md) 中说过的 `shutdown()` 和 `shutdownNow()` 方法：
+一般而言，`interruptIdleWorkers()` 方法的调用不是在本工作线程，而是在主线程中调用的，比如 `shutdown()` 和 `shutdownNow()` 方法：
 - `shutdown()` 中也是调用了 `interruptIdleWorkers()` 方法，这里 `tryLock()` 获取到锁了再中断，如果没有获取到锁就不中断。没获取到锁只有一种情况，就是 `lock()` 所在的地方，也就是有任务正在执行。
 
 - `shutdownNow()` 中中断线程就很暴力，并没有 `tryLock()`，而是直接中断了线程，所以调用 `shutdownNow()` 可能会中断正在执行的任务。
