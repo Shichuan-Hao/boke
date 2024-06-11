@@ -149,7 +149,6 @@ public void execute(Runnable command) {
 }
 ```
 
-<!-- 关于线程池状态，参考[这里](./2022-03-01-java-thread-pool-life-cycle.md) -->
 
 提交任务的过程大致是：
 
